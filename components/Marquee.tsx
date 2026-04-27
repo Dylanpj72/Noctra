@@ -18,7 +18,7 @@ const doubledItems = [...items, ...items];
 export function Marquee() {
   return (
     <div
-      className="overflow-hidden border-y border-white/[0.06] py-8 md:py-10"
+      className="overflow-hidden border-b border-white/[0.06] py-8 md:py-10"
       aria-label="Services marquee"
     >
       <div

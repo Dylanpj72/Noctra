@@ -20,9 +20,7 @@ export default async function Home() {
 
   return (
     <main>
-      <header>
-        <Hero />
-      </header>
+      <Hero />
 
       <StatsRow />
 

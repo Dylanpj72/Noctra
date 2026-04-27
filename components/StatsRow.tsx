@@ -50,7 +50,7 @@ export function StatsRow() {
     <section
       ref={ref}
       aria-label="Agency statistics"
-      className="border-b border-white/[0.06]"
+      className="py-16 md:py-24 border-b border-white/[0.06]"
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-14">
         <div
@@ -60,7 +60,7 @@ export function StatsRow() {
             gap: '1px',
           }}
         >
-          {stats.map((stat, i) => (
+          {stats.map((stat) => (
             <div
               key={stat.label}
               className="bg-black px-6 md:px-8 py-10"
