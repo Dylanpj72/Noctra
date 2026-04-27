@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect, useRef, useTransition } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   PRICING,
-  resolveRegion,
   formatPrice,
   type Region,
   type RegionPricing,
@@ -144,12 +143,10 @@ function PricingCard({
   tier,
   mode,
   region,
-  index,
 }: {
   tier: (typeof tiers)[0];
   mode: PaymentMode;
   region: RegionPricing;
-  index: number;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -307,7 +304,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
     <section
       id="pricing"
       aria-labelledby="pricing-heading"
-      className="py-[120px] border-b border-white/[0.06]"
+      className="py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-14">
         {/* Section header */}
@@ -448,15 +445,15 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
 
         {/* Cards — desktop: Launch / Studio / Empire */}
         <div className="hidden md:grid md:grid-cols-3 gap-4 mb-10">
-          {tiers.map((tier, i) => (
-            <PricingCard key={tier.key} tier={tier} mode={mode} region={region} index={i} />
+          {tiers.map((tier) => (
+            <PricingCard key={tier.key} tier={tier} mode={mode} region={region} />
           ))}
         </div>
 
         {/* Cards — mobile: Studio first */}
         <div className="grid grid-cols-1 gap-4 mb-10 md:hidden">
-          {tierOrder.map((tier, i) => (
-            <PricingCard key={tier.key} tier={tier} mode={mode} region={region} index={i} />
+          {tierOrder.map((tier) => (
+            <PricingCard key={tier.key} tier={tier} mode={mode} region={region} />
           ))}
         </div>
 

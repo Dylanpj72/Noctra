@@ -38,7 +38,7 @@ export function ServicesShowcase() {
   return (
     <section
       aria-labelledby="services-showcase-heading"
-      className="py-[120px] border-b border-white/[0.06]"
+      className="py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-14">
         {/* Section header */}

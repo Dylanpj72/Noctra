@@ -21,7 +21,7 @@ const contactLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.06]">
+    <footer className="border-t border-white/[0.06] bg-black isolate">
       {/* End mark */}
       <div
         className="text-center overflow-hidden pt-16 pb-0 select-none"

@@ -50,7 +50,7 @@ export function StatsRow() {
     <section
       ref={ref}
       aria-label="Agency statistics"
-      className="py-16 md:py-24 border-b border-white/[0.06]"
+      className="py-16 md:py-24 border-b border-white/[0.06] bg-black isolate"
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-14">
         <div

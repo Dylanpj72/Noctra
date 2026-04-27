@@ -18,11 +18,12 @@ const doubledItems = [...items, ...items];
 export function Marquee() {
   return (
     <div
-      className="overflow-hidden border-b border-white/[0.06] py-8 md:py-10"
+      className="overflow-hidden border-b border-white/[0.06] py-8 md:py-10 bg-black"
+      style={{ isolation: 'isolate' }}
       aria-label="Services marquee"
     >
       <div
-        className="flex gap-16 whitespace-nowrap will-change-transform"
+        className="flex gap-16 whitespace-nowrap"
         style={{
           animation: 'marquee-scroll 30s linear infinite',
           fontSize: 'clamp(36px,4.5vw,68px)',

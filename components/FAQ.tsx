@@ -102,7 +102,7 @@ export function FAQ() {
     <section
       id="faq"
       aria-labelledby="faq-heading"
-      className="py-[120px] border-b border-white/[0.06]"
+      className="py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-14">
         <div className="mb-16 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end">

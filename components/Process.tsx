@@ -93,12 +93,11 @@ function ProcessStep({
 
 export function Process() {
   const headRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(headRef, { once: true });
 
   return (
     <section
       aria-labelledby="process-heading"
-      className="py-[120px] border-b border-white/[0.06]"
+      className="py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
       <div className="max-w-[1400px] mx-auto px-6 md:px-14">
         <div
