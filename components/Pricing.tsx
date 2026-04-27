@@ -3,22 +3,12 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
-  PRICING,
   formatPrice,
-  type Region,
   type RegionPricing,
   type PaymentMode,
   type TierKey,
 } from '@/data/pricing';
 
-const REGION_LABELS: Record<Region, string> = {
-  ZA: 'South Africa',
-  UK: 'United Kingdom',
-  US: 'United States & Canada',
-  AU: 'Australia & NZ',
-  EU_WEST: 'Western Europe',
-  EU_EAST: 'Eastern Europe',
-};
 
 const tiers: { key: TierKey; name: string; blurb: string; featured?: boolean; features: string[] }[] = [
   {
@@ -260,32 +250,18 @@ function PricingCard({
 }
 
 export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
-  const [region, setRegion] = useState<RegionPricing>(initialRegion);
+  const region = initialRegion;
   const [mode, setMode] = useState<PaymentMode>('flatMonthly');
-  const [showRegionPicker, setShowRegionPicker] = useState(false);
 
-  // Load from localStorage on mount
+  // Persist payment mode preference
   useEffect(() => {
     try {
-      const savedRegion = localStorage.getItem('noctra-region') as Region | null;
       const savedMode = localStorage.getItem('noctra-mode') as PaymentMode | null;
-      if (savedRegion && PRICING[savedRegion]) {
-        setRegion(PRICING[savedRegion]);
-      }
       if (savedMode === 'flatMonthly' || savedMode === 'upfront') {
         setMode(savedMode);
       }
     } catch {}
   }, []);
-
-  const changeRegion = (r: Region) => {
-    const rp = PRICING[r];
-    setRegion(rp);
-    setShowRegionPicker(false);
-    try {
-      localStorage.setItem('noctra-region', r);
-    } catch {}
-  };
 
   const changeMode = (m: PaymentMode) => {
     setMode(m);
@@ -326,75 +302,6 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
           <p className="font-[family-name:var(--font-instrument-serif)] italic text-[16px] md:text-[18px] text-[#8a8a92] max-w-[540px] mx-auto">
             Flat monthly is everything-included — most clients prefer it. Want a one-time build instead? Switch to upfront.
           </p>
-        </div>
-
-        {/* Region switcher */}
-        <div className="flex justify-center mb-8">
-          <div className="relative">
-            <button
-              onClick={() => setShowRegionPicker((v) => !v)}
-              className="flex items-center gap-2 px-4 py-2 rounded-full border border-white/[0.12] bg-white/[0.04] text-[13px] text-[#8a8a92] hover:text-white hover:border-white/[0.2] transition-all focus-visible:outline-2 focus-visible:outline-white"
-              aria-expanded={showRegionPicker}
-              aria-haspopup="listbox"
-            >
-              <span>Showing prices for</span>
-              <span className="text-white font-medium">{region.label}</span>
-              <span className="text-[#f5d020]">Change ↓</span>
-            </button>
-
-            <AnimatePresence>
-              {showRegionPicker && (
-                <motion.div
-                  initial={{ opacity: 0, y: -8, scale: 0.96 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -8, scale: 0.96 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute left-1/2 -translate-x-1/2 mt-2 w-56 rounded-2xl border border-white/[0.12] overflow-hidden z-10"
-                  style={{ background: '#050507', backdropFilter: 'blur(24px)' }}
-                  role="listbox"
-                  aria-label="Select region"
-                >
-                  {(Object.entries(REGION_LABELS) as [Region, string][]).map(
-                    ([key, label]) => (
-                      <button
-                        key={key}
-                        role="option"
-                        aria-selected={region.region === key}
-                        onClick={() => changeRegion(key)}
-                        className={`w-full text-left px-4 py-3 text-[13px] transition-colors hover:bg-white/[0.06] focus-visible:outline-none focus-visible:bg-white/[0.06] ${
-                          region.region === key ? 'text-white font-medium' : 'text-[#8a8a92]'
-                        }`}
-                      >
-                        {label}
-                        {region.region === key && (
-                          <span className="float-right text-[#f5d020]">✓</span>
-                        )}
-                      </button>
-                    )
-                  )}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-
-        {/* Mobile: native select */}
-        <div className="flex justify-center mb-8 md:hidden">
-          <label className="sr-only" htmlFor="region-select-mobile">
-            Select region
-          </label>
-          <select
-            id="region-select-mobile"
-            value={region.region}
-            onChange={(e) => changeRegion(e.target.value as Region)}
-            className="px-4 py-2 rounded-full border border-white/[0.12] bg-black text-white text-[13px] focus:outline-none focus:border-white/30"
-          >
-            {(Object.entries(REGION_LABELS) as [Region, string][]).map(([key, label]) => (
-              <option key={key} value={key}>
-                {label}
-              </option>
-            ))}
-          </select>
         </div>
 
         {/* Payment mode toggle */}
