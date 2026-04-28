@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
+import { TiltCard } from './TiltCard';
 
 const works = [
   {
@@ -44,75 +45,81 @@ function WorkTile({ work, index }: { work: (typeof works)[0]; index: number }) {
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.08, ease: [0.2, 0.8, 0.2, 1] }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className="group relative rounded-2xl overflow-hidden border border-white/[0.08] aspect-[4/3] flex flex-col justify-end cursor-pointer"
-      style={{ background: work.bg }}
-      role="article"
-      aria-label={`Case study: ${work.title}`}
     >
-      {/* Accent gradient */}
-      <div
-        className="absolute inset-0 transition-opacity duration-700"
-        style={{
-          background: `radial-gradient(ellipse 60% 60% at 50% 30%, ${work.accent}18, transparent 70%)`,
-          opacity: hovered ? 1 : 0.4,
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Grid lines */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1.5px)`,
-          backgroundSize: '24px 24px',
-        }}
-        aria-hidden="true"
-      />
-
-      {/* Gradient overlay at bottom */}
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
-        aria-hidden="true"
-      />
-
-      {/* Hover reveal metadata */}
-      <motion.div
-        initial={false}
-        animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 12 }}
-        transition={{ duration: 0.3 }}
-        className="absolute top-6 right-6 flex flex-col items-end gap-2"
-        aria-hidden={!hovered}
+      <TiltCard
+        spotlight={false}
+        tiltLimit={10}
+        scale={1.03}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        className="group relative rounded-2xl border border-white/[0.08] aspect-[4/3] flex flex-col justify-end cursor-pointer"
+        style={{ background: work.bg }}
+        role="article"
+        aria-label={`Case study: ${work.title}`}
       >
-        <span
-          className="px-2.5 py-1 rounded-full text-[11px] font-semibold text-black"
-          style={{ background: work.accent }}
+        {/* Accent gradient */}
+        <div
+          className="absolute inset-0 transition-opacity duration-700"
+          style={{
+            background: `radial-gradient(ellipse 60% 60% at 50% 30%, ${work.accent}18, transparent 70%)`,
+            opacity: hovered ? 1 : 0.4,
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Grid lines */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1.5px)`,
+            backgroundSize: '24px 24px',
+          }}
+          aria-hidden="true"
+        />
+
+        {/* Gradient overlay at bottom */}
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"
+          aria-hidden="true"
+        />
+
+        {/* Hover reveal metadata */}
+        <motion.div
+          initial={false}
+          animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 12 }}
+          transition={{ duration: 0.3 }}
+          className="absolute top-6 right-6 flex flex-col items-end gap-2"
+          aria-hidden={!hovered}
         >
-          {work.result}
-        </span>
-        <span className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] text-[#8a8a92]">
-          {work.year}
-        </span>
-      </motion.div>
+          <span
+            className="px-2.5 py-1 rounded-full text-[11px] font-semibold text-black"
+            style={{ background: work.accent }}
+          >
+            {work.result}
+          </span>
+          <span className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] text-[#8a8a92]">
+            {work.year}
+          </span>
+        </motion.div>
 
-      {/* Content */}
-      <div className="relative z-10 p-6 md:p-8">
-        <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62] mb-2">
-          {work.id} — {work.category}
-        </p>
-        <h3 className="font-[family-name:var(--font-inter)] font-[700] text-[22px] md:text-[26px] tracking-[-0.03em] text-white">
-          {work.title}
-        </h3>
-      </div>
+        {/* Content */}
+        <div className="relative z-10 p-6 md:p-8">
+          <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62] mb-2">
+            {work.id} — {work.category}
+          </p>
+          <h3 className="font-[family-name:var(--font-inter)] font-[700] text-[22px] md:text-[26px] tracking-[-0.03em] text-white">
+            {work.title}
+          </h3>
+        </div>
 
-      {/* Arrow */}
-      <div
-        className="absolute bottom-6 right-6 w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:rotate-[-45deg]"
-        aria-hidden="true"
-      >
-        →
-      </div>
+        {/* Arrow */}
+        <div
+          className="absolute bottom-6 right-6 w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:rotate-[-45deg]"
+          aria-hidden="true"
+        >
+          →
+        </div>
+      </TiltCard>
     </motion.div>
   );
 }

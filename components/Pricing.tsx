@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { TiltCard } from './TiltCard';
 import {
   formatPrice,
   type RegionPricing,
@@ -138,21 +139,11 @@ function PricingCard({
   mode: PaymentMode;
   region: RegionPricing;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
-    const el = cardRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    el.style.setProperty('--mx', `${((e.clientX - rect.left) / rect.width) * 100}%`);
-    el.style.setProperty('--my', `${((e.clientY - rect.top) / rect.height) * 100}%`);
-  };
-
   return (
-    <div
-      ref={cardRef}
-      onPointerMove={onPointerMove}
-      className={`group relative rounded-[28px] overflow-hidden flex flex-col p-7 md:p-8 transition-all duration-500 hover:-translate-y-1 ${
+    <TiltCard
+      tiltLimit={8}
+      scale={1.02}
+      className={`group relative rounded-[28px] flex flex-col p-7 md:p-8 ${
         tier.featured
           ? 'border border-white/[0.20] hover:border-[#f5d020]/30'
           : 'border border-white/[0.08] hover:border-white/[0.16]'
@@ -175,16 +166,6 @@ function PricingCard({
           background: tier.featured
             ? 'linear-gradient(90deg, transparent, rgba(245,208,32,0.5), transparent)'
             : 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
-        }}
-      />
-
-      {/* Cursor glow */}
-      <span
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          background:
-            'radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.05), transparent 45%)',
         }}
       />
 
@@ -315,7 +296,7 @@ function PricingCard({
       >
         Choose {tier.name.charAt(0) + tier.name.slice(1).toLowerCase()}
       </a>
-    </div>
+    </TiltCard>
   );
 }
 
