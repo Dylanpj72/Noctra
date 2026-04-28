@@ -44,39 +44,97 @@ const glassStyle = (orb: string): React.CSSProperties => ({
   ].join(', '),
 });
 
-// ─── Section header (shared) ────────────────────────────────────────────────
-function SectionHeader() {
+export function HeroParallax() {
+  const firstRow  = products.slice(0, 5);
+  const secondRow = products.slice(5, 10);
+  const thirdRow  = products.slice(10, 15);
+
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+
+  const spring = { stiffness: 300, damping: 30, bounce: 100 };
+
+  const translateX        = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]),    spring);
+  const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, -1000]),   spring);
+  const rotateX           = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]),    spring);
+  const opacity           = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.7, 1]),   spring);
+  const rotateZ           = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]),    spring);
+  const translateY        = useSpring(useTransform(scrollYProgress, [0, 0.2], [-700, 500]),spring);
+
   return (
-    <div className="max-w-[1400px] mx-auto px-6 md:px-14 pt-[120px] pb-16 md:pb-20 flex-shrink-0">
-      <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end">
-        <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
-          05 — <span className="text-white font-[500]">Selected Work</span>
-        </p>
-        <h2
-          id="work-heading"
-          className="font-[family-name:var(--font-inter)] font-[200] leading-[0.95] tracking-[-0.04em] uppercase text-white"
-          style={{ fontSize: 'clamp(40px,6vw,88px)' }}
-        >
-          The{' '}
-          <em className="font-[family-name:var(--font-instrument-serif)] not-italic italic font-[400] normal-case">
-            receipts.
-          </em>
-        </h2>
+    <section
+      id="work"
+      ref={ref}
+      aria-labelledby="work-heading"
+      className="h-[300vh] overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d] bg-black border-b border-white/[0.06]"
+    >
+      {/* Section header */}
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-14 pt-[120px] pb-16 md:pb-20 flex-shrink-0">
+        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end">
+          <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
+            05 — <span className="text-white font-[500]">Selected Work</span>
+          </p>
+          <h2
+            id="work-heading"
+            className="font-[family-name:var(--font-inter)] font-[200] leading-[0.95] tracking-[-0.04em] uppercase text-white"
+            style={{ fontSize: 'clamp(40px,6vw,88px)' }}
+          >
+            The{' '}
+            <em className="font-[family-name:var(--font-instrument-serif)] not-italic italic font-[400] normal-case">
+              receipts.
+            </em>
+          </h2>
+        </div>
       </div>
-    </div>
+
+      {/* Parallax rows — full-width cards on mobile, fixed-width on desktop */}
+      <motion.div
+        style={{ rotateX, rotateZ, translateY, opacity }}
+        className="flex-shrink-0"
+      >
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-4 md:space-x-20 mb-4 md:mb-20">
+          {firstRow.map((p) => (
+            <ProductCard product={p} translate={translateX} key={p.title} />
+          ))}
+        </motion.div>
+        <motion.div className="flex flex-row space-x-4 md:space-x-20 mb-4 md:mb-20">
+          {secondRow.map((p) => (
+            <ProductCard product={p} translate={translateXReverse} key={p.title} />
+          ))}
+        </motion.div>
+        <motion.div className="flex flex-row-reverse space-x-reverse space-x-4 md:space-x-20">
+          {thirdRow.map((p) => (
+            <ProductCard product={p} translate={translateX} key={p.title} />
+          ))}
+        </motion.div>
+      </motion.div>
+    </section>
   );
 }
 
-// ─── Shared glass card internals ────────────────────────────────────────────
-function GlassCardContent({ product }: { product: typeof products[0] }) {
+function ProductCard({
+  product,
+  translate,
+}: {
+  product: typeof products[0];
+  translate: MotionValue<number>;
+}) {
   return (
-    <>
+    <motion.div
+      whileHover={{ y: -16 }}
+      transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
+      // Mobile: nearly full viewport width so only one card shows at a time
+      // Desktop: fixed 30rem wide
+      className="group/product relative flex-shrink-0 rounded-2xl overflow-hidden w-[88vw] h-[62vw] md:w-[30rem] md:h-96"
+      style={{ x: translate, ...glassStyle(product.orb) }}
+    >
       {/* Top-edge highlight */}
       <span
         aria-hidden="true"
         className="absolute top-0 left-[10%] right-[10%] h-px pointer-events-none z-10"
         style={{ background: 'linear-gradient(to right, transparent, rgba(255,255,255,0.30), transparent)' }}
       />
+
       {/* Ghost index */}
       <span
         aria-hidden="true"
@@ -85,13 +143,15 @@ function GlassCardContent({ product }: { product: typeof products[0] }) {
       >
         {product.index}
       </span>
+
       {/* Hover shimmer */}
       <div
         aria-hidden="true"
         className="absolute inset-0 opacity-0 group-hover/product:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{ background: 'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.06) 50%, transparent 70%)' }}
       />
-      <Link href={product.link} className="absolute inset-0 flex flex-col justify-between p-5 z-10">
+
+      <Link href={product.link} className="absolute inset-0 flex flex-col justify-between p-5 md:p-7 z-10">
         <div className="flex items-start justify-between">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62]">
             {product.category}
@@ -104,109 +164,11 @@ function GlassCardContent({ product }: { product: typeof products[0] }) {
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62] mb-1.5">
             {product.index}
           </p>
-          <h3 className="font-[family-name:var(--font-inter)] font-[700] text-[18px] tracking-[-0.03em] text-white leading-tight">
+          <h3 className="font-[family-name:var(--font-inter)] font-[700] text-[20px] md:text-[22px] tracking-[-0.03em] text-white leading-tight">
             {product.title}
           </h3>
         </div>
       </Link>
-    </>
-  );
-}
-
-// ─── Mobile: 2-column grid ───────────────────────────────────────────────────
-function MobileGrid() {
-  return (
-    <div className="px-6 pb-20">
-      <div className="grid grid-cols-2 gap-3">
-        {products.map((p) => (
-          <div
-            key={p.title}
-            className="group/product relative rounded-xl overflow-hidden aspect-[3/4]"
-            style={glassStyle(p.orb)}
-          >
-            <GlassCardContent product={p} />
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// ─── Desktop: parallax rows ──────────────────────────────────────────────────
-function ParallaxRows() {
-  const firstRow  = products.slice(0, 5);
-  const secondRow = products.slice(5, 10);
-  const thirdRow  = products.slice(10, 15);
-
-  const ref = React.useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-
-  const spring = { stiffness: 300, damping: 30, bounce: 100 };
-  const translateX        = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]),    spring);
-  const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, -1000]),   spring);
-  const rotateX           = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]),    spring);
-  const opacity           = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.7, 1]),   spring);
-  const rotateZ           = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]),    spring);
-  const translateY        = useSpring(useTransform(scrollYProgress, [0, 0.2], [-700, 500]),spring);
-
-  return (
-    <div
-      ref={ref}
-      className="flex-1 overflow-hidden [perspective:1000px] [transform-style:preserve-3d]"
-    >
-      <motion.div style={{ rotateX, rotateZ, translateY, opacity }}>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-          {firstRow.map((p) => (
-            <ParallaxCard product={p} translate={translateX} key={p.title} />
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-row space-x-20 mb-20">
-          {secondRow.map((p) => (
-            <ParallaxCard product={p} translate={translateXReverse} key={p.title} />
-          ))}
-        </motion.div>
-        <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-          {thirdRow.map((p) => (
-            <ParallaxCard product={p} translate={translateX} key={p.title} />
-          ))}
-        </motion.div>
-      </motion.div>
-    </div>
-  );
-}
-
-function ParallaxCard({ product, translate }: { product: typeof products[0]; translate: MotionValue<number> }) {
-  return (
-    <motion.div
-      whileHover={{ y: -16 }}
-      transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
-      className="group/product h-96 w-[30rem] relative flex-shrink-0 rounded-2xl overflow-hidden"
-      style={{ x: translate, ...glassStyle(product.orb) }}
-    >
-      <GlassCardContent product={product} />
     </motion.div>
-  );
-}
-
-// ─── Export ──────────────────────────────────────────────────────────────────
-export function HeroParallax() {
-  return (
-    <section
-      id="work"
-      aria-labelledby="work-heading"
-      className="bg-black border-b border-white/[0.06] md:h-[300vh] md:flex md:flex-col"
-    >
-      <SectionHeader />
-
-      {/* Mobile grid */}
-      <div className="md:hidden">
-        <MobileGrid />
-      </div>
-
-      {/* Desktop parallax */}
-      <div className="hidden md:flex md:flex-1 md:overflow-hidden">
-        <ParallaxRows />
-      </div>
-    </section>
   );
 }
