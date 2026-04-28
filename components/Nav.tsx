@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 
 const links = [
@@ -12,6 +14,8 @@ const links = [
 
 export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     if (menuOpen) {
@@ -40,6 +44,16 @@ export function Nav() {
             aria-hidden="true"
             className="absolute top-0 left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none"
           />
+
+          {/* Home button — non-home pages only */}
+          {!isHome && (
+            <Link
+              href="/"
+              className="hidden md:flex items-center gap-1.5 px-4 py-2.5 text-[13px] font-[500] text-white rounded-full border border-white/[0.12] bg-white/[0.04] transition-all duration-300 hover:bg-white/[0.08] hover:border-white/[0.22] focus-visible:outline-2 focus-visible:outline-white mr-1"
+            >
+              ← Home
+            </Link>
+          )}
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-1">
@@ -106,6 +120,21 @@ export function Nav() {
             >
               ✕
             </button>
+            {!isHome && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0, duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
+              >
+                <Link
+                  href="/"
+                  className="flex items-center gap-2 px-6 py-3 rounded-full border border-white/[0.12] bg-white/[0.04] text-[14px] font-[500] text-white mb-4"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  ← Home
+                </Link>
+              </motion.div>
+            )}
             {links.map((link, i) => (
               <motion.a
                 key={link.label}
