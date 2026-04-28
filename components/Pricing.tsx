@@ -234,6 +234,76 @@ function PricingCard({
         )}
       </ul>
 
+      {/* Inclusions */}
+      <div className="mb-6">
+        <div className="w-full h-px bg-white/[0.06] mb-4" />
+        <AnimatePresence mode="wait">
+          {mode === 'flatMonthly' ? (
+            <motion.div
+              key="flat-inc"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2 }}
+            >
+              <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62] mb-2">
+                All included
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {['Design & build', 'Hosting', 'Management', 'SEO', 'Security'].map((item) => (
+                  <span
+                    key={item}
+                    className="px-2 py-0.5 rounded-full border border-white/[0.07] text-[11px] text-[#5a5a62]"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="upfront-inc"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.2 }}
+              className="flex flex-col gap-2.5"
+            >
+              <div>
+                <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62] mb-1.5">
+                  Upfront covers
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Design & build', 'SEO'].map((item) => (
+                    <span
+                      key={item}
+                      className="px-2 py-0.5 rounded-full border border-white/[0.07] text-[11px] text-[#5a5a62]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62] mb-1.5">
+                  Retainer covers
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Management', 'Hosting', 'Security'].map((item) => (
+                    <span
+                      key={item}
+                      className="px-2 py-0.5 rounded-full border border-white/[0.07] text-[11px] text-[#5a5a62]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
       {/* CTA */}
       <a
         href="#contact"
