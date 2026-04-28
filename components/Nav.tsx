@@ -12,13 +12,6 @@ const links = [
 
 export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   useEffect(() => {
     if (menuOpen) {
@@ -63,7 +56,7 @@ export function Nav() {
 
           {/* Contact CTA */}
           <a
-            href="#contact"
+            href="/contact"
             className="px-4 py-2.5 text-[13px] font-semibold text-black bg-white rounded-full transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_0_4px_rgba(255,255,255,0.1),0_12px_40px_rgba(255,255,255,0.15)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ml-1"
           >
             Contact ↗
@@ -127,7 +120,7 @@ export function Nav() {
               </motion.a>
             ))}
             <motion.a
-              href="#contact"
+              href="/contact"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: links.length * 0.06, duration: 0.4 }}
