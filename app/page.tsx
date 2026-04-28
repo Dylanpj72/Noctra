@@ -6,7 +6,7 @@ import { ServicesShowcase } from '@/components/ServicesShowcase';
 import { Marquee } from '@/components/Marquee';
 import { ServicesCards } from '@/components/ServicesCards';
 import { Process } from '@/components/Process';
-import { SelectedWork } from '@/components/SelectedWork';
+import { HeroParallax } from '@/components/HeroParallax';
 import { Pricing } from '@/components/Pricing';
 import { FAQ } from '@/components/FAQ';
 import { CTABlock } from '@/components/CTABlock';
@@ -36,7 +36,7 @@ export default async function Home({
 
       <Process />
 
-      <SelectedWork />
+      <HeroParallax />
 
       <Pricing initialRegion={initialRegion} />
 
