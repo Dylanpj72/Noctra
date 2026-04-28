@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { Nav } from './Nav';
 
@@ -19,8 +19,6 @@ const headline = [
 ];
 
 export function Hero() {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-
   return (
     <section
       aria-labelledby="hero-heading"
@@ -109,7 +107,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.4em] uppercase text-[#8a8a92] mb-14"
           >
-            — A WEB AGENCY · EST. 2026 —
+            — NEW ERA OF DIGITAL EXPERIENCE —
           </motion.p>
 
           {/* Headline */}
