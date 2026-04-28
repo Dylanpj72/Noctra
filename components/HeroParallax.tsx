@@ -98,22 +98,21 @@ function CardInner({ product }: { product: Product }) {
 }
 
 // ─── Mobile ──────────────────────────────────────────────────────────────────
-// Outer div is 280vh tall — provides the scroll range.
-// Inner div is sticky so the viewport stays still while cards sweep horizontally.
+// Scroll progress mapping (over 400vh outer / 300vh scroll range):
+//   0.00 → 0.15  tilt entry   — cards flatten from diagonal behind header
+//   0.12 → 0.85  horiz sweep  — each card steps to centre
+//   0.85 → 1.00  hold         — card 6 stays centred, then section releases
 //
-// Scroll progress mapping:
-//   0.00 → 0.20  tilt entry (cards flatten from diagonal behind header)
-//   0.15 → 0.90  horizontal sweep (each card steps to centre)
-//   0.90 → 1.00  last card holds at centre, then section releases
+// Layout: header is an absolute overlay; cards are absolute inset-0 flex items-center
+// so they are always centred in the full viewport, not pushed below the header.
 function MobileSection() {
   const outerRef = React.useRef<HTMLDivElement>(null);
   const cardRef  = React.useRef<HTMLDivElement>(null);
 
-  // Measured card width + gap so last card lands exactly at centre
   const [cardStep, setCardStep] = React.useState(355);
   React.useEffect(() => {
     const measure = () => {
-      if (cardRef.current) setCardStep(cardRef.current.offsetWidth + 16); // 16px = space-x-4
+      if (cardRef.current) setCardStep(cardRef.current.offsetWidth + 16);
     };
     measure();
     window.addEventListener('resize', measure);
@@ -127,25 +126,47 @@ function MobileSection() {
 
   const spring = { stiffness: 300, damping: 30, bounce: 100 };
 
-  // Tilt entry — smaller translateY so cards are visible behind the header
-  const rotateX    = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]),    spring);
-  const rotateZ    = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]),    spring);
-  const opacity    = useSpring(useTransform(scrollYProgress, [0, 0.15], [0.6, 1]),  spring);
-  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.2], [-140, 0]),  spring);
+  // Tilt entry
+  const rotateX    = useSpring(useTransform(scrollYProgress, [0, 0.15], [15, 0]),   spring);
+  const rotateZ    = useSpring(useTransform(scrollYProgress, [0, 0.15], [20, 0]),   spring);
+  const opacity    = useSpring(useTransform(scrollYProgress, [0, 0.12], [0.5, 1]),  spring);
+  // translateY: starts slightly above centre so cards peek behind the heading text
+  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.15], [-110, 0]), spring);
 
-  // Horizontal sweep — ends at 0.90 so last card is centred before release
-  const rawX   = useTransform(scrollYProgress, [0.15, 0.90], [0, -(cardStep * 5)]);
-  const mobileX = useSpring(rawX, { stiffness: 400, damping: 40, bounce: 0 });
+  // Horizontal sweep — card 6 reaches centre at 0.85, holds until section releases at 1.0
+  const rawX    = useTransform(scrollYProgress, [0.12, 0.85], [0, -(cardStep * 5)]);
+  const mobileX = useSpring(rawX, { stiffness: 400, damping: 45, bounce: 0 });
 
   return (
-    // Outer: tall, provides scroll range
-    <div ref={outerRef} className="relative h-[280vh] md:hidden">
-      {/* Inner: sticky — viewport stays locked while cards move */}
-      <div className="sticky top-0 h-svh overflow-hidden flex flex-col bg-black [perspective:1000px] [transform-style:preserve-3d]">
+    <div ref={outerRef} className="relative h-[400vh] md:hidden">
+      {/* Sticky wrapper — h-screen, clips off-screen cards */}
+      <div className="sticky top-0 h-screen overflow-hidden relative bg-black">
 
-        {/* Header — sits above cards in z-space */}
-        <div className="relative z-10 px-6 pt-16 pb-6 flex-shrink-0">
-          <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62] mb-4">
+        {/* 3D perspective canvas — fills the sticky viewport */}
+        <div className="absolute inset-0 [perspective:1000px] [transform-style:preserve-3d]">
+          {/* Cards: absolutely centred in full viewport */}
+          <motion.div
+            style={{ rotateX, rotateZ, y: translateY, opacity }}
+            className="absolute inset-0 flex items-center"
+          >
+            <motion.div className="flex space-x-4 pl-6" style={{ x: mobileX }}>
+              {mobileProducts.map((p, i) => (
+                <div
+                  key={p.title}
+                  ref={i === 0 ? cardRef : undefined}
+                  className="group/card w-[88vw] h-[68vw] relative flex-shrink-0 rounded-2xl overflow-hidden"
+                  style={glassStyle(p.orb)}
+                >
+                  <CardInner product={p} />
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Header: absolute overlay on top of the 3D canvas */}
+        <div className="absolute top-0 left-0 right-0 z-20 px-6 pt-14 pb-6 pointer-events-none">
+          <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62] mb-3">
             05 — <span className="text-white font-[500]">Selected Work</span>
           </p>
           <h2
@@ -159,25 +180,6 @@ function MobileSection() {
             </em>
           </h2>
         </div>
-
-        {/* Cards — tilt in from behind the header, then sweep horizontally */}
-        <motion.div
-          style={{ rotateX, rotateZ, y: translateY, opacity }}
-          className="flex-1 flex items-center"
-        >
-          <motion.div className="flex space-x-4 pl-6" style={{ x: mobileX }}>
-            {mobileProducts.map((p, i) => (
-              <div
-                key={p.title}
-                ref={i === 0 ? cardRef : undefined}
-                className="group/card w-[88vw] h-[68vw] relative flex-shrink-0 rounded-2xl overflow-hidden"
-                style={glassStyle(p.orb)}
-              >
-                <CardInner product={p} />
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
 
       </div>
     </div>
