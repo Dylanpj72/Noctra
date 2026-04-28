@@ -13,23 +13,23 @@ import Link from 'next/link';
 
 const products = [
   // Row 1
-  { title: 'Meridian Capital', link: '#', thumbnail: 'https://placehold.co/600x400/0a0a14/1a1a2e?text=Meridian+Capital' },
-  { title: 'Luma Studio', link: '#', thumbnail: 'https://placehold.co/600x400/0d0a0a/2a1a1a?text=Luma+Studio' },
-  { title: 'Arc Protocol', link: '#', thumbnail: 'https://placehold.co/600x400/080d0a/0a2a14?text=Arc+Protocol' },
-  { title: 'Vanta Labs', link: '#', thumbnail: 'https://placehold.co/600x400/0a0a0a/1a1a1a?text=Vanta+Labs' },
-  { title: 'Soleil Collective', link: '#', thumbnail: 'https://placehold.co/600x400/10090a/2a1010?text=Soleil+Co' },
+  { title: 'Meridian Capital', link: '#', thumbnail: 'https://placehold.co/600x400/1a1a3e/a0a8ff?text=Meridian+Capital' },
+  { title: 'Luma Studio', link: '#', thumbnail: 'https://placehold.co/600x400/2a1510/ff8a65?text=Luma+Studio' },
+  { title: 'Arc Protocol', link: '#', thumbnail: 'https://placehold.co/600x400/0f2a1a/5affa0?text=Arc+Protocol' },
+  { title: 'Vanta Labs', link: '#', thumbnail: 'https://placehold.co/600x400/1a1a1a/e0e0e0?text=Vanta+Labs' },
+  { title: 'Soleil Collective', link: '#', thumbnail: 'https://placehold.co/600x400/2a1a10/ffb347?text=Soleil+Co' },
   // Row 2
-  { title: 'Helix Ventures', link: '#', thumbnail: 'https://placehold.co/600x400/090a10/10102a?text=Helix+Ventures' },
-  { title: 'Drift Agency', link: '#', thumbnail: 'https://placehold.co/600x400/0a0d09/162a0f?text=Drift+Agency' },
-  { title: 'Prism Digital', link: '#', thumbnail: 'https://placehold.co/600x400/0d0a0d/200a20?text=Prism+Digital' },
-  { title: 'Crest Partners', link: '#', thumbnail: 'https://placehold.co/600x400/0a0d0d/0a2020?text=Crest+Partners' },
-  { title: 'Forge Studio', link: '#', thumbnail: 'https://placehold.co/600x400/0f0a08/2a1a08?text=Forge+Studio' },
+  { title: 'Helix Ventures', link: '#', thumbnail: 'https://placehold.co/600x400/10102a/7b8cff?text=Helix+Ventures' },
+  { title: 'Drift Agency', link: '#', thumbnail: 'https://placehold.co/600x400/162a0f/7dff8a?text=Drift+Agency' },
+  { title: 'Prism Digital', link: '#', thumbnail: 'https://placehold.co/600x400/200a20/e57aff?text=Prism+Digital' },
+  { title: 'Crest Partners', link: '#', thumbnail: 'https://placehold.co/600x400/0a2020/5affee?text=Crest+Partners' },
+  { title: 'Forge Studio', link: '#', thumbnail: 'https://placehold.co/600x400/2a1a08/ffcc80?text=Forge+Studio' },
   // Row 3
-  { title: 'Axiom Health', link: '#', thumbnail: 'https://placehold.co/600x400/080a0f/0a1424?text=Axiom+Health' },
-  { title: 'Ember Brand', link: '#', thumbnail: 'https://placehold.co/600x400/100808/280808?text=Ember+Brand' },
-  { title: 'Quartz Capital', link: '#', thumbnail: 'https://placehold.co/600x400/090909/181818?text=Quartz+Capital' },
-  { title: 'Nova Systems', link: '#', thumbnail: 'https://placehold.co/600x400/08090f/0c0c22?text=Nova+Systems' },
-  { title: 'Peak Advisory', link: '#', thumbnail: 'https://placehold.co/600x400/080d0b/0a1e12?text=Peak+Advisory' },
+  { title: 'Axiom Health', link: '#', thumbnail: 'https://placehold.co/600x400/0a1424/64b5f6?text=Axiom+Health' },
+  { title: 'Ember Brand', link: '#', thumbnail: 'https://placehold.co/600x400/280808/ff6e6e?text=Ember+Brand' },
+  { title: 'Quartz Capital', link: '#', thumbnail: 'https://placehold.co/600x400/1c1c1c/c0c0c0?text=Quartz+Capital' },
+  { title: 'Nova Systems', link: '#', thumbnail: 'https://placehold.co/600x400/0c0c22/8080ff?text=Nova+Systems' },
+  { title: 'Peak Advisory', link: '#', thumbnail: 'https://placehold.co/600x400/0a1e12/66ffaa?text=Peak+Advisory' },
 ];
 
 export function HeroParallax() {
@@ -48,7 +48,7 @@ export function HeroParallax() {
   const translateX        = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]),   spring);
   const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, -1000]),  spring);
   const rotateX           = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]),   spring);
-  const opacity           = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),  spring);
+  const opacity           = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.6, 1]),  spring);
   const rotateZ           = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]),   spring);
   const translateY        = useSpring(useTransform(scrollYProgress, [0, 0.2], [-700, 500]), spring);
 
@@ -126,9 +126,8 @@ function ProductCard({
           alt={product.title}
           unoptimized
         />
-        {/* Gradient overlay — always present, strengthens on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500" />
-        <div className="absolute inset-0 bg-black/0 group-hover/product:bg-black/40 transition-all duration-500" />
+        {/* Hover overlay */}
+        <div className="absolute inset-0 bg-black/0 group-hover/product:bg-black/50 transition-all duration-500" />
 
         {/* Title reveal on hover */}
         <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 opacity-0 group-hover/product:translate-y-0 group-hover/product:opacity-100 transition-all duration-400">
