@@ -10,7 +10,6 @@ import {
 } from 'motion/react';
 import Link from 'next/link';
 
-// 6 cards for mobile, 15 for desktop
 const mobileProducts = [
   { title: 'Meridian Capital', link: '#', index: '01', category: 'Web Design · Brand',    orb: '30% 20%' },
   { title: 'Luma Studio',      link: '#', index: '02', category: 'Motion · Brand',        orb: '70% 30%' },
@@ -38,6 +37,8 @@ const desktopProducts = [
   { title: 'Peak Advisory',    link: '#', index: '15', category: 'Brand Systems · Brand', orb: '20% 80%' },
 ];
 
+type Product = typeof mobileProducts[0];
+
 const glassStyle = (orb: string): React.CSSProperties => ({
   background: [
     `radial-gradient(ellipse 140% 100% at ${orb}, rgba(255,255,255,0.09), transparent 55%)`,
@@ -54,7 +55,7 @@ const glassStyle = (orb: string): React.CSSProperties => ({
   ].join(', '),
 });
 
-function CardInner({ product }: { product: typeof mobileProducts[0] }) {
+function CardInner({ product }: { product: Product }) {
   return (
     <>
       <span
@@ -64,8 +65,8 @@ function CardInner({ product }: { product: typeof mobileProducts[0] }) {
       />
       <span
         aria-hidden="true"
-        className="absolute bottom-[-10px] right-3 font-[family-name:var(--font-inter)] font-[900] leading-none tracking-[-0.06em] select-none pointer-events-none"
-        style={{ fontSize: '80px', color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}
+        className="absolute bottom-[-8px] right-3 font-[family-name:var(--font-inter)] font-[900] leading-none tracking-[-0.06em] select-none pointer-events-none"
+        style={{ fontSize: '72px', color: 'transparent', WebkitTextStroke: '1px rgba(255,255,255,0.06)' }}
       >
         {product.index}
       </span>
@@ -96,166 +97,140 @@ function CardInner({ product }: { product: typeof mobileProducts[0] }) {
   );
 }
 
-// ─── Desktop: 3-row parallax (unchanged) ─────────────────────────────────────
-function DesktopParallax({
-  translateX,
-  translateXReverse,
-  rotateX,
-  rotateZ,
-  translateY,
-  opacity,
-}: {
-  translateX: MotionValue<number>;
-  translateXReverse: MotionValue<number>;
-  rotateX: MotionValue<number>;
-  rotateZ: MotionValue<number>;
-  translateY: MotionValue<number>;
-  opacity: MotionValue<number>;
-}) {
-  const first  = desktopProducts.slice(0, 5);
-  const second = desktopProducts.slice(5, 10);
-  const third  = desktopProducts.slice(10, 15);
+// ─── Mobile ──────────────────────────────────────────────────────────────────
+// Outer div is 280vh tall — provides the scroll range.
+// Inner div is sticky so the viewport stays still while cards sweep horizontally.
+//
+// Scroll progress mapping:
+//   0.00 → 0.20  tilt entry (cards flatten from diagonal behind header)
+//   0.15 → 0.90  horizontal sweep (each card steps to centre)
+//   0.90 → 1.00  last card holds at centre, then section releases
+function MobileSection() {
+  const outerRef = React.useRef<HTMLDivElement>(null);
+  const cardRef  = React.useRef<HTMLDivElement>(null);
 
-  return (
-    <motion.div
-      style={{ rotateX, rotateZ, translateY, opacity }}
-      className="hidden md:block flex-shrink-0"
-    >
-      <motion.div className="flex flex-row-reverse space-x-reverse space-x-20 mb-20">
-        {first.map((p) => (
-          <motion.div
-            key={p.title}
-            whileHover={{ y: -16 }}
-            transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
-            className="group/card h-96 w-[30rem] relative flex-shrink-0 rounded-2xl overflow-hidden"
-            style={{ x: translateX, ...glassStyle(p.orb) }}
-          >
-            <CardInner product={p} />
-          </motion.div>
-        ))}
-      </motion.div>
-      <motion.div className="flex flex-row space-x-20 mb-20">
-        {second.map((p) => (
-          <motion.div
-            key={p.title}
-            whileHover={{ y: -16 }}
-            transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
-            className="group/card h-96 w-[30rem] relative flex-shrink-0 rounded-2xl overflow-hidden"
-            style={{ x: translateXReverse, ...glassStyle(p.orb) }}
-          >
-            <CardInner product={p} />
-          </motion.div>
-        ))}
-      </motion.div>
-      <motion.div className="flex flex-row-reverse space-x-reverse space-x-20">
-        {third.map((p) => (
-          <motion.div
-            key={p.title}
-            whileHover={{ y: -16 }}
-            transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
-            className="group/card h-96 w-[30rem] relative flex-shrink-0 rounded-2xl overflow-hidden"
-            style={{ x: translateX, ...glassStyle(p.orb) }}
-          >
-            <CardInner product={p} />
-          </motion.div>
-        ))}
-      </motion.div>
-    </motion.div>
-  );
-}
-
-// ─── Mobile: single row, scroll-driven horizontal ────────────────────────────
-function MobileParallax({
-  rotateX,
-  rotateZ,
-  translateY,
-  opacity,
-  scrollYProgress,
-}: {
-  rotateX: MotionValue<number>;
-  rotateZ: MotionValue<number>;
-  translateY: MotionValue<number>;
-  opacity: MotionValue<number>;
-  scrollYProgress: MotionValue<number>;
-}) {
-  const cardRef = React.useRef<HTMLDivElement>(null);
-  // cardStep = card width + gap (16px from space-x-4)
-  // default 359 ≈ 88vw at 390px + 16px; recalculated after mount
-  const [cardStep, setCardStep] = React.useState(359);
-
+  // Measured card width + gap so last card lands exactly at centre
+  const [cardStep, setCardStep] = React.useState(355);
   React.useEffect(() => {
     const measure = () => {
-      if (cardRef.current) setCardStep(cardRef.current.offsetWidth + 16);
+      if (cardRef.current) setCardStep(cardRef.current.offsetWidth + 16); // 16px = space-x-4
     };
     measure();
     window.addEventListener('resize', measure);
     return () => window.removeEventListener('resize', measure);
   }, []);
 
+  const { scrollYProgress } = useScroll({
+    target: outerRef,
+    offset: ['start start', 'end end'],
+  });
+
   const spring = { stiffness: 300, damping: 30, bounce: 100 };
 
-  // Cards slide left: 5 steps to show all 6 cards
-  // Horizontal motion starts after tilt settles (0.15) and finishes before section ends (0.85)
-  const rawX = useTransform(scrollYProgress, [0.15, 0.85], [0, -(cardStep * 5)]);
-  const mobileX = useSpring(rawX, spring);
+  // Tilt entry — smaller translateY so cards are visible behind the header
+  const rotateX    = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]),    spring);
+  const rotateZ    = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]),    spring);
+  const opacity    = useSpring(useTransform(scrollYProgress, [0, 0.15], [0.6, 1]),  spring);
+  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.2], [-140, 0]),  spring);
+
+  // Horizontal sweep — ends at 0.90 so last card is centred before release
+  const rawX   = useTransform(scrollYProgress, [0.15, 0.90], [0, -(cardStep * 5)]);
+  const mobileX = useSpring(rawX, { stiffness: 400, damping: 40, bounce: 0 });
 
   return (
-    <motion.div
-      style={{ rotateX, rotateZ, translateY, opacity }}
-      className="md:hidden flex-shrink-0 flex items-center"
-    >
-      <motion.div
-        className="flex space-x-4 px-6"
-        style={{ x: mobileX }}
-      >
-        {mobileProducts.map((p, i) => (
-          <div
-            key={p.title}
-            ref={i === 0 ? cardRef : undefined}
-            className="group/card w-[88vw] h-[70vw] relative flex-shrink-0 rounded-2xl overflow-hidden"
-            style={glassStyle(p.orb)}
+    // Outer: tall, provides scroll range
+    <div ref={outerRef} className="relative h-[280vh] md:hidden">
+      {/* Inner: sticky — viewport stays locked while cards move */}
+      <div className="sticky top-0 h-svh overflow-hidden flex flex-col bg-black [perspective:1000px] [transform-style:preserve-3d]">
+
+        {/* Header — sits above cards in z-space */}
+        <div className="relative z-10 px-6 pt-16 pb-6 flex-shrink-0">
+          <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62] mb-4">
+            05 — <span className="text-white font-[500]">Selected Work</span>
+          </p>
+          <h2
+            id="work-heading"
+            className="font-[family-name:var(--font-inter)] font-[200] leading-[0.95] tracking-[-0.04em] uppercase text-white"
+            style={{ fontSize: 'clamp(36px,10vw,56px)' }}
           >
-            <CardInner product={p} />
-          </div>
-        ))}
-      </motion.div>
-    </motion.div>
+            The{' '}
+            <em className="font-[family-name:var(--font-instrument-serif)] not-italic italic font-[400] normal-case">
+              receipts.
+            </em>
+          </h2>
+        </div>
+
+        {/* Cards — tilt in from behind the header, then sweep horizontally */}
+        <motion.div
+          style={{ rotateX, rotateZ, y: translateY, opacity }}
+          className="flex-1 flex items-center"
+        >
+          <motion.div className="flex space-x-4 pl-6" style={{ x: mobileX }}>
+            {mobileProducts.map((p, i) => (
+              <div
+                key={p.title}
+                ref={i === 0 ? cardRef : undefined}
+                className="group/card w-[88vw] h-[68vw] relative flex-shrink-0 rounded-2xl overflow-hidden"
+                style={glassStyle(p.orb)}
+              >
+                <CardInner product={p} />
+              </div>
+            ))}
+          </motion.div>
+        </motion.div>
+
+      </div>
+    </div>
   );
 }
 
-// ─── Main export ─────────────────────────────────────────────────────────────
-export function HeroParallax() {
+// ─── Desktop ─────────────────────────────────────────────────────────────────
+function DesktopSection() {
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
 
   const spring = { stiffness: 300, damping: 30, bounce: 100 };
 
-  // Shared tilt-entry values
-  const rotateX    = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]),     spring);
-  const rotateZ    = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]),     spring);
-  const translateY = useSpring(useTransform(scrollYProgress, [0, 0.2], [-700, 500]), spring);
-  const opacity    = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.7, 1]),    spring);
+  const translateX        = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]),    spring);
+  const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, -1000]),   spring);
+  const rotateX           = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]),    spring);
+  const opacity           = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.7, 1]),   spring);
+  const rotateZ           = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]),    spring);
+  const translateY        = useSpring(useTransform(scrollYProgress, [0, 0.2], [-700, 500]),spring);
 
-  // Desktop row values
-  const translateX        = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]),  spring);
-  const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, -1000]), spring);
+  const first  = desktopProducts.slice(0, 5);
+  const second = desktopProducts.slice(5, 10);
+  const third  = desktopProducts.slice(10, 15);
+
+  const row = (products: Product[], translate: MotionValue<number>, reverse: boolean) => (
+    <motion.div className={`flex ${reverse ? 'flex-row-reverse space-x-reverse' : 'flex-row'} space-x-20 mb-20`}>
+      {products.map((p) => (
+        <motion.div
+          key={p.title}
+          whileHover={{ y: -16 }}
+          transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
+          className="group/card h-96 w-[30rem] relative flex-shrink-0 rounded-2xl overflow-hidden"
+          style={{ x: translate, ...glassStyle(p.orb) }}
+        >
+          <CardInner product={p} />
+        </motion.div>
+      ))}
+    </motion.div>
+  );
 
   return (
-    <section
-      id="work"
+    <div
       ref={ref}
-      aria-labelledby="work-heading"
-      // Mobile needs less height (6 cards, 1 row); desktop keeps 300vh
-      className="h-[220vh] md:h-[300vh] overflow-hidden antialiased relative flex flex-col [perspective:1000px] [transform-style:preserve-3d] bg-black border-b border-white/[0.06]"
+      className="hidden md:flex md:flex-col h-[300vh] overflow-hidden [perspective:1000px] [transform-style:preserve-3d]"
     >
       {/* Section header */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-14 pt-[120px] pb-16 md:pb-20 flex-shrink-0">
-        <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end">
+      <div className="max-w-[1400px] mx-auto px-14 pt-[120px] pb-20 flex-shrink-0 w-full">
+        <div className="grid grid-cols-[200px_1fr] gap-12 items-end">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
             05 — <span className="text-white font-[500]">Selected Work</span>
           </p>
           <h2
-            id="work-heading"
+            id="work-heading-desktop"
             className="font-[family-name:var(--font-inter)] font-[200] leading-[0.95] tracking-[-0.04em] uppercase text-white"
             style={{ fontSize: 'clamp(40px,6vw,88px)' }}
           >
@@ -267,22 +242,26 @@ export function HeroParallax() {
         </div>
       </div>
 
-      <MobileParallax
-        rotateX={rotateX}
-        rotateZ={rotateZ}
-        translateY={translateY}
-        opacity={opacity}
-        scrollYProgress={scrollYProgress}
-      />
+      {/* Parallax rows */}
+      <motion.div style={{ rotateX, rotateZ, translateY, opacity }} className="flex-shrink-0">
+        {row(first, translateX, true)}
+        {row(second, translateXReverse, false)}
+        {row(third, translateX, true)}
+      </motion.div>
+    </div>
+  );
+}
 
-      <DesktopParallax
-        translateX={translateX}
-        translateXReverse={translateXReverse}
-        rotateX={rotateX}
-        rotateZ={rotateZ}
-        translateY={translateY}
-        opacity={opacity}
-      />
+// ─── Export ──────────────────────────────────────────────────────────────────
+export function HeroParallax() {
+  return (
+    <section
+      id="work"
+      aria-labelledby="work-heading"
+      className="bg-black border-b border-white/[0.06]"
+    >
+      <MobileSection />
+      <DesktopSection />
     </section>
   );
 }
