@@ -300,7 +300,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
             <span className="font-[900]">scale.</span>
           </h2>
           <p className="font-[family-name:var(--font-instrument-serif)] italic text-[16px] md:text-[18px] text-[#8a8a92] max-w-[540px] mx-auto">
-            Flat monthly is everything-included — most clients prefer it. Want a one-time build instead? Switch to upfront.
+            One flat monthly covers everything. Prefer to own it outright? Switch to upfront and pay a smaller retainer for ongoing support.
           </p>
         </div>
 
@@ -350,6 +350,86 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
           </div>
         </div>
 
+        {/* What's included breakdown */}
+        <div className="mb-10 flex justify-center">
+          <AnimatePresence mode="wait">
+            {mode === 'flatMonthly' ? (
+              <motion.div
+                key="flat-includes"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25 }}
+                className="flex flex-col items-center gap-3"
+              >
+                <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62]">
+                  Everything included in one monthly payment
+                </p>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {[
+                    'Website design & build',
+                    'Hosting',
+                    'Website management',
+                    'SEO',
+                    'Security',
+                  ].map((item) => (
+                    <span
+                      key={item}
+                      className="px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.03] font-[family-name:var(--font-inter)] text-[12px] text-[#8a8a92]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="upfront-includes"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25 }}
+                className="flex flex-col sm:flex-row gap-6 sm:gap-12 items-start sm:items-center"
+              >
+                <div className="flex flex-col gap-2">
+                  <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62]">
+                    Upfront covers
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Website design & build', 'SEO'].map((item) => (
+                      <span
+                        key={item}
+                        className="px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.03] font-[family-name:var(--font-inter)] text-[12px] text-[#8a8a92]"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div
+                  className="hidden sm:block w-px h-10 bg-white/[0.08]"
+                  aria-hidden="true"
+                />
+                <div className="flex flex-col gap-2">
+                  <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62]">
+                    Monthly retainer covers
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {['Website management', 'Hosting', 'Security'].map((item) => (
+                      <span
+                        key={item}
+                        className="px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.03] font-[family-name:var(--font-inter)] text-[12px] text-[#8a8a92]"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+
         {/* Cards — desktop: Launch / Studio / Empire */}
         <div className="hidden md:grid md:grid-cols-3 gap-4 mb-10">
           {tiers.map((tier) => (
@@ -366,10 +446,8 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
 
         {/* Footer note */}
         <p className="text-center text-[13px] text-[#5a5a62] max-w-[560px] mx-auto leading-relaxed">
-          All prices in{' '}
-          <span className="text-[#8a8a92]">{region.currency}</span>. Flat monthly
-          is everything-included with no upfront cost — most clients prefer it. Want a
-          one-time build fee instead? Switch to upfront above.
+          All prices in <span className="text-[#8a8a92]">{region.currency}</span>.
+          {' '}Website management means we handle any updates or changes for you — no tech headaches.
         </p>
       </div>
     </section>
