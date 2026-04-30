@@ -56,8 +56,6 @@ const tiers: {
       'Testimonials & FAQ sections',
       'Service landing pages',
       'Online booking & quote request forms',
-      'Advanced local SEO targeting 8–12 keywords',
-      'Monthly performance reports & quarterly strategy calls',
       'Ongoing management & updates included',
     ],
   },
@@ -287,7 +285,7 @@ function PricingCard({
                   Upfront covers
                 </p>
                 <div className="flex flex-wrap gap-1.5">
-                  {['Design & build', 'SEO'].map((item) => (
+                  {['Design & build'].map((item) => (
                     <span
                       key={item}
                       className="px-2 py-0.5 rounded-full border border-white/[0.07] text-[11px] text-[#5a5a62]"
@@ -302,7 +300,7 @@ function PricingCard({
                   Retainer covers
                 </p>
                 <div className="flex flex-wrap gap-1.5">
-                  {['Management', 'Hosting', 'Security'].map((item) => (
+                  {['Management', 'Hosting', 'Security', 'SEO'].map((item) => (
                     <span
                       key={item}
                       className="px-2 py-0.5 rounded-full border border-white/[0.07] text-[11px] text-[#5a5a62]"
@@ -503,7 +501,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
                     Upfront covers
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {['Website design & build', 'SEO'].map((item) => (
+                    {['Website design & build'].map((item) => (
                       <span
                         key={item}
                         className="px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.03] font-[family-name:var(--font-inter)] text-[12px] text-[#8a8a92]"
@@ -522,7 +520,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
                     Monthly retainer covers
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {['Website management', 'Hosting', 'Security'].map((item) => (
+                    {['Website management', 'Hosting', 'Security', 'SEO'].map((item) => (
                       <span
                         key={item}
                         className="px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.03] font-[family-name:var(--font-inter)] text-[12px] text-[#8a8a92]"
