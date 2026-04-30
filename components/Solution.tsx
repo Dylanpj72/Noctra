@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
+import { TiltCard } from './TiltCard';
 
 const cards = [
   {
@@ -68,22 +69,27 @@ export function Solution() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 + i * 0.08, ease: [0.2, 0.8, 0.2, 1] }}
-              className="relative rounded-2xl border border-white/[0.08] p-7 md:p-8"
-              style={{ background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(24px)' }}
             >
-              <span
-                aria-hidden="true"
-                className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none"
-              />
-              <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62] mb-4">
-                {String(i + 1).padStart(2, '0')}
-              </p>
-              <h3 className="font-[family-name:var(--font-inter)] font-[700] text-[18px] md:text-[20px] tracking-[-0.02em] text-white mb-3">
-                {card.title}
-              </h3>
-              <p className="text-[14px] md:text-[15px] leading-[1.65] text-[#8a8a92]">
-                {card.desc}
-              </p>
+              <TiltCard
+                tiltLimit={8}
+                scale={1.02}
+                className="relative rounded-2xl border border-white/[0.08] p-7 md:p-8 h-full"
+                style={{ background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(24px)' }}
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none"
+                />
+                <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62] mb-4">
+                  {String(i + 1).padStart(2, '0')}
+                </p>
+                <h3 className="font-[family-name:var(--font-inter)] font-[700] text-[18px] md:text-[20px] tracking-[-0.02em] text-white mb-3">
+                  {card.title}
+                </h3>
+                <p className="text-[14px] md:text-[15px] leading-[1.65] text-[#8a8a92]">
+                  {card.desc}
+                </p>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
