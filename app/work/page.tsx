@@ -40,7 +40,7 @@ export default function WorkPage() {
         </p>
         <a
           href="/contact"
-          className="inline-flex items-center gap-2 px-7 py-4 bg-white text-black text-[14px] font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_4px_rgba(255,255,255,0.1),0_12px_40px_rgba(255,255,255,0.15)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          className="btn-shimmer-white inline-flex items-center gap-2 px-7 py-4 text-black text-[14px] font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_4px_rgba(255,255,255,0.1),0_12px_40px_rgba(255,255,255,0.15)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
           Start a project →
         </a>

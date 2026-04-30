@@ -83,7 +83,7 @@ export function PricingPreview({ initialRegion }: { initialRegion: RegionPricing
                 initial={{ opacity: 0, y: 24 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.6, delay: 0.15 + i * 0.08, ease: [0.2, 0.8, 0.2, 1] }}
-                className={`relative rounded-[24px] flex flex-col p-6 md:p-7 ${
+                className={`card-shimmer relative rounded-[24px] flex flex-col p-6 md:p-7 ${
                   tier.featured
                     ? 'border border-white/[0.20]'
                     : 'border border-white/[0.08]'

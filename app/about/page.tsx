@@ -81,7 +81,7 @@ export default function AboutPage() {
             {values.map((value, i) => (
               <div
                 key={value.title}
-                className="relative rounded-2xl border border-white/[0.08] p-7 md:p-8"
+                className="card-shimmer relative rounded-2xl border border-white/[0.08] p-7 md:p-8"
                 style={{ background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(24px)' }}
               >
                 <span
