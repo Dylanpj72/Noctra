@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { resolveRegion, PRICING, type Region } from '@/data/pricing';
 import { Hero } from '@/components/Hero';
+import { StatsRow } from '@/components/StatsRow';
 import { Problem } from '@/components/Problem';
 import { Solution } from '@/components/Solution';
 import { ServicesShowcase } from '@/components/ServicesShowcase';
@@ -28,6 +29,7 @@ export default async function Home({
     <main>
       {/* 01 — Hero */}
       <Hero />
+      <StatsRow />
 
       {/* 02 — Problem */}
       <Problem />
