@@ -1,6 +1,7 @@
 import { Nav } from '@/components/Nav';
 import { HeroParallax } from '@/components/HeroParallax';
 import { Footer } from '@/components/Footer';
+import { LiquidMetalButton } from '@/components/LiquidMetalButton';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -38,12 +39,7 @@ export default function WorkPage() {
         <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.3em] uppercase text-[#5a5a62] mb-6">
           — READY TO START? —
         </p>
-        <a
-          href="/contact"
-          className="btn-shimmer-white inline-flex items-center gap-2 px-7 py-4 text-black text-[14px] font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_4px_rgba(255,255,255,0.1),0_12px_40px_rgba(255,255,255,0.15)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-        >
-          Start a project →
-        </a>
+        <LiquidMetalButton label="Start a project →" href="/contact" width={168} />
       </section>
 
       <Footer />

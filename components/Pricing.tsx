@@ -317,11 +317,11 @@ function PricingCard({
 
       {/* CTA */}
       <a
-        href="#contact"
-        className={`w-full py-3.5 rounded-full text-[13px] font-semibold text-center transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-white active:scale-[0.98] ${
+        href="/contact"
+        className={`w-full py-3.5 rounded-full text-[13px] font-semibold text-center transition-all duration-300 focus-visible:outline-2 focus-visible:outline-white active:scale-[0.98] ${
           tier.featured
-            ? 'btn-shimmer-white text-black hover:shadow-[0_0_0_3px_rgba(255,255,255,0.15),0_8px_32px_rgba(255,255,255,0.12)] hover:scale-[1.02]'
-            : 'btn-shimmer-glass border border-white/[0.12] text-white hover:border-white/[0.2]'
+            ? 'bg-white text-black hover:bg-white/90 hover:shadow-[0_0_0_3px_rgba(255,255,255,0.15),0_8px_32px_rgba(255,255,255,0.12)] hover:scale-[1.02]'
+            : 'bg-white/[0.04] border border-white/[0.12] text-white hover:bg-white/[0.08] hover:border-white/[0.2]'
         }`}
       >
         Choose {tier.name}

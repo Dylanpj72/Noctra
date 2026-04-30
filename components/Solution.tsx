@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
-import { TiltCard } from './TiltCard';
 
 const cards = [
   {
@@ -70,10 +69,8 @@ export function Solution() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 + i * 0.08, ease: [0.2, 0.8, 0.2, 1] }}
             >
-              <TiltCard
-                tiltLimit={8}
-                scale={1.02}
-                className="relative rounded-2xl border border-white/[0.08] p-7 md:p-8 h-full"
+              <div
+                className="card-shimmer relative rounded-2xl border border-white/[0.08] p-7 md:p-8 h-full"
                 style={{ background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(24px)' }}
               >
                 <span
@@ -89,7 +86,7 @@ export function Solution() {
                 <p className="text-[14px] md:text-[15px] leading-[1.65] text-[#8a8a92]">
                   {card.desc}
                 </p>
-              </TiltCard>
+              </div>
             </motion.div>
           ))}
         </div>

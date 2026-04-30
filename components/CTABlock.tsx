@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
+import { LiquidMetalButton } from './LiquidMetalButton';
 
 export function CTABlock() {
   const ref = useRef<HTMLDivElement>(null);
@@ -84,19 +85,8 @@ export function CTABlock() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex gap-3 flex-wrap justify-center mb-6"
             >
-              <a
-                href="/contact"
-                className="btn-shimmer-white group relative overflow-hidden flex items-center gap-2 px-7 py-4 text-black text-[14px] font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_4px_rgba(255,255,255,0.1),0_12px_40px_rgba(255,255,255,0.15)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98]"
-              >
-                Start a project
-                <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-              </a>
-              <a
-                href="/work"
-                className="btn-shimmer-glass flex items-center gap-2 px-7 py-4 text-white text-[14px] font-medium rounded-full border border-white/[0.12] backdrop-blur-xl transition-all duration-300 hover:border-white/[0.22] hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98]"
-              >
-                View work
-              </a>
+              <LiquidMetalButton label="Start a project →" href="/contact" width={168} />
+              <LiquidMetalButton label="View work" href="/work" width={120} />
             </motion.div>
 
             <motion.p

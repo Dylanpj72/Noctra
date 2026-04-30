@@ -3,6 +3,7 @@
 import { lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { Nav } from './Nav';
+import { LiquidMetalButton } from './LiquidMetalButton';
 
 const HeroParticles = lazy(() =>
   import('./HeroParticles').then((m) => ({ default: m.HeroParticles }))
@@ -152,19 +153,8 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 1.05, ease: [0.2, 0.8, 0.2, 1] }}
             className="flex gap-3 flex-wrap justify-center"
           >
-            <a
-              href="#work"
-              className="btn-shimmer-white group relative overflow-hidden flex items-center gap-2 px-6 py-3.5 text-black text-[13px] font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_4px_rgba(255,255,255,0.1),0_12px_40px_rgba(255,255,255,0.15)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98]"
-            >
-              See our work
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href="#contact"
-              className="btn-shimmer-glass group relative overflow-hidden flex items-center gap-2 px-6 py-3.5 text-white text-[13px] font-medium rounded-full border border-white/[0.10] backdrop-blur-xl transition-all duration-300 hover:border-white/[0.20] hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98]"
-            >
-              Book a call
-            </a>
+            <LiquidMetalButton label="See our work →" href="#work" width={158} />
+            <LiquidMetalButton label="Book a call" href="#contact" width={130} />
           </motion.div>
         </div>
 
