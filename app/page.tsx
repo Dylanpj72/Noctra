@@ -3,7 +3,6 @@ import { resolveRegion, PRICING, type Region } from '@/data/pricing';
 import { Hero } from '@/components/Hero';
 import { StatsRow } from '@/components/StatsRow';
 import { Solution } from '@/components/Solution';
-import { ServicesShowcase } from '@/components/ServicesShowcase';
 import { Marquee } from '@/components/Marquee';
 import { ServicesCards } from '@/components/ServicesCards';
 import { Process } from '@/components/Process';
@@ -34,7 +33,6 @@ export default async function Home({
       <Solution />
 
       {/* Services (kept above Process) */}
-      <ServicesShowcase />
       <Marquee />
       <ServicesCards />
 
