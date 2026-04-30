@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { TiltCard } from './TiltCard';
 import {
+  PRICING,
   formatPrice,
+  type Region,
   type RegionPricing,
   type PaymentMode,
   type TierKey,
@@ -331,7 +333,7 @@ function PricingCard({
 }
 
 export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
-  const region = initialRegion;
+  const [region, setRegion] = useState<RegionPricing>(initialRegion);
   const [mode, setMode] = useState<PaymentMode>('flatMonthly');
 
   // Persist payment mode preference
@@ -428,6 +430,30 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
                 </button>
               );
             })}
+          </div>
+        </div>
+
+        {/* Region selector */}
+        <div className="flex justify-center mb-8">
+          <div className="flex items-center gap-3">
+            <label
+              htmlFor="region-select"
+              className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62]"
+            >
+              Region
+            </label>
+            <select
+              id="region-select"
+              value={region.region}
+              onChange={(e) => setRegion(PRICING[e.target.value as Region])}
+              className="bg-white/[0.04] border border-white/[0.10] rounded-full px-4 py-1.5 text-[12px] text-[#8a8a92] font-[family-name:var(--font-inter)] focus:outline-none focus:border-white/[0.25] hover:border-white/[0.18] transition-colors duration-200 cursor-pointer"
+            >
+              {(Object.values(PRICING) as RegionPricing[]).map((r) => (
+                <option key={r.region} value={r.region} style={{ background: '#0a0a0a' }}>
+                  {r.label} ({r.currency})
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
