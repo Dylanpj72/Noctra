@@ -2,7 +2,6 @@ import { cookies } from 'next/headers';
 import { resolveRegion, PRICING, type Region } from '@/data/pricing';
 import { Hero } from '@/components/Hero';
 import { StatsRow } from '@/components/StatsRow';
-import { Problem } from '@/components/Problem';
 import { Solution } from '@/components/Solution';
 import { ServicesShowcase } from '@/components/ServicesShowcase';
 import { Marquee } from '@/components/Marquee';
@@ -31,10 +30,7 @@ export default async function Home({
       <Hero />
       <StatsRow />
 
-      {/* 02 — Problem */}
-      <Problem />
-
-      {/* 03 — Solution */}
+      {/* 02 — What we do */}
       <Solution />
 
       {/* Services (kept above Process) */}
