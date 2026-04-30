@@ -11,42 +11,72 @@ import {
 } from '@/data/pricing';
 
 
-const tiers: { key: TierKey; name: string; blurb: string; featured?: boolean; features: string[] }[] = [
+const tiers: {
+  key: TierKey;
+  name: string;
+  blurb: string;
+  featured?: boolean;
+  includes?: string;
+  features: string[];
+}[] = [
   {
-    key: 'launch',
-    name: 'LAUNCH',
-    blurb: 'For your first real site.',
+    key: 'starter',
+    name: 'Starter',
+    blurb: 'Get found, get called.',
     features: [
-      '5-page custom website',
-      'Mobile-first responsive build',
-      'Webflow or Framer CMS',
-      '2 rounds of revisions',
-      '14-day delivery',
+      'Up to 5 custom-designed pages',
+      'Mobile responsive build',
+      'Contact form, click-to-call & WhatsApp buttons',
+      'Google Business Profile setup & local SEO',
+      'Social media links',
+      'Google Maps integration',
+      'Fast loading design',
+      'SSL security',
+      'Basic copy guidance',
+      'Hosting, security & daily backups included',
+      'Ongoing management & updates included',
     ],
   },
   {
-    key: 'studio',
-    name: 'STUDIO',
-    blurb: 'For brands ready to look the part.',
+    key: 'professional',
+    name: 'Professional',
+    blurb: 'Turn visitors into customers.',
     featured: true,
+    includes: 'Starter',
     features: [
-      'Custom design + development',
-      'Full brand identity audit',
-      'Custom motion & interactions',
-      'Unlimited revisions',
-      '30 days post-launch support',
+      'Up to 10 custom-designed pages',
+      'Conversion-focused layout',
+      'Lead capture forms',
+      'Advanced on-page SEO',
+      'Google Analytics setup',
+      'Speed optimisation',
+      'Blog setup',
+      'Testimonials & FAQ sections',
+      'Service landing pages',
+      'Online booking & quote request forms',
+      'Advanced local SEO targeting 8–12 keywords',
+      'Monthly performance reports & quarterly strategy calls',
+      'Ongoing management & updates included',
     ],
   },
   {
-    key: 'empire',
-    name: 'EMPIRE',
-    blurb: 'Multi-page, multi-language, multi-team.',
+    key: 'premium',
+    name: 'Premium',
+    blurb: 'Compete and win at scale.',
+    includes: 'Professional',
     features: [
-      'Everything in Studio',
-      'Headless CMS architecture',
-      'A/B testing infrastructure',
-      'Quarterly growth retainer',
-      'Dedicated PM + designer',
+      'Up to 25 pages with custom design & animations',
+      'Conversion strategy planning',
+      'Advanced UX structure',
+      'CRM integration & advanced lead capture',
+      'Advanced automation',
+      'Booking or quote system',
+      'Advanced SEO structure',
+      'Performance optimisation',
+      'Custom functionality',
+      'A/B testing & conversion optimisation',
+      'Ongoing management & updates included',
+      'Priority support',
     ],
   },
 ];
@@ -91,9 +121,9 @@ function PriceDisplay({
           </div>
           <p
             className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62]"
-            aria-label="Everything included, cancel anytime"
+            aria-label={`Months 1 to 24, then ${formatPrice(pricing.retainer, region)} per month from month 25`}
           >
-            everything included · cancel anytime
+            months 1–24 · then {formatPrice(pricing.retainer, region)}/mo
           </p>
         </motion.div>
       ) : (
@@ -178,7 +208,7 @@ function PricingCard({
             </span>
             {tier.featured && (
               <span className="px-2 py-0.5 rounded-full text-[10px] font-[700] tracking-[0.08em] uppercase text-black bg-[#f5d020]">
-                Most Chosen
+                Most popular
               </span>
             )}
           </div>
@@ -198,6 +228,13 @@ function PricingCard({
 
       {/* Features */}
       <ul className="flex flex-col gap-3 mb-8 flex-1" role="list">
+        {tier.includes && (
+          <li className="pb-0.5">
+            <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62]">
+              Everything in {tier.includes}, plus:
+            </p>
+          </li>
+        )}
         {tier.features.map((feat) => (
           <li key={feat} className="flex items-start gap-3">
             <span className="text-[#f5d020] text-[12px] mt-0.5 flex-shrink-0" aria-hidden="true">
@@ -206,13 +243,6 @@ function PricingCard({
             <span className="text-[13px] text-[#8a8a92] leading-snug">{feat}</span>
           </li>
         ))}
-        {tier.key === 'empire' && (
-          <li className="pt-2">
-            <p className="text-[11px] text-[#5a5a62] italic font-[family-name:var(--font-instrument-serif)]">
-              Most Empire clients choose flat monthly to spread cost across the year.
-            </p>
-          </li>
-        )}
       </ul>
 
       {/* Inclusions */}
@@ -288,13 +318,13 @@ function PricingCard({
       {/* CTA */}
       <a
         href="#contact"
-        className={`w-full py-3.5 rounded-full text-[13px] font-semibold text-center transition-all duration-300 focus-visible:outline-2 focus-visible:outline-white active:scale-[0.98] ${
+        className={`w-full py-3.5 rounded-full text-[13px] font-semibold text-center transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-white active:scale-[0.98] ${
           tier.featured
             ? 'bg-white text-black hover:bg-white hover:shadow-[0_0_0_3px_rgba(255,255,255,0.15),0_8px_32px_rgba(255,255,255,0.12)] hover:scale-[1.02]'
             : 'border border-white/[0.12] text-white bg-white/[0.04] hover:bg-white/[0.08] hover:border-white/[0.2]'
         }`}
       >
-        Choose {tier.name.charAt(0) + tier.name.slice(1).toLowerCase()}
+        Choose {tier.name}
       </a>
     </TiltCard>
   );
@@ -321,7 +351,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
     } catch {}
   };
 
-  // On mobile: reorder to put Studio first
+  // On mobile: put Professional first
   const tierOrder: typeof tiers = [
     tiers.find((t) => t.featured)!,
     ...tiers.filter((t) => !t.featured),
@@ -350,8 +380,8 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
             </em>{' '}
             <span className="font-[900]">scale.</span>
           </h2>
-          <p className="font-[family-name:var(--font-instrument-serif)] italic text-[16px] md:text-[18px] text-[#8a8a92] max-w-[540px] mx-auto">
-            One flat monthly covers everything. Prefer to own it outright? Switch to upfront and pay a smaller retainer for ongoing support.
+          <p className="font-[family-name:var(--font-instrument-serif)] italic text-[16px] md:text-[18px] text-[#8a8a92] max-w-[580px] mx-auto">
+            Flat monthly covers everything for 24 months — then drops to a low retainer. Prefer to own it outright? Pay upfront and keep the retainer for ongoing support.
           </p>
         </div>
 
@@ -371,7 +401,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
                   role="radio"
                   aria-checked={isActive}
                   onClick={() => changeMode(m)}
-                  className={`relative flex items-center gap-2 px-5 py-3 text-[13px] font-medium transition-all duration-250 focus-visible:outline-2 focus-visible:outline-white ${
+                  className={`relative flex items-center gap-2 px-5 py-3 text-[13px] font-medium transition-colors duration-250 focus-visible:outline-2 focus-visible:outline-white ${
                     isActive ? 'text-black' : 'text-[#8a8a92] hover:text-white'
                   }`}
                   style={{ minHeight: 44 }}
@@ -414,7 +444,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
                 className="flex flex-col items-center gap-3"
               >
                 <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62]">
-                  Everything included in one monthly payment
+                  Everything included for 24 months · from month 25 you only pay the retainer
                 </p>
                 <div className="flex flex-wrap justify-center gap-2">
                   {[
@@ -481,14 +511,14 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
           </AnimatePresence>
         </div>
 
-        {/* Cards — desktop: Launch / Studio / Empire */}
-        <div className="hidden md:grid md:grid-cols-3 gap-4 mb-10">
+        {/* Cards — desktop: Starter / Professional / Premium */}
+        <div className="hidden md:grid md:grid-cols-3 gap-4 mb-10 items-start">
           {tiers.map((tier) => (
             <PricingCard key={tier.key} tier={tier} mode={mode} region={region} />
           ))}
         </div>
 
-        {/* Cards — mobile: Studio first */}
+        {/* Cards — mobile: Professional first */}
         <div className="grid grid-cols-1 gap-4 mb-10 md:hidden">
           {tierOrder.map((tier) => (
             <PricingCard key={tier.key} tier={tier} mode={mode} region={region} />

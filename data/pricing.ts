@@ -1,5 +1,5 @@
 export type Region = 'ZA' | 'UK' | 'US' | 'AU' | 'EU_WEST' | 'EU_EAST';
-export type TierKey = 'launch' | 'studio' | 'empire';
+export type TierKey = 'starter' | 'professional' | 'premium';
 export type PaymentMode = 'flatMonthly' | 'upfront';
 
 export type TierPricing = {
@@ -25,9 +25,9 @@ export const PRICING: Record<Region, RegionPricing> = {
     symbol: 'R',
     locale: 'en-ZA',
     tiers: {
-      launch: { upfront: 8000, retainer: 500, flatMonthly: 1200 },
-      studio: { upfront: 15000, retainer: 1500, flatMonthly: 2000 },
-      empire: { upfront: 35000, retainer: 3000, flatMonthly: 4500 },
+      starter:      { upfront: 12000, retainer: 600,  flatMonthly: 1200 },
+      professional: { upfront: 22000, retainer: 1000, flatMonthly: 2000 },
+      premium:      { upfront: 40000, retainer: 1800, flatMonthly: 3550 },
     },
   },
   UK: {
@@ -37,9 +37,9 @@ export const PRICING: Record<Region, RegionPricing> = {
     symbol: '£',
     locale: 'en-GB',
     tiers: {
-      launch: { upfront: 1200, retainer: 50, flatMonthly: 150 },
-      studio: { upfront: 2500, retainer: 100, flatMonthly: 250 },
-      empire: { upfront: 5500, retainer: 200, flatMonthly: 500 },
+      starter:      { upfront: 1200, retainer: 60,  flatMonthly: 120 },
+      professional: { upfront: 2200, retainer: 100, flatMonthly: 200 },
+      premium:      { upfront: 4000, retainer: 160, flatMonthly: 350 },
     },
   },
   US: {
@@ -49,9 +49,9 @@ export const PRICING: Record<Region, RegionPricing> = {
     symbol: '$',
     locale: 'en-US',
     tiers: {
-      launch: { upfront: 1500, retainer: 75, flatMonthly: 150 },
-      studio: { upfront: 3500, retainer: 150, flatMonthly: 300 },
-      empire: { upfront: 7500, retainer: 300, flatMonthly: 600 },
+      starter:      { upfront: 1500, retainer: 75,  flatMonthly: 145 },
+      professional: { upfront: 2800, retainer: 125, flatMonthly: 255 },
+      premium:      { upfront: 5000, retainer: 200, flatMonthly: 435 },
     },
   },
   AU: {
@@ -61,9 +61,9 @@ export const PRICING: Record<Region, RegionPricing> = {
     symbol: 'A$',
     locale: 'en-AU',
     tiers: {
-      launch: { upfront: 2000, retainer: 75, flatMonthly: 200 },
-      studio: { upfront: 4000, retainer: 150, flatMonthly: 350 },
-      empire: { upfront: 8500, retainer: 300, flatMonthly: 700 },
+      starter:      { upfront: 2200, retainer: 110, flatMonthly: 215 },
+      professional: { upfront: 4000, retainer: 180, flatMonthly: 365 },
+      premium:      { upfront: 7000, retainer: 280, flatMonthly: 605 },
     },
   },
   EU_WEST: {
@@ -73,9 +73,9 @@ export const PRICING: Record<Region, RegionPricing> = {
     symbol: '€',
     locale: 'de-DE',
     tiers: {
-      launch: { upfront: 1400, retainer: 60, flatMonthly: 175 },
-      studio: { upfront: 3000, retainer: 120, flatMonthly: 290 },
-      empire: { upfront: 6500, retainer: 240, flatMonthly: 580 },
+      starter:      { upfront: 1400, retainer: 70,  flatMonthly: 135 },
+      professional: { upfront: 2500, retainer: 120, flatMonthly: 230 },
+      premium:      { upfront: 4500, retainer: 180, flatMonthly: 395 },
     },
   },
   EU_EAST: {
@@ -85,9 +85,9 @@ export const PRICING: Record<Region, RegionPricing> = {
     symbol: '€',
     locale: 'pl-PL',
     tiers: {
-      launch: { upfront: 800, retainer: 40, flatMonthly: 120 },
-      studio: { upfront: 1800, retainer: 80, flatMonthly: 200 },
-      empire: { upfront: 4000, retainer: 160, flatMonthly: 400 },
+      starter:      { upfront: 800,  retainer: 40,  flatMonthly: 120 },
+      professional: { upfront: 1800, retainer: 80,  flatMonthly: 200 },
+      premium:      { upfront: 4000, retainer: 160, flatMonthly: 400 },
     },
   },
 };
