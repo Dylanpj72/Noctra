@@ -7,22 +7,27 @@ const steps = [
   {
     num: '01',
     title: 'DISCOVER',
-    desc: 'Two weeks of strategy, audits, and goal-setting before a single pixel is drawn.',
+    desc: 'Tell us about your business and what you need. We listen before we suggest anything.',
   },
   {
     num: '02',
     title: 'DESIGN',
-    desc: 'Full custom design in Figma, with motion sketches and at least two complete directions.',
+    desc: 'We design your site, you review drafts and approve before we build anything. No surprises.',
   },
   {
     num: '03',
     title: 'BUILD',
-    desc: 'Production code in Webflow, Framer, or Next.js depending on the brief. Pixel-perfect.',
+    desc: 'We build your website to production quality — fast, secure, and exactly as designed.',
   },
   {
     num: '04',
-    title: 'SHIP',
-    desc: 'Launch, QA, analytics setup. Plus 30 days of post-launch support and iteration.',
+    title: 'DEPLOY',
+    desc: 'Site goes live, typically 2–4 weeks from kickoff. We handle everything — domain, hosting, testing.',
+  },
+  {
+    num: '05',
+    title: 'MANAGEMENT',
+    desc: 'We manage everything — updates, hosting, security, SEO — so you never have to think about it.',
   },
 ];
 
@@ -68,18 +73,13 @@ function ProcessStep({
       <div className="pb-12 md:pb-16 flex-1">
         <div
           className="relative rounded-2xl border border-white/[0.08] p-7 md:p-8"
-          style={{
-            background: 'rgba(255,255,255,0.02)',
-            backdropFilter: 'blur(24px)',
-          }}
+          style={{ background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(24px)' }}
         >
           <span
             aria-hidden="true"
             className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
           />
-          <h3
-            className="font-[family-name:var(--font-inter)] font-[900] text-[22px] md:text-[26px] tracking-[-0.03em] uppercase text-white mb-3"
-          >
+          <h3 className="font-[family-name:var(--font-inter)] font-[900] text-[22px] md:text-[26px] tracking-[-0.03em] uppercase text-white mb-3">
             {step.title}
           </h3>
           <p className="text-[14px] md:text-[15px] leading-[1.65] text-[#8a8a92]">
@@ -96,6 +96,7 @@ export function Process() {
 
   return (
     <section
+      id="process"
       aria-labelledby="process-heading"
       className="py-[120px] border-b border-white/[0.06] bg-black isolate"
     >

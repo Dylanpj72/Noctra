@@ -255,7 +255,7 @@ function DesktopSection() {
 }
 
 // ─── Export ──────────────────────────────────────────────────────────────────
-export function HeroParallax() {
+export function HeroParallax({ showCTA = false }: { showCTA?: boolean } = {}) {
   return (
     <section
       id="work"
@@ -264,6 +264,17 @@ export function HeroParallax() {
     >
       <MobileSection />
       <DesktopSection />
+      {showCTA && (
+        <div className="flex justify-center py-10 border-t border-white/[0.06]">
+          <a
+            href="/work"
+            className="inline-flex items-center gap-2 text-[13px] font-[500] text-[#8a8a92] hover:text-white transition-colors duration-300 group"
+          >
+            See all work
+            <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </a>
+        </div>
+      )}
     </section>
   );
 }

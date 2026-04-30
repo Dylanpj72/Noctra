@@ -10,7 +10,7 @@ export function CTABlock() {
   return (
     <section
       ref={ref}
-      id="contact"
+      id="cta"
       aria-labelledby="cta-heading"
       className="py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
@@ -46,6 +46,15 @@ export function CTABlock() {
             <motion.p
               initial={{ opacity: 0, y: 8 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              className="font-[family-name:var(--font-instrument-serif)] italic text-[18px] md:text-[22px] text-[#8a8a92] mb-5"
+            >
+              Ready to stop losing customers to the competition?
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.3em] uppercase text-[#8a8a92] mb-8"
             >
@@ -73,22 +82,31 @@ export function CTABlock() {
               initial={{ opacity: 0, y: 12 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex gap-3 flex-wrap justify-center"
+              className="flex gap-3 flex-wrap justify-center mb-6"
             >
               <a
-                href="#pricing"
+                href="/contact"
                 className="group relative overflow-hidden flex items-center gap-2 px-7 py-4 bg-white text-black text-[14px] font-semibold rounded-full transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_4px_rgba(255,255,255,0.1),0_12px_40px_rgba(255,255,255,0.15)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98]"
               >
                 Start a project
                 <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
               <a
-                href="#work"
+                href="/work"
                 className="flex items-center gap-2 px-7 py-4 bg-white/[0.04] text-white text-[14px] font-medium rounded-full border border-white/[0.12] backdrop-blur-xl transition-all duration-300 hover:bg-white/[0.08] hover:border-white/[0.22] hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:scale-[0.98]"
               >
                 View work
               </a>
             </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              className="font-[family-name:var(--font-instrument-serif)] italic text-[13px] text-[#5a5a62]"
+            >
+              No commitment. No high-pressure pitch. If we&apos;re not a fit, we&apos;ll tell you.
+            </motion.p>
           </div>
         </div>
       </div>

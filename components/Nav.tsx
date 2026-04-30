@@ -6,10 +6,10 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 
 const links = [
-  { label: 'Work', href: '#work' },
-  { label: 'Services', href: '#services' },
-  { label: 'Process', href: '#process' },
-  { label: 'Pricing', href: '#pricing' },
+  { label: 'Work', href: '/work' },
+  { label: 'Services', href: '/#services' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'About', href: '/about' },
 ];
 
 export function Nav() {
@@ -58,13 +58,13 @@ export function Nav() {
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-1">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="px-4 py-2.5 text-[13px] font-[400] text-[#8a8a92] rounded-full border border-transparent transition-colors duration-300 hover:text-white focus-visible:outline-2 focus-visible:outline-white"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -136,17 +136,20 @@ export function Nav() {
               </motion.div>
             )}
             {links.map((link, i) => (
-              <motion.a
+              <motion.div
                 key={link.label}
-                href={link.href}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.06, duration: 0.4, ease: [0.2, 0.8, 0.2, 1] }}
-                className="text-[40px] font-[900] uppercase tracking-[-0.04em] text-white hover:text-[#f5d020] transition-colors py-2"
-                onClick={() => setMenuOpen(false)}
               >
-                {link.label}
-              </motion.a>
+                <Link
+                  href={link.href}
+                  className="text-[40px] font-[900] uppercase tracking-[-0.04em] text-white hover:text-[#f5d020] transition-colors py-2 block"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              </motion.div>
             ))}
             <motion.a
               href="/contact"
