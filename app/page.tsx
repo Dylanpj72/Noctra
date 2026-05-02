@@ -8,7 +8,7 @@ import { ServicesCards } from '@/components/ServicesCards';
 import { Process } from '@/components/Process';
 import { HeroParallax } from '@/components/HeroParallax';
 import { PricingPreview } from '@/components/PricingPreview';
-import { TrustSignal } from '@/components/TrustSignal';
+
 import { FAQTeaser } from '@/components/FAQTeaser';
 import { CTABlock } from '@/components/CTABlock';
 import { Footer } from '@/components/Footer';
@@ -44,9 +44,6 @@ export default async function Home({
 
       {/* 06 — Pricing preview */}
       <PricingPreview initialRegion={initialRegion} />
-
-      {/* 07 — Trust signal */}
-      <TrustSignal />
 
       {/* 08 — FAQ teaser */}
       <FAQTeaser />
