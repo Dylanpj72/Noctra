@@ -7,8 +7,8 @@ import { Footer } from '@/components/Footer';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Pricing — Noctra',
-  description: 'Simple, transparent pricing for custom websites. Flat monthly or upfront — all plans include design, build, hosting, and ongoing management.',
+  title: 'Pricing · Noctra',
+  description: 'Simple, transparent pricing for custom websites. Flat monthly or upfront, all plans include design, build, hosting, and ongoing management.',
 };
 
 export default async function PricingPage({

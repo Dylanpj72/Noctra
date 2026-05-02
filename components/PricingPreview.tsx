@@ -47,7 +47,7 @@ export function PricingPreview({ initialRegion }: { initialRegion: RegionPricing
             transition={{ duration: 0.6 }}
             className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.4em] uppercase text-[#5a5a62] mb-6"
           >
-            06 — <span className="text-white font-[500]">Pricing</span>
+            06 · <span className="text-white font-[500]">Pricing</span>
           </motion.p>
           <motion.h2
             id="pricing-preview-heading"

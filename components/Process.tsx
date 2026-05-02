@@ -17,17 +17,17 @@ const steps = [
   {
     num: '03',
     title: 'BUILD',
-    desc: 'We build your website to production quality — fast, secure, and exactly as designed.',
+    desc: 'We build your website to production quality: fast, secure, and exactly as designed.',
   },
   {
     num: '04',
     title: 'DEPLOY',
-    desc: 'Site goes live, typically 2–4 weeks from kickoff. We handle everything — domain, hosting, testing.',
+    desc: 'Site goes live, typically 2–4 weeks from kickoff. We handle everything: domain, hosting, and testing.',
   },
   {
     num: '05',
-    title: 'MANAGEMENT',
-    desc: 'We manage everything — updates, hosting, security, SEO — so you never have to think about it.',
+    title: 'MANAGE',
+    desc: 'We manage everything: updates, hosting, security, and SEO, so you never have to think about it.',
   },
 ];
 
@@ -106,7 +106,7 @@ export function Process() {
           className="mb-20 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end"
         >
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
-            04 — <span className="text-white font-[500]">Process</span>
+            04 · <span className="text-white font-[500]">Process</span>
           </p>
           <h2
             id="process-heading"

@@ -6,27 +6,27 @@ import { motion, AnimatePresence, useInView } from 'motion/react';
 export const faqs = [
   {
     q: "What's included?",
-    a: "Everything. Every plan includes custom website design, development, hosting, SSL security, daily backups, and ongoing management. Content updates, SEO, and technical maintenance are all handled by us — you focus on your business, we keep the site running perfectly.",
+    a: "Everything. Every plan includes custom website design, development, hosting, SSL security, daily backups, and ongoing management. Content updates, SEO, and technical maintenance are all handled by us, so you focus on your business and we keep the site running perfectly.",
   },
   {
     q: 'Why a 24-month minimum?',
-    a: "Building your website properly takes real investment up front — strategy, design, build, SEO, and launch. The 24-month commitment lets us spread that investment into an affordable monthly payment while including all ongoing support. It's the same logic as a phone contract: you get more for less over time.",
+    a: "Building your website properly takes real investment up front: strategy, design, build, SEO, and launch. The 24-month commitment lets us spread that investment into an affordable monthly payment while including all ongoing support. It's the same logic as a phone contract: you get more for less over time.",
   },
   {
     q: 'What happens after 24 months?',
-    a: "Your monthly payment drops significantly — to just the retainer rate shown on each plan. That covers hosting, security, SEO, and ongoing management. You keep the site, we keep it running smoothly. No renegotiation, no surprises.",
+    a: "Your monthly payment drops significantly, to just the retainer rate shown on each plan. That covers hosting, security, SEO, and ongoing management. You keep the site, we keep it running smoothly. No renegotiation, no surprises.",
   },
   {
     q: 'Do you work internationally?',
-    a: "Yes. We work with businesses across South Africa, the UK, the US, Europe, Australia, and beyond. Our pricing is region-calibrated so it's fair wherever you're based — you pay in your local currency at rates that reflect your market.",
+    a: "Yes. We work with businesses across South Africa, the UK, the US, Europe, Australia, and beyond. Our pricing is region-calibrated so it's fair wherever you're based. You pay in your local currency at rates that reflect your market.",
   },
   {
     q: 'Can you redesign an existing website?',
-    a: "Absolutely. Redesigns are a core service. We start by reviewing your current site — what's working, what isn't, and what's costing you customers — then design a replacement that fixes the right problems from the ground up.",
+    a: "Absolutely. Redesigns are a core service. We start by reviewing your current site: what's working, what isn't, and what's costing you customers. Then we design a replacement that fixes the right problems from the ground up.",
   },
   {
     q: 'Do you offer ongoing maintenance after launch?',
-    a: "It's included in every plan, always. Hosting, security updates, content changes, and SEO are all managed by us on an ongoing basis. You won't need to touch the technical side of your site — ever.",
+    a: "It's included in every plan, always. Hosting, security updates, content changes, and SEO are all managed by us on an ongoing basis. You won't need to touch the technical side of your site, ever.",
   },
 ];
 
@@ -108,7 +108,7 @@ export function FAQ({ limit }: { limit?: number } = {}) {
       <div className="max-w-[1400px] mx-auto px-6 md:px-14">
         <div className="mb-16 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
-            — <span className="text-white font-[500]">FAQ</span>
+            <span className="text-white font-[500]">FAQ</span>
           </p>
           <h2
             id="faq-heading"

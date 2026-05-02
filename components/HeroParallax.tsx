@@ -167,7 +167,7 @@ function MobileSection() {
         {/* Header: absolute overlay on top of the 3D canvas */}
         <div className="absolute top-0 left-0 right-0 z-20 px-6 pt-14 pb-6 pointer-events-none">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62] mb-3">
-            05 — <span className="text-white font-[500]">Selected Work</span>
+            05 · <span className="text-white font-[500]">Selected Work</span>
           </p>
           <h2
             id="work-heading"
@@ -229,7 +229,7 @@ function DesktopSection() {
       <div className="max-w-[1400px] mx-auto px-14 pt-[120px] pb-20 flex-shrink-0 w-full">
         <div className="grid grid-cols-[200px_1fr] gap-12 items-end">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
-            05 — <span className="text-white font-[500]">Selected Work</span>
+            05 · <span className="text-white font-[500]">Selected Work</span>
           </p>
           <h2
             id="work-heading-desktop"

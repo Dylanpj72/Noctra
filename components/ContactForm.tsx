@@ -199,7 +199,7 @@ export function ContactForm() {
           name="message"
           value={form.message}
           onChange={handleChange}
-          placeholder="Tell us about your project — what you're building, what's not working, what you'd like to achieve…"
+          placeholder="Tell us about your project: what you're building, what's not working, what you'd like to achieve…"
           rows={6}
           className={`${inputBase} resize-none ${errors.message ? 'border-red-500/60' : ''}`}
         />
@@ -241,7 +241,7 @@ export function ContactForm() {
               exit={{ opacity: 0 }}
               className="text-center text-[13px] text-red-400"
             >
-              Something went wrong — please try again or email us directly.
+              Something went wrong. Please try again or email us directly.
             </motion.p>
           )}
           {status === 'success' && (

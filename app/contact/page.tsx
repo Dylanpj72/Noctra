@@ -4,7 +4,7 @@ import { ContactForm } from '@/components/ContactForm';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact — Noctra',
+  title: 'Contact · Noctra',
   description: 'Start a project with Noctra. Tell us what you\'re building and we\'ll be in touch within 24 hours.',
 };
 
@@ -16,7 +16,7 @@ const details = [
   },
   {
     label: 'Location',
-    value: 'Cape Town, ZA — working globally',
+    value: 'Cape Town, ZA · working globally',
     href: null,
   },
   {
@@ -37,7 +37,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="max-w-[1400px] mx-auto px-6 md:px-14 pt-20 pb-16 border-b border-white/[0.06]">
         <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.3em] uppercase text-[#5a5a62] mb-8">
-          — START A PROJECT —
+          START A PROJECT
         </p>
         <h1
           className="font-[family-name:var(--font-inter)] font-[200] leading-[0.9] tracking-[-0.05em] uppercase text-white"

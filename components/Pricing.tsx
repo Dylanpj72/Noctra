@@ -367,7 +367,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
         {/* Section header */}
         <div className="mb-16 text-center">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.4em] uppercase text-[#5a5a62] mb-6">
-            — PRICING —
+            PRICING
           </p>
           <h2
             id="pricing-heading"
@@ -381,7 +381,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
             <span className="font-[900]">scale.</span>
           </h2>
           <p className="font-[family-name:var(--font-instrument-serif)] italic text-[16px] md:text-[18px] text-[#8a8a92] max-w-[580px] mx-auto">
-            Flat monthly covers everything for 24 months — then drops to a low retainer. Prefer to own it outright? Pay upfront and keep the retainer for ongoing support.
+            Flat monthly covers everything for 24 months, then drops to a low retainer. Prefer to own it outright? Pay upfront and keep the retainer for ongoing support.
           </p>
         </div>
 
@@ -552,7 +552,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
         {/* Footer note */}
         <p className="text-center text-[13px] text-[#5a5a62] max-w-[560px] mx-auto leading-relaxed">
           All prices in <span className="text-[#8a8a92]">{region.currency}</span>.
-          {' '}Website management means we handle any updates or changes for you — no tech headaches.
+          {' '}Website management means we handle any updates or changes for you, no tech headaches.
         </p>
       </div>
     </section>

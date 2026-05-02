@@ -4,7 +4,7 @@ import { Footer } from '@/components/Footer';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About — Noctra',
+  title: 'About · Noctra',
   description: 'Noctra is a web design agency building high-converting custom websites for ambitious businesses worldwide.',
 };
 
@@ -19,7 +19,7 @@ const values = [
   },
   {
     title: 'Long-term partnerships',
-    desc: 'We manage every site we build — indefinitely. Our incentive is your long-term success, not just the launch.',
+    desc: 'We manage every site we build, indefinitely. Our incentive is your long-term success, not just the launch.',
   },
   {
     title: 'Globally minded',
@@ -37,7 +37,7 @@ export default function AboutPage() {
       {/* Page header */}
       <section className="max-w-[1400px] mx-auto px-6 md:px-14 pt-20 pb-20 border-b border-white/[0.06]">
         <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.3em] uppercase text-[#5a5a62] mb-8">
-          — ABOUT —
+          ABOUT
         </p>
         <h1
           className="font-[family-name:var(--font-inter)] font-[200] leading-[0.9] tracking-[-0.05em] uppercase text-white mb-8"
@@ -51,7 +51,7 @@ export default function AboutPage() {
           <span className="font-[900]">ambitious.</span>
         </h1>
         <p className="font-[family-name:var(--font-instrument-serif)] italic text-[18px] md:text-[22px] text-[#8a8a92] max-w-[600px] leading-relaxed">
-          Noctra is a web design agency built to give ambitious businesses a serious online presence — without the enterprise price tag.
+          Noctra is a web design agency built to give ambitious businesses a serious online presence, without the enterprise price tag.
         </p>
       </section>
 
@@ -60,11 +60,11 @@ export default function AboutPage() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-14">
           <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12">
             <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
-              — Mission
+              Mission
             </p>
             <div>
               <p className="font-[family-name:var(--font-inter)] font-[200] text-[22px] md:text-[28px] leading-[1.4] tracking-[-0.02em] text-white max-w-[720px]">
-                Most small businesses lose customers to competitors with worse reviews, simply because those competitors have a better website. We fix that — with custom-built sites, fair pricing, and ongoing management that means you never have to think about your website again.
+                Most small businesses lose customers to competitors with worse reviews, simply because those competitors have a better website. We fix that with custom-built sites, fair pricing, and ongoing management that means you never have to think about your website again.
               </p>
             </div>
           </div>
@@ -75,7 +75,7 @@ export default function AboutPage() {
       <section className="py-[100px] border-b border-white/[0.06] bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-14">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62] mb-12">
-            — How we work
+            How we work
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {values.map((value, i) => (

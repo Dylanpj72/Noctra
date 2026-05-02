@@ -108,7 +108,7 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.4em] uppercase text-[#8a8a92] mb-14"
           >
-            — NEW ERA OF DIGITAL EXPERIENCE —
+            NEW ERA OF DIGITAL EXPERIENCE
           </motion.p>
 
           {/* Headline */}

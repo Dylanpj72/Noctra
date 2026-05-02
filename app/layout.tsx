@@ -25,9 +25,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Noctra — Premium Web Design Agency for Global Businesses',
+  title: 'Noctra · Premium Web Design Agency for Global Businesses',
   description:
-    'A web design agency building high-converting custom websites for ambitious global businesses. Strategy, design, development, and growth — from kickoff to launch in 12 weeks.',
+    'A web design agency building high-converting custom websites for ambitious global businesses. Strategy, design, development, and growth, from kickoff to launch in 12 weeks.',
   keywords: [
     'web design agency',
     'website agency',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://noctra.studio'),
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Noctra — Premium Web Design Agency',
+    title: 'Noctra · Premium Web Design Agency',
     description:
       'We build websites that win. Custom design, development, and growth for ambitious global businesses.',
     url: 'https://noctra.studio',
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Noctra — We build websites that win',
+        alt: 'Noctra · We build websites that win',
       },
     ],
     locale: 'en_US',
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Noctra — Premium Web Design Agency',
+    title: 'Noctra · Premium Web Design Agency',
     description: 'We build websites that win.',
     images: ['/og-image.png'],
   },
@@ -156,7 +156,7 @@ export default function RootLayout({
                       name: 'How long does it take to build a website?',
                       acceptedAnswer: {
                         '@type': 'Answer',
-                        text: 'Our average project timeline is 12 weeks from kickoff to launch — covering strategy, design, build, and QA.',
+                        text: 'Our average project timeline is 12 weeks from kickoff to launch, covering strategy, design, build, and QA.',
                       },
                     },
                     {
@@ -172,7 +172,7 @@ export default function RootLayout({
                       name: 'Do you only work with businesses in South Africa?',
                       acceptedAnswer: {
                         '@type': 'Answer',
-                        text: 'No — we work with ambitious businesses globally. Clients span the UK, US, Europe, Australia, and beyond. Our pricing is region-calibrated for fairness.',
+                        text: 'No, we work with ambitious businesses globally. Clients span the UK, US, Europe, Australia, and beyond. Our pricing is region-calibrated for fairness.',
                       },
                     },
                     {
@@ -180,7 +180,7 @@ export default function RootLayout({
                       name: 'Do you offer ongoing maintenance after launch?',
                       acceptedAnswer: {
                         '@type': 'Answer',
-                        text: 'Yes. All plans include a retainer component — either as part of the flat monthly or as a separate add-on with the upfront option. Every client gets 30 days post-launch support included.',
+                        text: 'Yes. All plans include a retainer component, either as part of the flat monthly or as a separate add-on with the upfront option. Every client gets 30 days post-launch support included.',
                       },
                     },
                     {

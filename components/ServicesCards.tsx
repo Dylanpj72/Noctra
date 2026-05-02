@@ -22,7 +22,7 @@ const services: Service[] = [
     num: 'SVC / 02',
     icon: '◎',
     title: ['BRAND ', 'SYSTEMS'],
-    desc: 'Logo, type, color, voice, motion — built as a working system, not a moodboard. Designed to scale from your business card to a Times Square billboard.',
+    desc: 'Logo, type, color, voice, and motion, built as a working system, not a moodboard. Designed to scale from your business card to a Times Square billboard.',
   },
   {
     num: 'SVC / 03',
@@ -105,7 +105,7 @@ export function ServicesCards() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-14">
         <div className="mb-20 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
-            03 — <span className="text-white font-[500]">Services</span>
+            03 · <span className="text-white font-[500]">Services</span>
           </p>
           <h2
             id="services-cards-heading"

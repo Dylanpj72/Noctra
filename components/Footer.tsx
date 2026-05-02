@@ -53,7 +53,7 @@ export function Footer() {
             </div>
             <p className="font-[family-name:var(--font-instrument-serif)] italic text-[15px] text-[#8a8a92] max-w-[300px] leading-relaxed">
               Websites that command the room. From the Latin{' '}
-              <em>noctis</em> — the work happens after dark.
+              <em>noctis</em>, the work happens after dark.
             </p>
             <p className="mt-4 font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.15em] uppercase text-[#5a5a62]">
               Cape Town, ZA · Working globally
@@ -127,7 +127,7 @@ export function Footer() {
             Built in the dark
           </span>
           <span className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62]">
-            v1.0 — 04.27.26
+            v1.0 · 04.27.26
           </span>
         </div>
       </div>

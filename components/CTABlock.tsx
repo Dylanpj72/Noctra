@@ -59,7 +59,7 @@ export function CTABlock() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.3em] uppercase text-[#8a8a92] mb-8"
             >
-              — LET&apos;S BUILD —
+              LET&apos;S BUILD
             </motion.p>
 
             <motion.h2

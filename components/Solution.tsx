@@ -14,7 +14,7 @@ const cards = [
   },
   {
     title: 'Fully managed forever',
-    desc: 'Hosting, security, SEO, content changes, and updates — all included. Set it up once, then forget about it.',
+    desc: 'Hosting, security, SEO, content changes, and updates: all included. Set it up once, then forget about it.',
   },
   {
     title: 'One monthly payment',
@@ -42,7 +42,7 @@ export function Solution() {
             transition={{ duration: 0.6 }}
             className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]"
           >
-            02 — <span className="text-white font-[500]">What we do</span>
+            02 · <span className="text-white font-[500]">What we do</span>
           </motion.p>
           <motion.h2
             id="solution-heading"
