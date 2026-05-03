@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import {
   motion,
   useScroll,
@@ -10,42 +11,34 @@ import {
 } from 'motion/react';
 import Link from 'next/link';
 
-const mobileProducts = [
-  { title: 'Airtech',          link: 'https://airtech-omega.vercel.app/', index: '01', category: 'Web Design',          orb: '30% 20%' },
-  { title: 'Luma Studio',      link: '#', index: '02', category: 'Motion · Brand',        orb: '70% 30%' },
-  { title: 'Arc Protocol',     link: '#', index: '03', category: 'Brand Systems · Growth',orb: '20% 60%' },
-  { title: 'Vanta Labs',       link: '#', index: '04', category: 'Web Design · SEO',      orb: '60% 10%' },
-  { title: 'Soleil Collective',link: '#', index: '05', category: 'E-commerce · Brand',    orb: '40% 70%' },
-  { title: 'Helix Ventures',   link: '#', index: '06', category: 'Web Design · Growth',   orb: '80% 50%' },
+type Product = {
+  title: string;
+  link: string;
+  index: string;
+  category: string;
+  orb: string;
+  thumbnail?: string;
+};
+
+const products: Product[] = [
+  { title: 'Airtech',        link: 'https://airtech-omega.vercel.app/', index: '01', category: 'Web Design',          orb: '30% 20%', thumbnail: '/thumbnails/airtech.png' },
+  { title: 'Luma Studio',    link: '#',                                 index: '02', category: 'Motion · Brand',       orb: '70% 30%' },
+  { title: 'Arc Protocol',   link: '#',                                 index: '03', category: 'Brand Systems',        orb: '20% 60%' },
+  { title: 'Vanta Labs',     link: '#',                                 index: '04', category: 'Web Design · SEO',     orb: '60% 10%' },
+  { title: 'Soleil',         link: '#',                                 index: '05', category: 'E-commerce · Brand',   orb: '40% 70%' },
+  { title: 'Helix Ventures', link: '#',                                 index: '06', category: 'Web Design · Growth',  orb: '80% 50%' },
+  { title: 'Drift Agency',   link: '#',                                 index: '07', category: 'Brand Systems',        orb: '25% 40%' },
+  { title: 'Prism Digital',  link: '#',                                 index: '08', category: 'Web Design · Motion',  orb: '55% 80%' },
+  { title: 'Crest Partners', link: '#',                                 index: '09', category: 'Web Design · Brand',   orb: '75% 20%' },
 ];
 
-const desktopProducts = [
-  { title: 'Airtech',          link: 'https://airtech-omega.vercel.app/', index: '01', category: 'Web Design',          orb: '30% 20%' },
-  { title: 'Luma Studio',      link: '#', index: '02', category: 'Motion · Brand',        orb: '70% 30%' },
-  { title: 'Arc Protocol',     link: '#', index: '03', category: 'Brand Systems · Growth',orb: '20% 60%' },
-  { title: 'Vanta Labs',       link: '#', index: '04', category: 'Web Design · SEO',      orb: '60% 10%' },
-  { title: 'Soleil Collective',link: '#', index: '05', category: 'E-commerce · Brand',    orb: '40% 70%' },
-  { title: 'Helix Ventures',   link: '#', index: '06', category: 'Web Design · Growth',   orb: '80% 50%' },
-  { title: 'Drift Agency',     link: '#', index: '07', category: 'Brand Systems',         orb: '25% 40%' },
-  { title: 'Prism Digital',    link: '#', index: '08', category: 'Web Design · Motion',   orb: '55% 80%' },
-  { title: 'Crest Partners',   link: '#', index: '09', category: 'Web Design · Brand',    orb: '75% 20%' },
-  { title: 'Forge Studio',     link: '#', index: '10', category: 'E-commerce · SEO',      orb: '15% 55%' },
-  { title: 'Axiom Health',     link: '#', index: '11', category: 'Web Design · Brand',    orb: '45% 30%' },
-  { title: 'Ember Brand',      link: '#', index: '12', category: 'Brand Systems · Motion',orb: '65% 65%' },
-  { title: 'Quartz Capital',   link: '#', index: '13', category: 'Web Design · Growth',   orb: '35% 15%' },
-  { title: 'Nova Systems',     link: '#', index: '14', category: 'Web Design · SEO',      orb: '50% 50%' },
-  { title: 'Peak Advisory',    link: '#', index: '15', category: 'Brand Systems · Brand', orb: '20% 80%' },
-];
-
-type Product = typeof mobileProducts[0];
-
-const glassStyle = (orb: string): React.CSSProperties => ({
-  background: [
+const cardStyle = (orb: string, hasThumbnail = false): React.CSSProperties => ({
+  background: hasThumbnail ? 'transparent' : [
     `radial-gradient(ellipse 140% 100% at ${orb}, rgba(255,255,255,0.09), transparent 55%)`,
     `radial-gradient(ellipse 60% 80% at 95% 90%, rgba(255,255,255,0.04), transparent 50%)`,
     `linear-gradient(160deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.008) 50%, rgba(255,255,255,0.03) 100%)`,
   ].join(', '),
-  backdropFilter: 'blur(32px)',
+  backdropFilter: hasThumbnail ? 'none' : 'blur(32px)',
   border: '1px solid rgba(255,255,255,0.10)',
   boxShadow: [
     'inset 0 1px 0 rgba(255,255,255,0.16)',
@@ -56,8 +49,21 @@ const glassStyle = (orb: string): React.CSSProperties => ({
 });
 
 function CardInner({ product }: { product: Product }) {
+  const isExternal = product.link !== '#';
   return (
     <>
+      {product.thumbnail && (
+        <>
+          <Image
+            src={product.thumbnail}
+            alt={product.title}
+            fill
+            className="object-cover object-top"
+            sizes="(max-width: 768px) 88vw, 26rem"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-black/20" />
+        </>
+      )}
       <span
         aria-hidden="true"
         className="absolute top-0 left-[10%] right-[10%] h-px pointer-events-none z-10"
@@ -75,7 +81,11 @@ function CardInner({ product }: { product: Product }) {
         className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{ background: 'linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.06) 50%, transparent 70%)' }}
       />
-      <Link href={product.link} className="absolute inset-0 flex flex-col justify-between p-5 md:p-7 z-10">
+      <Link
+        href={product.link}
+        className="absolute inset-0 flex flex-col justify-between p-5 md:p-7 z-10"
+        {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      >
         <div className="flex items-start justify-between">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62]">
             {product.category}
@@ -97,14 +107,7 @@ function CardInner({ product }: { product: Product }) {
   );
 }
 
-// ─── Mobile ──────────────────────────────────────────────────────────────────
-// Scroll progress mapping (over 400vh outer / 300vh scroll range):
-//   0.00 → 0.15  tilt entry   — cards flatten from diagonal behind header
-//   0.12 → 0.85  horiz sweep  — each card steps to centre
-//   0.85 → 1.00  hold         — card 6 stays centred, then section releases
-//
-// Layout: header is an absolute overlay; cards are absolute inset-0 flex items-center
-// so they are always centred in the full viewport, not pushed below the header.
+// ─── Mobile ───────────────────────────────────────────────────────────────────
 function MobileSection() {
   const outerRef = React.useRef<HTMLDivElement>(null);
   const cardRef  = React.useRef<HTMLDivElement>(null);
@@ -126,36 +129,30 @@ function MobileSection() {
 
   const spring = { stiffness: 300, damping: 30, bounce: 100 };
 
-  // Tilt entry
   const rotateX    = useSpring(useTransform(scrollYProgress, [0, 0.15], [15, 0]),   spring);
   const rotateZ    = useSpring(useTransform(scrollYProgress, [0, 0.15], [20, 0]),   spring);
   const opacity    = useSpring(useTransform(scrollYProgress, [0, 0.12], [0.5, 1]),  spring);
-  // translateY: starts slightly above centre so cards peek behind the heading text
   const translateY = useSpring(useTransform(scrollYProgress, [0, 0.15], [-110, 0]), spring);
 
-  // Horizontal sweep — card 6 reaches centre at 0.85, holds until section releases at 1.0
-  const rawX    = useTransform(scrollYProgress, [0.12, 0.85], [0, -(cardStep * 5)]);
+  // Sweep through all 9 cards
+  const rawX    = useTransform(scrollYProgress, [0.12, 0.85], [0, -(cardStep * 8)]);
   const mobileX = useSpring(rawX, { stiffness: 400, damping: 45, bounce: 0 });
 
   return (
     <div ref={outerRef} className="relative h-[400vh] md:hidden">
-      {/* Sticky wrapper — h-screen, clips off-screen cards */}
       <div className="sticky top-0 h-screen overflow-hidden relative bg-black">
-
-        {/* 3D perspective canvas — fills the sticky viewport */}
         <div className="absolute inset-0 [perspective:1000px] [transform-style:preserve-3d]">
-          {/* Cards: absolutely centred in full viewport */}
           <motion.div
             style={{ rotateX, rotateZ, y: translateY, opacity }}
             className="absolute inset-0 flex items-center"
           >
             <motion.div className="flex space-x-4 pl-6" style={{ x: mobileX }}>
-              {mobileProducts.map((p, i) => (
+              {products.map((p, i) => (
                 <div
                   key={p.title}
                   ref={i === 0 ? cardRef : undefined}
                   className="group/card w-[88vw] h-[68vw] relative flex-shrink-0 rounded-2xl overflow-hidden"
-                  style={glassStyle(p.orb)}
+                  style={cardStyle(p.orb, !!p.thumbnail)}
                 >
                   <CardInner product={p} />
                 </div>
@@ -164,7 +161,7 @@ function MobileSection() {
           </motion.div>
         </div>
 
-        {/* Header: absolute overlay on top of the 3D canvas */}
+        {/* Header */}
         <div className="absolute top-0 left-0 right-0 z-20 px-6 pt-14 pb-6 pointer-events-none">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62] mb-3">
             05 · <span className="text-white font-[500]">Selected Work</span>
@@ -180,44 +177,43 @@ function MobileSection() {
             </em>
           </h2>
         </div>
-
       </div>
     </div>
   );
 }
 
-// ─── Desktop ─────────────────────────────────────────────────────────────────
+// ─── Desktop ──────────────────────────────────────────────────────────────────
 function DesktopSection() {
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
 
   const spring = { stiffness: 300, damping: 30, bounce: 100 };
 
-  const translateX        = useSpring(useTransform(scrollYProgress, [0, 1], [0, 1000]),    spring);
-  const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, -1000]),   spring);
-  const rotateX           = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]),    spring);
-  const opacity           = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.7, 1]),   spring);
-  const rotateZ           = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]),    spring);
-  const translateY        = useSpring(useTransform(scrollYProgress, [0, 0.2], [-700, 500]),spring);
+  const translateX        = useSpring(useTransform(scrollYProgress, [0, 1], [0,  240]), spring);
+  const translateXReverse = useSpring(useTransform(scrollYProgress, [0, 1], [0, -240]), spring);
+  const rotateX           = useSpring(useTransform(scrollYProgress, [0, 0.2], [15, 0]),     spring);
+  const opacity           = useSpring(useTransform(scrollYProgress, [0, 0.2], [0.7, 1]),    spring);
+  const rotateZ           = useSpring(useTransform(scrollYProgress, [0, 0.2], [20, 0]),     spring);
+  const translateY        = useSpring(useTransform(scrollYProgress, [0, 0.2], [-700, 500]), spring);
 
-  const first  = desktopProducts.slice(0, 5);
-  const second = desktopProducts.slice(5, 10);
-  const third  = desktopProducts.slice(10, 15);
+  const row1 = products.slice(0, 3);
+  const row2 = products.slice(3, 6);
+  const row3 = products.slice(6, 9);
 
-  const row = (products: Product[], translate: MotionValue<number>, reverse: boolean) => (
-    <motion.div className={`flex ${reverse ? 'flex-row-reverse space-x-reverse' : 'flex-row'} space-x-20 mb-20`}>
-      {products.map((p) => (
+  const row = (prods: Product[], translate: MotionValue<number>) => (
+    <div className="flex flex-row justify-center space-x-8 mb-8">
+      {prods.map((p) => (
         <motion.div
           key={p.title}
           whileHover={{ y: -16 }}
           transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
-          className="group/card h-96 w-[30rem] relative flex-shrink-0 rounded-2xl overflow-hidden"
-          style={{ x: translate, ...glassStyle(p.orb) }}
+          className="group/card h-96 w-[26rem] relative flex-shrink-0 rounded-2xl overflow-hidden"
+          style={{ x: translate, ...cardStyle(p.orb, !!p.thumbnail) }}
         >
           <CardInner product={p} />
         </motion.div>
       ))}
-    </motion.div>
+    </div>
   );
 
   return (
@@ -244,17 +240,17 @@ function DesktopSection() {
         </div>
       </div>
 
-      {/* Parallax rows */}
+      {/* Parallax rows — 3 × 3, centred */}
       <motion.div style={{ rotateX, rotateZ, translateY, opacity }} className="flex-shrink-0">
-        {row(first, translateX, true)}
-        {row(second, translateXReverse, false)}
-        {row(third, translateX, true)}
+        {row(row1, translateX)}
+        {row(row2, translateXReverse)}
+        {row(row3, translateX)}
       </motion.div>
     </div>
   );
 }
 
-// ─── Export ──────────────────────────────────────────────────────────────────
+// ─── Export ───────────────────────────────────────────────────────────────────
 export function HeroParallax({ showCTA = false }: { showCTA?: boolean } = {}) {
   return (
     <section
