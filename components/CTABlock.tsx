@@ -86,7 +86,7 @@ export function CTABlock() {
               className="flex gap-3 flex-wrap justify-center mb-6"
             >
               <LiquidMetalButton label="Start a project →" href="/contact" width={168} />
-              <LiquidMetalButton label="View work" href="/work" width={120} />
+              <LiquidMetalButton label="View pricing" href="/pricing" width={130} />
             </motion.div>
 
             <motion.p
