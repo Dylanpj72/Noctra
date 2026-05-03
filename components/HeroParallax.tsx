@@ -11,7 +11,7 @@ import {
 import Link from 'next/link';
 
 const mobileProducts = [
-  { title: 'Meridian Capital', link: '#', index: '01', category: 'Web Design · Brand',    orb: '30% 20%' },
+  { title: 'Airtech',          link: 'https://airtech-omega.vercel.app/', index: '01', category: 'Web Design',          orb: '30% 20%' },
   { title: 'Luma Studio',      link: '#', index: '02', category: 'Motion · Brand',        orb: '70% 30%' },
   { title: 'Arc Protocol',     link: '#', index: '03', category: 'Brand Systems · Growth',orb: '20% 60%' },
   { title: 'Vanta Labs',       link: '#', index: '04', category: 'Web Design · SEO',      orb: '60% 10%' },
@@ -20,7 +20,7 @@ const mobileProducts = [
 ];
 
 const desktopProducts = [
-  { title: 'Meridian Capital', link: '#', index: '01', category: 'Web Design · Brand',    orb: '30% 20%' },
+  { title: 'Airtech',          link: 'https://airtech-omega.vercel.app/', index: '01', category: 'Web Design',          orb: '30% 20%' },
   { title: 'Luma Studio',      link: '#', index: '02', category: 'Motion · Brand',        orb: '70% 30%' },
   { title: 'Arc Protocol',     link: '#', index: '03', category: 'Brand Systems · Growth',orb: '20% 60%' },
   { title: 'Vanta Labs',       link: '#', index: '04', category: 'Web Design · SEO',      orb: '60% 10%' },
