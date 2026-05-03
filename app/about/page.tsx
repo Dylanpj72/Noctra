@@ -55,17 +55,56 @@ export default function AboutPage() {
         </p>
       </section>
 
-      {/* Mission */}
+      {/* Philosophy */}
       <section className="py-[100px] border-b border-white/[0.06] bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-14">
           <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12">
             <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
-              Mission
+              Our approach
             </p>
-            <div>
-              <p className="font-[family-name:var(--font-inter)] font-[200] text-[22px] md:text-[28px] leading-[1.4] tracking-[-0.02em] text-white max-w-[720px]">
-                Most small businesses lose customers to competitors with worse reviews, simply because those competitors have a better website. We fix that with custom-built sites, fair pricing, and ongoing management that means you never have to think about your website again.
+            <div className="max-w-[720px]">
+              <p className="font-[family-name:var(--font-inter)] font-[200] text-[22px] md:text-[26px] leading-[1.4] tracking-[-0.02em] text-white mb-8">
+                We do not just build websites. We create digital experiences designed to grow businesses.
               </p>
+              <div className="space-y-5 text-[15px] leading-[1.75] text-[#8a8a92]">
+                <p>
+                  At our core, we are a results-driven web design agency focused on one thing: turning your online presence into a powerful business asset. A website should do far more than simply look good. It should attract attention, build trust, engage visitors, and convert interest into real customers.
+                </p>
+                <p>
+                  We combine premium design, strategic thinking, and conversion-focused development to create websites that do more than exist online. They perform. Every element is built with purpose, from the first impression your brand makes to the final action your customer takes.
+                </p>
+                <p>
+                  Our approach goes beyond aesthetics. We design with intention, ensuring your website is positioned to:
+                </p>
+              </div>
+
+              <ul className="mt-6 mb-8 space-y-3">
+                {[
+                  'Generate qualified leads',
+                  'Attract and convert new customers',
+                  'Build trust and credibility',
+                  'Engage visitors with a seamless user experience',
+                  'Strengthen your brand presence',
+                  'Support long-term business growth',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] text-[#5a5a62] mt-[5px] flex-shrink-0">→</span>
+                    <span className="text-[15px] leading-[1.7] text-[#8a8a92]">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="space-y-5 text-[15px] leading-[1.75] text-[#8a8a92]">
+                <p>
+                  A high-performing website is one of the most valuable investments a business can make. It should work as your digital storefront, your sales tool, and your brand representative, all at once.
+                </p>
+                <p>
+                  We create websites that are refined, strategic, and built to deliver measurable results. From user experience and messaging to performance and conversion, every detail is carefully considered to ensure your website not only reflects the quality of your brand, but actively contributes to its growth.
+                </p>
+                <p className="text-white font-[300]">
+                  For businesses that value quality, performance, and long-term impact, we build more than websites. We build digital platforms that drive growth.
+                </p>
+              </div>
             </div>
           </div>
         </div>
