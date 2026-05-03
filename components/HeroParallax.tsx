@@ -207,7 +207,7 @@ function DesktopSection() {
           key={p.title}
           whileHover={{ y: -16 }}
           transition={{ duration: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
-          className="group/card h-96 w-[26rem] relative flex-shrink-0 rounded-2xl overflow-hidden"
+          className="group/card h-96 w-[34rem] relative flex-shrink-0 rounded-2xl overflow-hidden"
           style={{ x: translate, ...cardStyle(p.orb, !!p.thumbnail) }}
         >
           <CardInner product={p} />
