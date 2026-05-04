@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Link from 'next/link';
 import { motion, useInView } from 'motion/react';
 import { TiltCard } from './TiltCard';
 
@@ -9,6 +10,7 @@ type Service = {
   icon: string;
   title: [string, string];
   desc: string;
+  href: string;
 };
 
 const services: Service[] = [
@@ -16,19 +18,22 @@ const services: Service[] = [
     num: 'SVC / 01',
     icon: '↗',
     title: ['WEB ', 'DESIGN'],
-    desc: 'Strategy, design, development. We scope, design, and ship custom websites with motion and interactions tuned for conversion. From kickoff to launch in 12 weeks.',
+    desc: 'Custom websites built to convert. Strategy, design, and development - all under one roof. From first conversation to live site in 2 to 6 weeks.',
+    href: '/services/web-design',
   },
   {
     num: 'SVC / 02',
     icon: '◎',
     title: ['BRAND ', 'SYSTEMS'],
-    desc: 'Logo, type, color, voice, and motion, built as a working system, not a moodboard. Designed to scale from your business card to a Times Square billboard.',
+    desc: 'Logo, type, color, voice, and motion - built as a working system, not a moodboard. Designed to scale from your business card to a billboard.',
+    href: '/services/brand-systems',
   },
   {
     num: 'SVC / 03',
     icon: '▲',
     title: ['GROWTH ', 'AUDITS'],
-    desc: 'Already shipped? We diagnose what\'s leaking and fix it. Most clients see meaningful conversion lifts within 30 days of audit delivery.',
+    desc: "Already shipped? We diagnose what's leaking: Site, SEO, Google Business, and tell you exactly how to fix it. Most clients see meaningful gains within 30 days.",
+    href: '/services/growth-audits',
   },
 ];
 
@@ -43,6 +48,7 @@ function GlassCard({ service, index }: { service: Service; index: number }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.06, ease: [0.2, 0.8, 0.2, 1] }}
     >
+      <Link href={service.href} className="block">
       <TiltCard
         className="group relative rounded-[28px] border border-white/[0.08] min-h-[360px] flex flex-col p-8 md:p-10 cursor-pointer hover:border-white/[0.16] hover:bg-white/[0.045]"
         style={{
@@ -92,6 +98,7 @@ function GlassCard({ service, index }: { service: Service; index: number }) {
           </span>
         </div>
       </TiltCard>
+      </Link>
     </motion.div>
   );
 }
