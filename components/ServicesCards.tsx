@@ -92,7 +92,7 @@ function GlassCard({ service, index }: { service: Service; index: number }) {
             Explore
           </span>
           <span
-            className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-white transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:rotate-[-45deg]"
+            className="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center text-[#f5d020] transition-all duration-300 group-hover:bg-white group-hover:text-black group-hover:rotate-[-45deg]"
           >
             →
           </span>
@@ -106,6 +106,7 @@ function GlassCard({ service, index }: { service: Service; index: number }) {
 export function ServicesCards() {
   return (
     <section
+      id="services"
       aria-labelledby="services-cards-heading"
       className="py-[120px] border-b border-white/[0.06] bg-black isolate"
     >

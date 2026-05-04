@@ -65,7 +65,7 @@ function AccordionItem({
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.25, ease: [0.2, 0.8, 0.2, 1] }}
-          className="flex-shrink-0 w-8 h-8 rounded-full border border-white/[0.14] flex items-center justify-center text-[#8a8a92] text-[18px] leading-none"
+          className="flex-shrink-0 w-8 h-8 rounded-full border border-white/[0.14] flex items-center justify-center text-[#f5d020] text-[18px] leading-none"
           aria-hidden="true"
         >
           +

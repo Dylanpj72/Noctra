@@ -158,7 +158,7 @@ export default function BrandSystemsPage() {
                   aria-hidden="true"
                   className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"
                 />
-                <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62] mb-4">
+                <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#f5d020] mb-4">
                   {item.num}
                 </p>
                 <h3 className="font-[family-name:var(--font-inter)] font-[700] text-[17px] tracking-[-0.02em] text-white mb-3">
@@ -226,7 +226,7 @@ export default function BrandSystemsPage() {
                 className="flex gap-6 rounded-2xl border border-white/[0.08] p-7 md:p-8"
                 style={{ background: 'rgba(255,255,255,0.02)' }}
               >
-                <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62] flex-shrink-0 mt-1">
+                <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#f5d020] flex-shrink-0 mt-1">
                   {step.num}
                 </p>
                 <div>

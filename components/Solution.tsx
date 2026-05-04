@@ -77,7 +77,7 @@ export function Solution() {
                   aria-hidden="true"
                   className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none"
                 />
-                <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62] mb-4">
+                <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#f5d020] mb-4">
                   {String(i + 1).padStart(2, '0')}
                 </p>
                 <h3 className="font-[family-name:var(--font-inter)] font-[700] text-[18px] md:text-[20px] tracking-[-0.02em] text-white mb-3">

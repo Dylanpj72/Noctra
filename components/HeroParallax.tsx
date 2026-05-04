@@ -90,7 +90,7 @@ function CardInner({ product }: { product: Product }) {
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62]">
             {product.category}
           </p>
-          <div className="w-7 h-7 rounded-full border border-white/[0.12] flex items-center justify-center text-[#5a5a62] text-[12px] transition-all duration-300 group-hover/card:border-white/30 group-hover/card:text-white group-hover/card:rotate-[-45deg] group-hover/card:bg-white/[0.06]">
+          <div className="w-7 h-7 rounded-full border border-white/[0.12] flex items-center justify-center text-[#f5d020] text-[12px] transition-all duration-300 group-hover/card:border-white/30 group-hover/card:text-white group-hover/card:rotate-[-45deg] group-hover/card:bg-white/[0.06]">
             →
           </div>
         </div>

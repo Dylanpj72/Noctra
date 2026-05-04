@@ -54,7 +54,7 @@ function ProcessStep({
       {/* Timeline column */}
       <div className="flex flex-col items-center">
         <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/[0.16] bg-white/[0.04] flex items-center justify-center flex-shrink-0">
-          <span className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.1em] text-[#8a8a92]">
+          <span className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.1em] text-[#f5d020]">
             {step.num}
           </span>
         </div>
