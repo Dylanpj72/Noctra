@@ -1,3 +1,5 @@
+import { TextHoverEffect } from './TextHoverEffect';
+
 const studioLinks = [
   { label: 'Work', href: '#work' },
   { label: 'Process', href: '#process' },
@@ -27,15 +29,8 @@ export function Footer() {
         className="text-center overflow-hidden pt-16 pb-0 select-none"
         aria-hidden="true"
       >
-        <div
-          className="font-[family-name:var(--font-inter)] font-[900] leading-[0.8] tracking-[-0.07em] text-transparent uppercase"
-          style={{
-            fontSize: 'clamp(100px,20vw,380px)',
-            WebkitTextStroke: '1px rgba(255,255,255,0.07)',
-            marginBottom: '-0.12em',
-          }}
-        >
-          NOCTRA
+        <div style={{ width: '100%', height: 'clamp(100px,20vw,380px)', marginBottom: 'clamp(-12px,-2.4vw,-45.6px)' }}>
+          <TextHoverEffect text="NOCTRA" duration={0} />
         </div>
       </div>
 

@@ -4,6 +4,7 @@ import { lazy, Suspense } from 'react';
 import { motion } from 'motion/react';
 import { Nav } from './Nav';
 import { LiquidMetalButton } from './LiquidMetalButton';
+import { TextHoverEffect } from './TextHoverEffect';
 
 const HeroParticles = lazy(() =>
   import('./HeroParticles').then((m) => ({ default: m.HeroParticles }))
@@ -194,13 +195,10 @@ export function Hero() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 1 }}
         aria-hidden="true"
-        className="absolute bottom-[-20px] left-1/2 -translate-x-1/2 font-[family-name:var(--font-inter)] font-[900] leading-[0.8] tracking-[-0.07em] text-transparent pointer-events-none whitespace-nowrap select-none z-[1]"
-        style={{
-          fontSize: 'clamp(120px, 22vw, 360px)',
-          WebkitTextStroke: '1px rgba(255,255,255,0.06)',
-        }}
+        className="absolute bottom-[-20px] left-1/2 -translate-x-1/2 select-none z-[1]"
+        style={{ width: 'clamp(700px, 120vw, 2100px)', height: 'clamp(120px, 22vw, 360px)' }}
       >
-        NOCTRA
+        <TextHoverEffect text="NOCTRA" duration={0} />
       </motion.div>
     </section>
   );
