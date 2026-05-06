@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { TiltCard } from './TiltCard';
+import { LiquidMetalButton } from './LiquidMetalButton';
 import {
   PRICING,
   formatPrice,
@@ -570,13 +571,9 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
             </em>
           </p>
           <p className="text-[14px] text-[#5a5a62]">No obligations, no pressure.</p>
-          <a
-            href="/contact"
-            className="mt-2 inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/[0.14] bg-white/[0.04] text-[13px] font-semibold text-white hover:bg-white/[0.08] hover:border-white/[0.24] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white active:scale-[0.98]"
-          >
-            Request a free quote
-            <span className="text-[#f5d020]">→</span>
-          </a>
+          <div className="mt-2">
+            <LiquidMetalButton label="Request a free quote →" href="/contact" width={220} />
+          </div>
         </div>
       </div>
     </section>
