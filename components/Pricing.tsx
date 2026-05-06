@@ -381,11 +381,11 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
             </em>{' '}
             <span className="font-[900]">scale.</span>
           </h2>
-          <p className="font-[family-name:var(--font-instrument-serif)] italic text-[16px] md:text-[18px] text-[#8a8a92] max-w-[580px] mx-auto mb-6">
-            Flat monthly covers everything for 24 months, then drops to a low retainer. Prefer to own it outright? Pay upfront and keep the retainer for ongoing support.
-          </p>
-          <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.2em] uppercase text-[#5a5a62] max-w-[560px] mx-auto leading-relaxed">
+          <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.2em] uppercase text-[#5a5a62] max-w-[560px] mx-auto leading-relaxed mb-6">
             Every project is scoped to your specific needs — these figures give you a general range to plan around. Final pricing depends on scope, complexity, and what you want to achieve.
+          </p>
+          <p className="font-[family-name:var(--font-instrument-serif)] italic text-[16px] md:text-[18px] text-[#8a8a92] max-w-[580px] mx-auto">
+            Flat monthly covers everything for 24 months, then drops to a low retainer. Prefer to own it outright? Pay upfront and keep the retainer for ongoing support.
           </p>
         </div>
 
