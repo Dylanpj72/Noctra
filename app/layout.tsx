@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Instrument_Serif, JetBrains_Mono } from 'next/font/google';
+import { Inter, Cormorant_Garamond, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({
@@ -9,9 +9,9 @@ const inter = Inter({
   display: 'swap',
 });
 
-const instrumentSerif = Instrument_Serif({
+const instrumentSerif = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['400'],
+  weight: ['400', '500', '600'],
   style: ['normal', 'italic'],
   variable: '--font-instrument-serif',
   display: 'swap',
