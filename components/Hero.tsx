@@ -1,6 +1,7 @@
 'use client';
 
 import { lazy, Suspense } from 'react';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { Nav } from './Nav';
 import { LiquidMetalButton } from './LiquidMetalButton';
@@ -26,6 +27,21 @@ export function Hero() {
       aria-labelledby="hero-heading"
       className="relative min-h-svh overflow-hidden bg-black border-b border-white/[0.06]"
     >
+      {/* Hero background image */}
+      <Image
+        src="/brand/hero-bg.png"
+        alt=""
+        fill
+        priority
+        className="object-cover object-center"
+        aria-hidden="true"
+      />
+      {/* Dark gradient overlay — keeps text contrast ≥ 4.5:1 */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/85 pointer-events-none"
+      />
+
       {/* Hangar light */}
       <div
         aria-hidden="true"

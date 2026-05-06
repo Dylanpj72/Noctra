@@ -1,3 +1,4 @@
+import NextImage from 'next/image';
 import { Nav } from '@/components/Nav';
 import { Footer } from '@/components/Footer';
 import { LiquidMetalButton } from '@/components/LiquidMetalButton';
@@ -57,28 +58,44 @@ const paths = [
 export default function GrowthAuditsPage() {
   return (
     <main className="bg-black min-h-screen">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-14 pt-10">
-        <Nav />
-      </div>
 
       {/* Hero */}
-      <section className="max-w-[1400px] mx-auto px-6 md:px-14 pt-20 pb-24 border-b border-white/[0.06]">
-        <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.3em] uppercase text-[#5a5a62] mb-8">
-          SVC / 03
-        </p>
-        <h1
-          className="font-[family-name:var(--font-inter)] font-[200] leading-[0.9] tracking-[-0.05em] uppercase text-white mb-8"
-          style={{ fontSize: 'clamp(44px,7vw,108px)' }}
-        >
-          Find out exactly why your site{' '}
-          <em className="font-[family-name:var(--font-instrument-serif)] not-italic italic font-[400] normal-case">
-            isn&apos;t converting.
-          </em>
-        </h1>
-        <p className="font-[family-name:var(--font-instrument-serif)] italic text-[18px] md:text-[22px] text-[#8a8a92] max-w-[680px] leading-relaxed mb-10">
-          A complete audit of your website, SEO, and Google presence. We diagnose what&apos;s leaking, prioritise the fixes, and show you the path to measurable growth, typically within 30 days.
-        </p>
-        <LiquidMetalButton label="Book your audit →" href="/contact" width={160} />
+      <section className="relative overflow-hidden border-b border-white/[0.06]">
+        <NextImage
+          src="/brand/growth-audits.png"
+          alt=""
+          fill
+          priority
+          className="object-cover object-center"
+          aria-hidden="true"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/60 to-black/88 pointer-events-none"
+        />
+        <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-14">
+          <div className="pt-10">
+            <Nav />
+          </div>
+          <div className="pt-20 pb-24">
+            <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.3em] uppercase text-[#5a5a62] mb-8">
+              SVC / 03
+            </p>
+            <h1
+              className="font-[family-name:var(--font-inter)] font-[200] leading-[0.9] tracking-[-0.05em] uppercase text-white mb-8"
+              style={{ fontSize: 'clamp(44px,7vw,108px)' }}
+            >
+              Find out exactly why your site{' '}
+              <em className="font-[family-name:var(--font-instrument-serif)] not-italic italic font-[400] normal-case">
+                isn&apos;t converting.
+              </em>
+            </h1>
+            <p className="font-[family-name:var(--font-instrument-serif)] italic text-[18px] md:text-[22px] text-[#8a8a92] max-w-[680px] leading-relaxed mb-10">
+              A complete audit of your website, SEO, and Google presence. We diagnose what&apos;s leaking, prioritise the fixes, and show you the path to measurable growth, typically within 30 days.
+            </p>
+            <LiquidMetalButton label="Book your audit →" href="/contact" width={160} />
+          </div>
+        </div>
       </section>
 
       {/* The Problem */}
