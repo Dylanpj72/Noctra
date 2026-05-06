@@ -2,7 +2,6 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion, useInView } from 'motion/react';
 import { TiltCard } from './TiltCard';
 
@@ -12,7 +11,6 @@ type Service = {
   title: [string, string];
   desc: string;
   href: string;
-  image: string;
 };
 
 const services: Service[] = [
@@ -22,7 +20,6 @@ const services: Service[] = [
     title: ['WEB ', 'DESIGN'],
     desc: 'Custom websites built to convert. Strategy, design, and development - all under one roof. From first conversation to live site in 2 to 6 weeks.',
     href: '/services/web-design',
-    image: '/brand/web-design.png',
   },
   {
     num: 'SVC / 02',
@@ -30,7 +27,6 @@ const services: Service[] = [
     title: ['BRAND ', 'SYSTEMS'],
     desc: 'Logo, type, color, voice, and motion - built as a working system, not a moodboard. Designed to scale from your business card to a billboard.',
     href: '/services/brand-systems',
-    image: '/brand/brand-systems.png',
   },
   {
     num: 'SVC / 03',
@@ -38,7 +34,6 @@ const services: Service[] = [
     title: ['GROWTH ', 'AUDITS'],
     desc: "Already shipped? We diagnose what's leaking: Site, SEO, Google Business, and tell you exactly how to fix it. Most clients see meaningful gains within 30 days.",
     href: '/services/growth-audits',
-    image: '/brand/growth-audits.png',
   },
 ];
 
@@ -55,23 +50,13 @@ function GlassCard({ service, index }: { service: Service; index: number }) {
     >
       <Link href={service.href} className="block">
       <TiltCard
-        className="group relative rounded-[28px] overflow-hidden border border-white/[0.08] min-h-[360px] flex flex-col p-8 md:p-10 cursor-pointer hover:border-white/[0.16]"
+        className="group relative rounded-[28px] border border-white/[0.08] min-h-[360px] flex flex-col p-8 md:p-10 cursor-pointer hover:border-white/[0.16] hover:bg-white/[0.045]"
         style={{
+          background: 'rgba(255,255,255,0.025)',
           backdropFilter: 'blur(24px) saturate(180%)',
           boxShadow: '0 16px 48px rgba(0,0,0,0.5)',
         }}
       >
-        {/* Background image with atmospheric overlay */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <Image
-            src={service.image}
-            alt=""
-            fill
-            className="object-cover object-center transition-transform duration-[600ms] ease-out group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-black/[0.88] transition-colors duration-[600ms] ease-out group-hover:bg-black/[0.76]" />
-        </div>
-
         {/* Top highlight */}
         <span
           aria-hidden="true"
