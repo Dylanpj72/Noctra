@@ -155,7 +155,7 @@ export function Hero() {
             className="flex gap-3 flex-wrap justify-center"
           >
             <LiquidMetalButton label="See our work →" href="#work" width={158} />
-            <LiquidMetalButton label="Book a call" href="#contact" width={130} />
+            <LiquidMetalButton label="Request a free quote" href="/contact" width={192} />
           </motion.div>
         </div>
 

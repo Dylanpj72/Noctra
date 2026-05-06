@@ -380,8 +380,11 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
             </em>{' '}
             <span className="font-[900]">scale.</span>
           </h2>
-          <p className="font-[family-name:var(--font-instrument-serif)] italic text-[16px] md:text-[18px] text-[#8a8a92] max-w-[580px] mx-auto">
+          <p className="font-[family-name:var(--font-instrument-serif)] italic text-[16px] md:text-[18px] text-[#8a8a92] max-w-[580px] mx-auto mb-6">
             Flat monthly covers everything for 24 months, then drops to a low retainer. Prefer to own it outright? Pay upfront and keep the retainer for ongoing support.
+          </p>
+          <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.2em] uppercase text-[#5a5a62] max-w-[560px] mx-auto leading-relaxed">
+            Every project is scoped to your specific needs — these figures give you a general range to plan around. Final pricing depends on scope, complexity, and what you want to achieve.
           </p>
         </div>
 
@@ -550,10 +553,31 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
         </div>
 
         {/* Footer note */}
-        <p className="text-center text-[13px] text-[#5a5a62] max-w-[560px] mx-auto leading-relaxed">
+        <p className="text-center text-[13px] text-[#5a5a62] max-w-[560px] mx-auto leading-relaxed mb-16">
           All prices in <span className="text-[#8a8a92]">{region.currency}</span>.
           {' '}Website management means we handle any updates or changes for you, no tech headaches.
         </p>
+
+        {/* Quote CTA */}
+        <div className="border-t border-white/[0.06] pt-16 flex flex-col items-center gap-4 text-center">
+          <p
+            className="font-[family-name:var(--font-inter)] font-[200] leading-[1.0] tracking-[-0.03em] uppercase text-white"
+            style={{ fontSize: 'clamp(22px,3vw,38px)' }}
+          >
+            Not sure which plan fits{' '}
+            <em className="font-[family-name:var(--font-instrument-serif)] not-italic italic font-[400] normal-case">
+              your situation?
+            </em>
+          </p>
+          <p className="text-[14px] text-[#5a5a62]">No obligations, no pressure.</p>
+          <a
+            href="/contact"
+            className="mt-2 inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-white/[0.14] bg-white/[0.04] text-[13px] font-semibold text-white hover:bg-white/[0.08] hover:border-white/[0.24] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-white active:scale-[0.98]"
+          >
+            Request a free quote
+            <span className="text-[#f5d020]">→</span>
+          </a>
+        </div>
       </div>
     </section>
   );
