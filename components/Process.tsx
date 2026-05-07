@@ -172,7 +172,7 @@ export function Process() {
           src="/brand/mockup.png"
           alt=""
           fill
-          className="object-contain opacity-[0.30]"
+          className="object-cover opacity-[0.30]"
           style={{ objectPosition: 'right center' }}
         />
       </div>
