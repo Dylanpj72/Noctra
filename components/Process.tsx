@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import type { ReactNode } from 'react';
+import Image from 'next/image';
 import { motion, useInView } from 'motion/react';
 
 const S = 'rgba(255,255,255,0.26)'; // shared stroke colour — matches service-card icon opacity band
@@ -163,9 +164,21 @@ export function Process() {
     <section
       id="process"
       aria-labelledby="process-heading"
-      className="py-[120px] border-b border-white/[0.06] bg-black isolate"
+      className="relative overflow-hidden py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
-      <div className="max-w-[1400px] mx-auto px-6 md:px-14">
+      {/* Mockup background — fixed to right half, fades out left */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+        <Image
+          src="/brand/mockup.png"
+          alt=""
+          fill
+          className="object-cover object-right-top opacity-[0.18]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
+      </div>
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-14">
         <div
           ref={headRef}
           className="mb-20 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end"
