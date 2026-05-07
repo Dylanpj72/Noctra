@@ -166,17 +166,18 @@ export function Process() {
       aria-labelledby="process-heading"
       className="relative overflow-hidden py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
-      {/* Mockup background — right half, fully contained so laptop + phone both show */}
-      <div aria-hidden="true" className="absolute inset-y-0 right-0 w-[55%] pointer-events-none">
+      {/* Mockup — fills section, focal point shifted right to centre in the open space beside the cards */}
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
         <Image
           src="/brand/mockup.png"
           alt=""
           fill
-          className="object-contain object-center opacity-[0.28]"
+          className="object-cover opacity-[0.22]"
+          style={{ objectPosition: '72% center' }}
         />
       </div>
       {/* Gradients to blend image into black */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black from-30% via-black/70 to-transparent" />
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black from-30% via-black/75 to-transparent" />
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/40 via-transparent to-black/60" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-14">
