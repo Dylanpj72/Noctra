@@ -166,19 +166,22 @@ export function Process() {
       aria-labelledby="process-heading"
       className="relative overflow-hidden py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
-      {/* Mockup — fills section, focal point shifted right to centre in the open space beside the cards */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+      {/* Mockup — inset from top/bottom so image doesn't hard-clip at section edges */}
+      <div aria-hidden="true" className="absolute inset-x-0 top-[12%] bottom-[12%] pointer-events-none">
         <Image
           src="/brand/mockup.png"
           alt=""
           fill
-          className="object-cover opacity-[0.22]"
+          className="object-cover opacity-[0.26]"
           style={{ objectPosition: '72% center' }}
         />
       </div>
-      {/* Gradients to blend image into black */}
+      {/* Left fade */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black from-30% via-black/75 to-transparent" />
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+      {/* Top fade — full black → transparent over top quarter */}
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[30%] pointer-events-none bg-gradient-to-b from-black to-transparent" />
+      {/* Bottom fade — transparent → full black over bottom quarter */}
+      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[30%] pointer-events-none bg-gradient-to-t from-black to-transparent" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-14">
         <div
