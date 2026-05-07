@@ -167,7 +167,7 @@ export function Process() {
       className="relative overflow-hidden py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
       {/* Mockup — right-anchored, wide enough to show both devices */}
-      <div aria-hidden="true" className="absolute right-0 inset-y-0 w-[60%] pointer-events-none translate-x-[38%]">
+      <div aria-hidden="true" className="absolute right-0 inset-y-0 w-[60%] pointer-events-none translate-x-[53%]">
         <Image
           src="/brand/mockup.png"
           alt=""
@@ -176,8 +176,6 @@ export function Process() {
           style={{ objectPosition: '85% center' }}
         />
       </div>
-      {/* Fade — extends well past the image left edge so there's no hard cutoff */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black from-[45%] to-[75%] to-transparent" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-14">
         <div
