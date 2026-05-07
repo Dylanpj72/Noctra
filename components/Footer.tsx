@@ -1,17 +1,17 @@
 import { TextHoverEffect } from './TextHoverEffect';
 
 const studioLinks = [
-  { label: 'Work', href: '#work' },
-  { label: 'Process', href: '#process' },
-  { label: 'About', href: '#' },
-  { label: 'Journal', href: '#' },
+  { label: 'Work', href: '/work' },
+  { label: 'Industries', href: '/industries' },
+  { label: 'Process', href: '/#process' },
+  { label: 'About', href: '/about' },
 ];
 
 const serviceLinks = [
-  { label: 'Web Design', href: '#services' },
-  { label: 'Brand Systems', href: '#services' },
-  { label: 'Growth Audits', href: '#services' },
-  { label: 'Retainer', href: '#pricing' },
+  { label: 'Web Design', href: '/services/web-design' },
+  { label: 'Brand Systems', href: '/services/brand-systems' },
+  { label: 'Growth Audits', href: '/services/growth-audits' },
+  { label: 'Pricing', href: '/pricing' },
 ];
 
 const contactLinks = [

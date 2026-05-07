@@ -9,6 +9,7 @@ import { LiquidMetalButton } from './LiquidMetalButton';
 const links = [
   { label: 'Work', href: '/work' },
   { label: 'Services', href: '/#services' },
+  { label: 'Industries', href: '/industries' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'About', href: '/about' },
 ];
