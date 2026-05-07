@@ -166,8 +166,12 @@ export function Process() {
       aria-labelledby="process-heading"
       className="relative overflow-hidden py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
-      {/* Mockup — right-anchored, wide enough to show both devices */}
-      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+      {/* Mockup — container extends 300% left so translating 60% right still covers full section */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-y-0 right-0 pointer-events-none translate-x-[60%]"
+        style={{ left: '-300%' }}
+      >
         <Image
           src="/brand/mockup.png"
           alt=""
