@@ -167,7 +167,7 @@ export function Process() {
       className="relative overflow-hidden py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
       {/* Mockup — right-anchored, wide enough to show both devices */}
-      <div aria-hidden="true" className="absolute right-0 inset-y-0 w-[60%] pointer-events-none translate-x-[53%]">
+      <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
         <Image
           src="/brand/mockup.png"
           alt=""
