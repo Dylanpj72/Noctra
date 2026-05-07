@@ -166,13 +166,13 @@ export function Process() {
       aria-labelledby="process-heading"
       className="relative overflow-hidden py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
-      {/* Mockup — inset from top/bottom so image doesn't hard-clip at section edges */}
-      <div aria-hidden="true" className="absolute inset-x-0 top-[12%] bottom-[12%] pointer-events-none">
+      {/* Mockup — near-full section, contained so full image shows without cropping */}
+      <div aria-hidden="true" className="absolute inset-x-0 top-[6%] bottom-[6%] pointer-events-none">
         <Image
           src="/brand/mockup.png"
           alt=""
           fill
-          className="object-cover opacity-[0.26]"
+          className="object-contain opacity-[0.28]"
           style={{ objectPosition: '72% center' }}
         />
       </div>
