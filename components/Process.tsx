@@ -166,22 +166,18 @@ export function Process() {
       aria-labelledby="process-heading"
       className="relative overflow-hidden py-[120px] border-b border-white/[0.06] bg-black isolate"
     >
-      {/* Mockup — near-full section, contained so full image shows without cropping */}
+      {/* Mockup — shifted right, no top/bottom fades */}
       <div aria-hidden="true" className="absolute inset-x-0 top-[6%] bottom-[6%] pointer-events-none">
         <Image
           src="/brand/mockup.png"
           alt=""
           fill
           className="object-contain opacity-[0.28]"
-          style={{ objectPosition: '72% center' }}
+          style={{ objectPosition: '85% center' }}
         />
       </div>
-      {/* Left fade */}
+      {/* Left fade only */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black from-30% via-black/75 to-transparent" />
-      {/* Top fade — full black → transparent over top quarter */}
-      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-[30%] pointer-events-none bg-gradient-to-b from-black to-transparent" />
-      {/* Bottom fade — transparent → full black over bottom quarter */}
-      <div aria-hidden="true" className="absolute inset-x-0 bottom-0 h-[30%] pointer-events-none bg-gradient-to-t from-black to-transparent" />
 
       <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-14">
         <div
