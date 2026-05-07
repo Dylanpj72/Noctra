@@ -7,71 +7,89 @@ import type { ReactNode } from 'react';
 export const metadata: Metadata = {
   title: 'Industries We Serve · Noctra Web Design Agency',
   description:
-    'Custom websites for law firms, healthcare practices, restaurants, real estate, construction, beauty, e-commerce, finance, professional services, and technology companies. Noctra builds high-converting websites for ambitious businesses across 10 industries.',
+    'Custom websites for tradespeople, home services, legal and financial professionals, healthcare practitioners, beauty businesses, events and wedding suppliers, restaurants, real estate, e-commerce, and technology companies. Noctra builds high-converting websites for ambitious local and online businesses.',
 };
 
 /* ── Shared SVG style ─────────────────────────── */
-const S = 'rgba(255,255,255,0.26)';
+const S  = 'rgba(255,255,255,0.26)';
 const SW = '1';
 const RC = { strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
 
 const icons: Record<string, ReactNode> = {
+  /* Wrench + spanner — Home Trades */
+  trades: (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <path d="M 28 9 Q 34 9 34 15 Q 34 21 28 21 L 13 34 Q 10 34 10 31 L 23 18 Q 23 9 28 9 Z" stroke={S} strokeWidth={SW} {...RC} />
+      <line x1="23" y1="17" x2="29" y2="13" stroke={S} strokeWidth={SW} strokeLinecap="round" />
+    </svg>
+  ),
+  /* Mobile van — Home & Mobile Services */
+  mobile: (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <rect x="5" y="19" width="26" height="11" rx="1.5" stroke={S} strokeWidth={SW} />
+      <path d="M 5 19 L 5 14 Q 5 11 8 11 L 18 11 L 18 19" stroke={S} strokeWidth={SW} {...RC} />
+      <rect x="7" y="13" width="7" height="6" rx="1" stroke={S} strokeWidth={SW} />
+      <circle cx="10" cy="30" r="2.5" stroke={S} strokeWidth={SW} />
+      <circle cx="24" cy="30" r="2.5" stroke={S} strokeWidth={SW} />
+      <line x1="22" y1="24" x2="28" y2="24" stroke={S} strokeWidth={SW} strokeLinecap="round" />
+    </svg>
+  ),
+  /* Scales — Legal & Financial */
   legal: (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <line x1="20" y1="8" x2="20" y2="32" stroke={S} strokeWidth={SW} strokeLinecap="round" />
-      <line x1="11" y1="8" x2="29" y2="8" stroke={S} strokeWidth={SW} strokeLinecap="round" />
-      <line x1="11" y1="8" x2="11" y2="16" stroke={S} strokeWidth={SW} strokeLinecap="round" />
-      <line x1="29" y1="8" x2="29" y2="16" stroke={S} strokeWidth={SW} strokeLinecap="round" />
-      <path d="M 7 16 Q 11 23 15 16" stroke={S} strokeWidth={SW} {...RC} />
+      <line x1="20" y1="8"  x2="20" y2="32" stroke={S} strokeWidth={SW} strokeLinecap="round" />
+      <line x1="11" y1="8"  x2="29" y2="8"  stroke={S} strokeWidth={SW} strokeLinecap="round" />
+      <line x1="11" y1="8"  x2="11" y2="16" stroke={S} strokeWidth={SW} strokeLinecap="round" />
+      <line x1="29" y1="8"  x2="29" y2="16" stroke={S} strokeWidth={SW} strokeLinecap="round" />
+      <path d="M 7 16 Q 11 23 15 16"  stroke={S} strokeWidth={SW} {...RC} />
       <path d="M 25 16 Q 29 23 33 16" stroke={S} strokeWidth={SW} {...RC} />
       <line x1="15" y1="32" x2="25" y2="32" stroke={S} strokeWidth={SW} strokeLinecap="round" />
     </svg>
   ),
-  healthcare: (
+  /* Cross — Health & Wellness */
+  health: (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
       <rect x="16" y="8"  width="8" height="24" rx="1.5" stroke={S} strokeWidth={SW} />
       <rect x="8"  y="16" width="24" height="8"  rx="1.5" stroke={S} strokeWidth={SW} />
     </svg>
   ),
-  realestate: (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <polyline points="7,21 20,9 33,21" stroke={S} strokeWidth={SW} {...RC} />
-      <rect x="12" y="21" width="16" height="12" stroke={S} strokeWidth={SW} {...RC} />
-      <rect x="17" y="25" width="6" height="8" stroke={S} strokeWidth={SW} />
-    </svg>
-  ),
-  restaurant: (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <line x1="14" y1="8" x2="14" y2="32" stroke={S} strokeWidth={SW} strokeLinecap="round" />
-      <path d="M 10 8 L 10 17 Q 14 21 18 17 L 18 8" stroke={S} strokeWidth={SW} {...RC} />
-      <line x1="26" y1="8" x2="26" y2="32" stroke={S} strokeWidth={SW} strokeLinecap="round" />
-      <path d="M 26 8 Q 31 12 31 18 Q 31 22 26 22" stroke={S} strokeWidth={SW} {...RC} />
-    </svg>
-  ),
-  finance: (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <line x1="7" y1="32" x2="33" y2="32" stroke={S} strokeWidth={SW} strokeLinecap="round" />
-      <rect x="9"  y="23" width="6" height="9"  stroke={S} strokeWidth={SW} />
-      <rect x="17" y="17" width="6" height="15" stroke={S} strokeWidth={SW} />
-      <rect x="25" y="11" width="6" height="21" stroke={S} strokeWidth={SW} />
-    </svg>
-  ),
-  construction: (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <rect x="8" y="22" width="24" height="10" rx="1" stroke={S} strokeWidth={SW} />
-      <polyline points="14,22 14,16 26,16 26,22" stroke={S} strokeWidth={SW} {...RC} />
-      <polyline points="18,16 18,12 22,12 22,16" stroke={S} strokeWidth={SW} {...RC} />
-      <line x1="8" y1="27" x2="32" y2="27" stroke={S} strokeWidth={SW} />
-    </svg>
-  ),
+  /* Diamond — Beauty & Personal Care */
   beauty: (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
       <polygon points="20,8 31,19 20,34 9,19" stroke={S} strokeWidth={SW} {...RC} />
-      <line x1="9" y1="19" x2="31" y2="19" stroke={S} strokeWidth={SW} />
+      <line x1="9"  y1="19" x2="31" y2="19" stroke={S} strokeWidth={SW} />
       <line x1="14" y1="10" x2="9"  y2="19" stroke={S} strokeWidth={SW} strokeLinecap="round" />
       <line x1="26" y1="10" x2="31" y2="19" stroke={S} strokeWidth={SW} strokeLinecap="round" />
     </svg>
   ),
+  /* Camera — Events & Celebrations */
+  events: (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <rect x="6"  y="14" width="28" height="18" rx="2" stroke={S} strokeWidth={SW} />
+      <circle cx="20" cy="23" r="6" stroke={S} strokeWidth={SW} />
+      <circle cx="20" cy="23" r="2.5" stroke={S} strokeWidth={SW} />
+      <path d="M 14 14 L 16 9 H 24 L 26 14" stroke={S} strokeWidth={SW} {...RC} />
+      <circle cx="29" cy="18" r="1.5" fill={S} />
+    </svg>
+  ),
+  /* Fork + knife — Restaurants */
+  restaurant: (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <line x1="14" y1="8"  x2="14" y2="32" stroke={S} strokeWidth={SW} strokeLinecap="round" />
+      <path d="M 10 8 L 10 17 Q 14 21 18 17 L 18 8" stroke={S} strokeWidth={SW} {...RC} />
+      <line x1="26" y1="8"  x2="26" y2="32" stroke={S} strokeWidth={SW} strokeLinecap="round" />
+      <path d="M 26 8 Q 31 12 31 18 Q 31 22 26 22" stroke={S} strokeWidth={SW} {...RC} />
+    </svg>
+  ),
+  /* House — Real Estate */
+  realestate: (
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <polyline points="7,21 20,9 33,21" stroke={S} strokeWidth={SW} {...RC} />
+      <rect x="12" y="21" width="16" height="12" stroke={S} strokeWidth={SW} {...RC} />
+      <rect x="17" y="25" width="6"  height="8"  stroke={S} strokeWidth={SW} />
+    </svg>
+  ),
+  /* Shopping bag — E-commerce */
   ecommerce: (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
       <rect x="9" y="16" width="22" height="16" rx="2" stroke={S} strokeWidth={SW} />
@@ -80,15 +98,7 @@ const icons: Record<string, ReactNode> = {
       <circle cx="25" cy="28" r="1.5" stroke={S} strokeWidth={SW} />
     </svg>
   ),
-  professional: (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-      <rect x="8" y="17" width="24" height="15" rx="2" stroke={S} strokeWidth={SW} />
-      <path d="M 15 17 L 15 14 Q 15 11 20 11 Q 25 11 25 14 L 25 17" stroke={S} strokeWidth={SW} {...RC} />
-      <line x1="8" y1="25" x2="32" y2="25" stroke={S} strokeWidth={SW} />
-      <line x1="18" y1="22" x2="22" y2="22" stroke={S} strokeWidth={SW} strokeLinecap="round" />
-      <line x1="20" y1="20" x2="20" y2="24" stroke={S} strokeWidth={SW} strokeLinecap="round" />
-    </svg>
-  ),
+  /* Code brackets — Technology */
   technology: (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
       <polyline points="16,12 8,20 16,28"  stroke={S} strokeWidth={SW} {...RC} />
@@ -111,129 +121,129 @@ type Industry = {
 
 const industries: Industry[] = [
   {
-    slug: 'law-firms',
+    slug: 'home-trades',
     num: 'IND / 01',
-    title: 'Law Firms & Legal',
-    tagline: 'Websites that earn trust before the first consultation.',
+    title: 'Home Trades & Property Services',
+    tagline: 'Your skills are your reputation. Your website should prove it.',
+    icon: icons.trades,
+    problem:
+      "Most tradespeople survive on referrals — until they don't. A referral gets someone to Google your name. What they find in that moment either confirms the recommendation or kills it. An absent or amateur website loses work quietly, constantly, and invisibly.",
+    body: [
+      "We build websites for plumbers, electricians, HVAC and aircon technicians, roofers, builders and general contractors, painters and decorators, locksmiths, pest control specialists, landscapers and garden services, tree surgeons and arborists, pool service and maintenance companies, fencing contractors, paving and driveway specialists, tilers, carpenters and joiners, gutter cleaning and repair services, handymen, and damp and waterproofing specialists.",
+      "Every site is built around your trade: clear service areas, real project photos, a contact path that makes it easy to request a quote, and local SEO that puts you in front of homeowners searching for your specific trade in your specific area.",
+      "We understand how trades businesses actually get work. We don't build brochures — we build lead engines that work while you're on site.",
+    ],
+  },
+  {
+    slug: 'home-services',
+    num: 'IND / 02',
+    title: 'Home & Mobile Services',
+    tagline: 'Professional websites for businesses that come to the customer.',
+    icon: icons.mobile,
+    problem:
+      "Mobile and domestic service businesses are often the best in their area at what they do — but nearly invisible online. If a customer can't find you when they need you, it doesn't matter how good the work is.",
+    body: [
+      "We build websites for cleaning services of all types — residential cleaning, commercial cleaning, end-of-tenancy cleaning, and carpet cleaning — as well as removal companies and man-with-a-van operators, mobile mechanics, auto detailers, window cleaners, appliance repair specialists, mobile car washes, junk removal companies, scaffolding hire businesses, skip hire operators, solar panel installers, security system installers, chimney sweeps, kitchen and bathroom fitters, flooring installers, conservatory and extension specialists, and driveway pressure washing companies.",
+      "These businesses share a common challenge: customers search online, often in a hurry, and choose whoever looks most trustworthy first. We build fast, clear, enquiry-focused websites that win that moment — with honest pricing presentation, service area maps, customer reviews, and frictionless contact options.",
+      "We also set up and optimise Google Business Profiles for every client in this category, because local search visibility is often more valuable than the website itself.",
+    ],
+  },
+  {
+    slug: 'legal-financial',
+    num: 'IND / 03',
+    title: 'Legal & Financial Professionals',
+    tagline: 'Trust-building websites for professions where trust is everything.',
     icon: icons.legal,
     problem:
-      "Most law firm websites are credential lists wrapped in a template. They look authoritative on the surface but feel cold, hard to navigate, and offer no clear path to contact.",
+      "In legal and financial services, your website is a trust signal before it's anything else. Clients aren't comparing your rates — they're deciding whether they believe you'll handle something important with competence and discretion. An outdated or generic site answers that question the wrong way.",
     body: [
-      "People arrive at a law firm's website in a state of stress. They're looking for someone they can trust with a situation that matters. A generic template with stock photos of gavels doesn't make that first impression.",
-      "We build law firm websites that communicate the right things: expertise without arrogance, accessibility without undermining authority, and a clear path to getting in touch. Mobile-first, fast-loading, and optimised for the specific searches your prospective clients are actually making.",
-      "Whether you're a solo practice, a boutique firm, or a multi-specialty group, we design around how clients actually choose a lawyer — not around how agencies like to design lawyer websites.",
+      "We build websites for solo lawyers and small law firms — particularly those practising family law, immigration law, conveyancing, and personal injury, where prospective clients actively search for a niche specialist. We also work with accountants and bookkeepers, financial advisers and planners, mortgage brokers, insurance brokers, chartered surveyors, architects in small and solo practices, independent estate agents, notaries, tax preparers, and translators and language service providers.",
+      "Each project starts with your positioning. Who you're specifically for, what you do that generalist practices don't, and what makes you the right choice over every other professional in your area. The website is built to answer those questions before a prospect even picks up the phone.",
+      "For law and financial services in particular, conversion is a slow burn — most clients are comparing two or three options before they decide. We build sites that hold up to that scrutiny: clear credentials, specific practice area pages, client testimonials, and a clear next step that doesn't feel pressured.",
     ],
   },
   {
-    slug: 'healthcare',
-    num: 'IND / 02',
-    title: 'Healthcare & Medical',
-    tagline: 'Websites that make patients feel confident before they arrive.',
-    icon: icons.healthcare,
-    problem:
-      "Healthcare websites often fail on the basics: confusing navigation, no clear answer to 'do you take my insurance?', and a booking process that sends patients to a PDF or a phone number that rings out.",
-    body: [
-      "Patients do their research before they book. They're looking at your website the way they'd look at a waiting room — and first impressions matter. A slow, cluttered, or outdated website loses patients before they've spoken to anyone.",
-      "We build healthcare websites that answer the right questions upfront, make booking as frictionless as possible, and build the kind of trust that converts a Google search into an appointment. Clear service pages, accessible design, and mobile performance that works on every device.",
-      "We work with GPs, specialists, allied health practices, and clinics across multiple disciplines. Each site is built to reflect the specific care you provide and the patients you're trying to reach.",
-    ],
-  },
-  {
-    slug: 'real-estate',
-    num: 'IND / 03',
-    title: 'Real Estate & Property',
-    tagline: 'Stand out in a market where everyone looks the same.',
-    icon: icons.realestate,
-    problem:
-      "Real estate is a saturated market where most agents rely on the same portals, the same templates, and the same headshots. Buyers and sellers can't tell one agent from another until they meet them — by which point the decision is often already made.",
-    body: [
-      "Your personal brand website is one of the few places you have full control over the impression you make. It's where you differentiate — through how you present your track record, your market expertise, and the experience of working with you.",
-      "We build personal brand websites for real estate agents, boutique agencies, and property developers that go beyond the generic portal look. Real listings, real testimonials, real market data — presented in a way that makes the right clients want to work with you specifically.",
-      "Whether you're a single agent building a profile or a developer marketing an off-plan project, we build the site around your specific competitive advantage.",
-    ],
-  },
-  {
-    slug: 'restaurants',
+    slug: 'health-wellness',
     num: 'IND / 04',
+    title: 'Health & Wellness Practitioners',
+    tagline: 'Websites that make patients feel confident before they arrive.',
+    icon: icons.health,
+    problem:
+      "Patients and clients research before they book. They're looking at your website the way they'd evaluate a referral — and an outdated, confusing, or hard-to-navigate site loses them before they've ever spoken to you.",
+    body: [
+      "We build websites for independent dentists, chiropractors, physiotherapists, osteopaths, podiatrists, acupuncturists, massage therapists, personal trainers, pilates and yoga instructors, nutritionists and dietitians, counsellors and psychotherapists in private practice, independent opticians, small veterinary practices, and mobile dog groomers.",
+      "Healthcare and wellness is a category where design and trust are directly connected. A site that feels clean, considered, and professional puts a patient at ease before the appointment. A cluttered or generic site does the opposite — and in a category where word-of-mouth is critical, that first impression affects every review that follows.",
+      "We build around how clients actually choose a healthcare or wellness provider: clear qualifications and credentials, specific treatment pages that help patients self-select, easy online booking, and a tone that matches the warmth and professionalism of the actual practice.",
+    ],
+  },
+  {
+    slug: 'beauty-personal-care',
+    num: 'IND / 05',
+    title: 'Beauty & Personal Care',
+    tagline: 'Booking-optimised websites that match the experience you deliver.',
+    icon: icons.beauty,
+    problem:
+      "Too many beauty businesses rely on Instagram and third-party booking apps as their entire online presence — and lose potential clients because there's no permanent, searchable, professional home base that belongs to them.",
+    body: [
+      "Social platforms and booking apps are rented land. You don't own them, you can't be discovered through Google the same way, and they don't tell your brand story. A dedicated website changes all of that.",
+      "We work with independent hair salons and barbers, nail technicians, lash and brow specialists, tattoo artists, mobile beauty therapists, makeup artists (particularly those focused on bridal and special occasion work), and aesthetic and cosmetic clinics.",
+      "We build around your specific aesthetic and the clients you're trying to attract: photography-led design that showcases your work, a service menu that's actually readable, seamless booking integration, and local SEO that gets you found when someone searches for your specific treatment in your area. Your website should feel as considered as the service itself.",
+    ],
+  },
+  {
+    slug: 'events-celebrations',
+    num: 'IND / 06',
+    title: 'Events & Celebrations',
+    tagline: 'Websites that book the date before the first conversation.',
+    icon: icons.events,
+    problem:
+      "Events and wedding businesses live and die on their portfolio — but most never present it properly. Couples and event planners shortlist suppliers based almost entirely on what they can see, and they're doing that research on a phone, usually late at night, on five different websites at once.",
+    body: [
+      "We build websites for wedding photographers, event photographers, videographers, wedding planners and coordinators, event caterers, private chefs, mobile bartenders, DJs, party entertainers, bouncy castle and event hire companies, florists (particularly those focused on weddings and seasonal events), and wedding and civil ceremony celebrants.",
+      "Your website is your primary sales tool — not your social feed, not your directory listing. It needs to load fast, look stunning on mobile, present your work in a way that makes couples feel something, and make it effortless to send an enquiry. Most events websites fail at least two of those four things.",
+      "We build sites that are designed for the specific moment couples and event planners discover you: emotionally engaging, easy to navigate, and structured around the questions every potential client has before they reach out — availability, pricing approach, what working with you is actually like.",
+    ],
+  },
+  {
+    slug: 'restaurants-hospitality',
+    num: 'IND / 07',
     title: 'Restaurants & Hospitality',
     tagline: 'Turn browsers into bookings before they find somewhere else.',
     icon: icons.restaurant,
     problem:
-      "Restaurant websites lose reservations every day to slow loads, broken booking systems, PDFs of menus, and sites that weren't designed to work on a phone. Most were built once and never touched again.",
+      "Restaurant websites lose reservations every day to slow load times, broken booking flows, PDF menus that don't work on a phone, and sites that were built once and never updated. When someone is deciding where to eat, they're moving fast — and a bad experience sends them somewhere else.",
     body: [
-      "When someone is deciding where to eat, they're browsing quickly and deciding fast. Your website has a few seconds to make them want to come in — and a broken booking button or a menu they can't read on mobile will send them somewhere else.",
-      "We build restaurant and hospitality websites designed for that specific decision moment: fast, beautiful on mobile, with menus that are actually browsable, booking systems that work, and photography that makes the food and atmosphere look the way they actually are.",
-      "We also integrate your Google Business Profile and local SEO setup as part of the build — because the best restaurant website in the world doesn't help if people can't find it when they're searching nearby.",
+      "We build websites for restaurants, cafes, bars, pubs, wine bars, hotel restaurants, private dining rooms, pop-ups, food trucks, and hospitality venues of all kinds. Each one is designed for that specific decision moment: fast on mobile, with menus that are actually readable, reservation systems that work, and photography and atmosphere that make people want to come in.",
+      "We also integrate Google Business Profile management and local SEO setup as part of every hospitality project. For restaurants, being found when someone searches 'restaurants near me' or 'best [cuisine] in [city]' is often more immediately valuable than the website design itself. We handle both.",
+      "Ongoing management is built into every project — menus change, seasonal offers change, events need promoting. We make sure your site stays current without you having to manage it.",
     ],
   },
   {
-    slug: 'finance',
-    num: 'IND / 05',
-    title: 'Finance & Accounting',
-    tagline: 'Modern financial websites that build confidence, not just credibility.',
-    icon: icons.finance,
+    slug: 'real-estate',
+    num: 'IND / 08',
+    title: 'Real Estate & Property',
+    tagline: 'Stand out in a market where everyone looks the same.',
+    icon: icons.realestate,
     problem:
-      "Financial services websites are often stuck between two failure modes: overly conservative and dated, or trying to look modern in ways that feel disconnected from the trust signals clients are actually looking for.",
+      "Real estate is a saturated market where most agents and firms rely on the same portals, the same templates, and the same headshots. Buyers and sellers often can't tell one agent from another until they meet them — by which point the decision is frequently already made.",
     body: [
-      "Clients choose financial advisers, accountants, and mortgage brokers based on trust above almost everything else. Your website is where that trust starts. An outdated design doesn't just look bad — it actively undermines the confidence you're trying to build.",
-      "We build financial services websites that communicate stability, expertise, and approachability — without looking like every other firm in your sector. Clear service breakdowns, strong calls to action, and a design that works as hard as you do.",
-      "Whether you're an independent financial adviser, a boutique accounting firm, or a specialist mortgage broker, we build around what your clients actually need to know before they get in touch.",
-    ],
-  },
-  {
-    slug: 'construction',
-    num: 'IND / 06',
-    title: 'Construction & Trades',
-    tagline: 'A professional online presence that wins jobs before the quote.',
-    icon: icons.construction,
-    problem:
-      "Most trades businesses have no website, or one they built years ago that sits there doing nothing. In a market driven by referrals, the website is often the last thing considered — but it's the first thing a new customer checks.",
-    body: [
-      "When someone gets a referral for a builder, a plumber, or an electrician, the first thing they do is Google them. What they find in that moment can confirm the recommendation or kill it. A non-existent or outdated website loses work — quietly, constantly, invisibly.",
-      "We build websites for builders, general contractors, specialty trades, and construction companies that showcase completed projects, generate enquiries, and rank in local search. Real project photos, clear service areas, and a simple path to getting a quote.",
-      "We also handle local SEO and Google Business setup as part of every project — because for trades businesses, ranking locally is often more valuable than anything else.",
-    ],
-  },
-  {
-    slug: 'beauty-wellness',
-    num: 'IND / 07',
-    title: 'Beauty & Wellness',
-    tagline: 'Booking-optimised websites that reflect the quality of your work.',
-    icon: icons.beauty,
-    problem:
-      "Salons, spas, and wellness businesses often rely entirely on Instagram and word of mouth — and lose potential clients because there's no easy way to book, no clear service menu, and no professional online home base.",
-    body: [
-      "Your work is visual and personal. Your website should feel the same way. Not a generic template with stock photos of candles and stones, but a site that looks and feels like your specific studio, your specific aesthetic, and the experience your clients actually have.",
-      "We build beauty and wellness websites designed for conversion: clear service menus, booking integration, before-and-after galleries where appropriate, and a brand aesthetic that attracts the clients you want.",
-      "We work with salons, barbershops, spas, tattoo studios, aesthetic clinics, personal trainers, and wellness practitioners. Every site is tailored to the specific kind of client you're trying to attract.",
+      "Your own website is one of the few places you have complete control over the impression you make. It's where you differentiate — through how you present your track record, your specific market expertise, and the experience of working with you. We build websites for independent estate agents, small property agencies, buying agents, letting specialists, property developers, and property management companies.",
+      "We don't connect to Rightmove or Zoopla portals and call it a website. We build brand-led sites that establish your profile as the expert in your area, drive direct enquiries, and position you for the client who is choosing between you and a corporate chain.",
+      "Whether you're a single agent building a personal profile, a boutique agency repositioning for growth, or a developer marketing an off-plan project, we build around your specific competitive advantage — the thing that makes the right client choose you specifically.",
     ],
   },
   {
     slug: 'ecommerce',
-    num: 'IND / 08',
+    num: 'IND / 09',
     title: 'E-commerce & Retail',
     tagline: 'Stores that sell — not just display.',
     icon: icons.ecommerce,
     problem:
-      "Generic e-commerce themes do the bare minimum. They display products, they process payments, and they look like every other online store. In a market where differentiation drives repeat purchase, the brand experience of your store is a competitive advantage most businesses ignore.",
+      "Generic e-commerce themes do the bare minimum. They display products, process payments, and look like every other online store. In a market where differentiation drives repeat purchase, the brand experience of your store is a competitive advantage most product businesses leave on the table.",
     body: [
-      "Customers don't just buy products. They buy from brands they trust, brands that feel right, and brands that make the purchasing experience feel premium enough to come back. A generic theme template sends none of those signals.",
-      "We build custom e-commerce experiences for product businesses that want to stand out: custom visual design, product presentation that drives conversion, a checkout experience that removes friction, and post-purchase flows that drive repeat business.",
-      "We work with independent product brands, fashion labels, artisan producers, and specialty retailers. Whether you're on Shopify, a headless stack, or a fully custom build, we design around your specific product and customer.",
-    ],
-  },
-  {
-    slug: 'professional-services',
-    num: 'IND / 09',
-    title: 'Professional Services',
-    tagline: 'Positioning-first websites that attract the clients you actually want.',
-    icon: icons.professional,
-    problem:
-      "Consultants, coaches, advisers, and agencies often have websites that are technically fine but fail to communicate what makes them different — or who they're actually for.",
-    body: [
-      "In professional services, the website's main job is positioning. Before a prospect gets on a call with you, they need to understand what you do, who you do it for, and why you're the right choice. Most professional services websites fail to answer any of those questions clearly.",
-      "We build positioning-led websites for management consultants, executive coaches, creative agencies, PR firms, HR consultancies, and specialist advisers — sites that attract the right clients, repel the wrong ones, and make it easy to take the next step.",
-      "Every project starts with your positioning. We get specific about your target client, your competitive differentiation, and the exact perception you're trying to create. The design and copy flow from that — not the other way around.",
+      "Customers don't just buy products. They buy from brands they trust, brands that feel right, and brands that make the purchasing experience feel good enough to come back. A generic Shopify theme sends none of those signals — and in an increasingly crowded market, that gap matters.",
+      "We build custom e-commerce experiences for independent product brands, fashion and apparel labels, artisan food and drink producers, homewares and lifestyle brands, specialty retailers, and subscription businesses. Whether you're on Shopify, a headless architecture, or a fully custom build, we design around your specific product and customer.",
+      "Our focus is conversion: product presentation that builds desire, a checkout experience that removes every point of friction, and post-purchase flows that turn first-time buyers into loyal customers. We also work on the SEO and content architecture that drives organic traffic to the right category and product pages.",
     ],
   },
   {
@@ -243,11 +253,11 @@ const industries: Industry[] = [
     tagline: 'Marketing sites that explain what you do and convert the people who need it.',
     icon: icons.technology,
     problem:
-      "Even technically excellent products can fail to explain themselves clearly to buyers. Most SaaS marketing sites either talk to engineers when they should be talking to buyers, or oversimplify to the point of saying nothing at all.",
+      "Even technically excellent products can fail to explain themselves to buyers. Most SaaS marketing sites either talk to engineers when they should be talking to decision-makers, or oversimplify to the point of saying nothing meaningful at all.",
     body: [
-      "The best product in the market loses to a competitor with a clearer website. Buyers need to understand what the product does, who it's for, and what happens if they sign up — in that order, in about thirty seconds. Most SaaS marketing sites fail that test.",
-      "We build marketing sites for technology companies, SaaS products, and developer tools that communicate clearly to the buyers, drive trial signups or demo bookings, and reflect the quality of the product they're selling.",
-      "We work with early-stage startups trying to nail their first marketing site, growth-stage companies redesigning for a new ICP, and technical founders who know their product better than anyone but need help making it legible to the people who will buy it.",
+      "The best product in the market loses to a competitor with a clearer website. Buyers need to understand what the product does, who it's for, and what happens when they sign up — in that order, in about thirty seconds. Most SaaS marketing sites fail that test, and the result is a leaky funnel that no amount of ad spend can fix.",
+      "We build marketing sites for technology companies, SaaS products, developer tools, AI products, fintech startups, and B2B software businesses. Sites that communicate clearly to buyers, drive trial signups or demo requests, and reflect the actual quality of the product behind the URL.",
+      "We work with early-stage startups building their first proper marketing site, growth-stage companies redesigning for a new ICP, and technical founders who understand their product better than anyone but need help making it legible to the people who will pay for it.",
     ],
   },
 ];
@@ -257,7 +267,7 @@ export default function IndustriesPage() {
   return (
     <main className="bg-black min-h-screen">
 
-      {/* Hero */}
+      {/* ── Hero ────────────────────────────────── */}
       <section className="border-b border-white/[0.06]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-14 pt-10">
           <Nav />
@@ -278,12 +288,12 @@ export default function IndustriesPage() {
             <span className="font-[900]">the economy.</span>
           </h1>
           <p className="font-[family-name:var(--font-instrument-serif)] italic text-[18px] md:text-[22px] text-[#8a8a92] max-w-[680px] leading-relaxed">
-            We don&apos;t build generic websites. We build commercial engines tuned to how your specific industry earns trust and converts clients. Ten industries. One standard of work.
+            We don&apos;t build generic websites. We build commercial engines tuned to how your specific industry earns trust and converts clients. Every sector is different. Every site reflects that.
           </p>
         </div>
       </section>
 
-      {/* Industry grid */}
+      {/* ── Industry grid ───────────────────────── */}
       <section
         aria-labelledby="industries-grid-heading"
         className="py-[100px] border-b border-white/[0.06] bg-black"
@@ -327,7 +337,7 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Individual industry sections */}
+      {/* ── Individual industry sections ────────── */}
       {industries.map((industry) => (
         <section
           key={industry.slug}
@@ -374,7 +384,7 @@ export default function IndustriesPage() {
         </section>
       ))}
 
-      {/* Final CTA */}
+      {/* ── Final CTA ───────────────────────────── */}
       <section className="py-[120px] bg-black">
         <div className="max-w-[1400px] mx-auto px-6 md:px-14 text-center">
           <h2
@@ -387,7 +397,7 @@ export default function IndustriesPage() {
             </em>
           </h2>
           <p className="font-[family-name:var(--font-instrument-serif)] italic text-[17px] md:text-[20px] text-[#8a8a92] max-w-[520px] mx-auto leading-relaxed mb-10">
-            We work with businesses of all kinds. If your industry isn&apos;t listed here, chances are we&apos;ve built something similar before. Get in touch and let&apos;s talk.
+            We work with businesses of all kinds. If your industry isn&apos;t listed here, chances are we&apos;ve built something similar. Get in touch and let&apos;s talk.
           </p>
           <LiquidMetalButton label="Book your call →" href="/contact" width={152} />
         </div>
