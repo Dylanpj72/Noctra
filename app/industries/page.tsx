@@ -376,7 +376,7 @@ export default function IndustriesPage() {
                     <p key={j}>{para}</p>
                   ))}
                 </div>
-                <LiquidMetalButton label="Start a project →" href="/contact" width={168} />
+                <LiquidMetalButton label="Get a free quote →" href="/contact" width={180} />
               </div>
 
             </div>
@@ -399,7 +399,7 @@ export default function IndustriesPage() {
           <p className="font-[family-name:var(--font-instrument-serif)] italic text-[17px] md:text-[20px] text-[#8a8a92] max-w-[520px] mx-auto leading-relaxed mb-10">
             We work with businesses of all kinds. If your industry isn&apos;t listed here, chances are we&apos;ve built something similar. Get in touch and let&apos;s talk.
           </p>
-          <LiquidMetalButton label="Book your call →" href="/contact" width={152} />
+          <LiquidMetalButton label="Get a free quote →" href="/contact" width={180} />
         </div>
       </section>
 
