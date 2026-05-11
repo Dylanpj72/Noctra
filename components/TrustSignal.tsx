@@ -25,7 +25,7 @@ export function TrustSignal() {
           transition={{ duration: 0.6 }}
           className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.3em] uppercase text-[#5a5a62] mb-6"
         >
-          07 — <span className="text-white font-[500]">Built to last</span>
+          07 · <span className="text-white font-[500]">Built to last</span>
         </motion.p>
 
         <motion.h2

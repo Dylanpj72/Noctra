@@ -5,7 +5,7 @@ import { motion, useInView } from 'motion/react';
 
 const bullets = [
   'Customers who can\'t find you online won\'t call you.',
-  'Google ranks businesses with websites above those without — even when your reviews are better.',
+  'Google ranks businesses with websites above those without, even when your reviews are better.',
   'Every day without a professional site is a day your competitors are winning business that should be yours.',
 ];
 
@@ -22,14 +22,14 @@ export function Problem() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-14">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 
-          {/* Left — headline */}
+          {/* Left ·headline */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, ease: [0.2, 0.8, 0.2, 1] }}
           >
             <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62] mb-6">
-              02 — <span className="text-white font-[500]">The problem</span>
+              02 ·<span className="text-white font-[500]">The problem</span>
             </p>
             <h2
               id="problem-heading"
@@ -44,7 +44,7 @@ export function Problem() {
             </h2>
           </motion.div>
 
-          {/* Right — bullets */}
+          {/* Right ·bullets */}
           <div className="flex flex-col gap-3">
             {bullets.map((bullet, i) => (
               <motion.div

@@ -47,7 +47,7 @@ export function Nav() {
             className="absolute top-0 left-[15%] right-[15%] h-px bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none"
           />
 
-          {/* Home button — non-home pages only */}
+          {/* Home button - non-home pages only */}
           {!isHome && (
             <Link
               href="/"

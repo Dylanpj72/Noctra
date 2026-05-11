@@ -56,7 +56,7 @@ export default function ContactPage() {
       <section className="max-w-[1400px] mx-auto px-6 md:px-14 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.6fr] gap-16 lg:gap-24">
 
-          {/* Left — info */}
+          {/* Left - info */}
           <div className="flex flex-col gap-12">
             <div>
               <p className="font-[family-name:var(--font-instrument-serif)] italic text-[18px] md:text-[20px] text-[#8a8a92] leading-relaxed max-w-[380px]">
@@ -110,7 +110,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Right — form */}
+          {/* Right - form */}
           <div
             className="rounded-[28px] border border-white/[0.08] p-8 md:p-10"
             style={{

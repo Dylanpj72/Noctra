@@ -22,7 +22,7 @@ const vertexShader = /* glsl */ `
     float radius = 0.40;
     vBrightness = 1.0 - smoothstep(0.0, radius, dist);
 
-    // Size attenuation — exactly matches PointsMaterial(size=0.012, sizeAttenuation=true)
+    // Size attenuation - exactly matches PointsMaterial(size=0.012, sizeAttenuation=true)
     float worldSize = 0.012;
     float pixelBase = worldSize * projectionMatrix[1][1] * uResolution.y * 0.5 / (-mvPosition.z);
 

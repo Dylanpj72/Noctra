@@ -36,7 +36,7 @@ export function Hero() {
         className="object-cover object-center"
         aria-hidden="true"
       />
-      {/* Dark gradient overlay — keeps text contrast ≥ 4.5:1 */}
+      {/* Dark gradient overlay - keeps text contrast ≥ 4.5:1 */}
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/85 pointer-events-none"
@@ -74,14 +74,14 @@ export function Hero() {
         />
       </div>
 
-      {/* Particle field — desktop only, lazily loaded */}
+      {/* Particle field - desktop only, lazily loaded */}
       <div className="hidden md:block absolute inset-0 z-[1] pointer-events-none">
         <Suspense fallback={null}>
           <HeroParticles />
         </Suspense>
       </div>
 
-      {/* Static SVG dot grid — mobile fallback */}
+      {/* Static SVG dot grid - mobile fallback */}
       <div
         aria-hidden="true"
         className="block md:hidden absolute inset-0 z-[1] pointer-events-none"

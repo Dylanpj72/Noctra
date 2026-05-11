@@ -5,19 +5,19 @@ import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'motion/react';
 
-const S = 'rgba(255,255,255,0.26)'; // shared stroke colour — matches service-card icon opacity band
+const S = 'rgba(255,255,255,0.26)'; // shared stroke colour - matches service-card icon opacity band
 const SW = '1';                      // strokeWidth
 const RC = { strokeLinecap: 'round' as const, strokeLinejoin: 'round' as const };
 
 const marks: ReactNode[] = [
-  /* 01 DISCOVER — three concentric rings, fading inward */
+  /* 01 DISCOVER - three concentric rings, fading inward */
   <svg key="discover" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
     <circle cx="20" cy="20" r="12" stroke={S}                      strokeWidth={SW} />
     <circle cx="20" cy="20" r="7"  stroke="rgba(255,255,255,0.20)" strokeWidth={SW} />
     <circle cx="20" cy="20" r="2"  stroke="rgba(255,255,255,0.16)" strokeWidth={SW} />
   </svg>,
 
-  /* 02 DESIGN — crop-mark brackets at four corners */
+  /* 02 DESIGN - crop-mark brackets at four corners */
   <svg key="design" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
     <polyline points="9,19 9,13 15,13"   stroke={S} strokeWidth={SW} {...RC} />
     <polyline points="25,13 31,13 31,19" stroke={S} strokeWidth={SW} {...RC} />
@@ -25,14 +25,14 @@ const marks: ReactNode[] = [
     <polyline points="25,27 31,27 31,21" stroke={S} strokeWidth={SW} {...RC} />
   </svg>,
 
-  /* 03 BUILD — three stacked wireframe bars (header / content / footer) */
+  /* 03 BUILD - three stacked wireframe bars (header / content / footer) */
   <svg key="build" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
     <rect x="8" y="8"  width="24" height="5"  rx="1" stroke={S} strokeWidth={SW} />
     <rect x="8" y="16" width="24" height="9"  rx="1" stroke={S} strokeWidth={SW} />
     <rect x="8" y="28" width="14" height="4"  rx="1" stroke={S} strokeWidth={SW} />
   </svg>,
 
-  /* 04 DEPLOY — diagonal arrow crossing a horizontal baseline */
+  /* 04 DEPLOY - diagonal arrow crossing a horizontal baseline */
   <svg key="deploy" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
     <line x1="6"  y1="26" x2="34" y2="26" stroke={S} strokeWidth={SW} strokeLinecap="round" />
     <line x1="12" y1="31" x2="27" y2="11" stroke={S} strokeWidth={SW} strokeLinecap="round" />
@@ -40,7 +40,7 @@ const marks: ReactNode[] = [
     <line x1="27" y1="11" x2="27" y2="19" stroke={S} strokeWidth={SW} strokeLinecap="round" />
   </svg>,
 
-  /* 05 MANAGE — ¾ orbit arc with rightward arrowhead (cycle continues) */
+  /* 05 MANAGE - ¾ orbit arc with rightward arrowhead (cycle continues) */
   <svg key="manage" width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true">
     <path d="M 32 20 A 12 12 0 1 0 20 32" stroke={S} strokeWidth={SW} strokeLinecap="round" />
     <polyline points="15,28 20,32 15,36"  stroke={S} strokeWidth={SW} {...RC} />
@@ -137,7 +137,7 @@ function ProcessStep({
             className="absolute top-0 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"
           />
 
-          {/* Step mark — top-right, decorative */}
+          {/* Step mark - top-right, decorative */}
           <div
             aria-hidden="true"
             className="absolute top-6 right-6 opacity-60 pointer-events-none"

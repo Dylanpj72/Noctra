@@ -240,7 +240,7 @@ function DesktopSection() {
         </div>
       </div>
 
-      {/* Parallax rows — 3 × 3, centred */}
+      {/* Parallax rows - 3 × 3, centred */}
       <motion.div style={{ rotateX, rotateZ, translateY, opacity }} className="flex-shrink-0">
         {row(row1, translateX)}
         {row(row2, translateXReverse)}

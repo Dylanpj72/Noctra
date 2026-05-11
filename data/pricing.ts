@@ -25,9 +25,9 @@ export const PRICING: Record<Region, RegionPricing> = {
     symbol: 'R',
     locale: 'en-ZA',
     tiers: {
-      starter:      { upfront: 12000, retainer: 600,  flatMonthly: 1200 },
-      professional: { upfront: 22000, retainer: 1000, flatMonthly: 2000 },
-      premium:      { upfront: 40000, retainer: 1800, flatMonthly: 3550 },
+      starter:      { upfront: 12000, retainer: 600,  flatMonthly: 1300 },
+      professional: { upfront: 22000, retainer: 900,  flatMonthly: 2180 },
+      premium:      { upfront: 40000, retainer: 1550, flatMonthly: 3890 },
     },
   },
   UK: {
@@ -37,9 +37,9 @@ export const PRICING: Record<Region, RegionPricing> = {
     symbol: '£',
     locale: 'en-GB',
     tiers: {
-      starter:      { upfront: 1200, retainer: 60,  flatMonthly: 120 },
-      professional: { upfront: 2200, retainer: 100, flatMonthly: 200 },
-      premium:      { upfront: 4000, retainer: 160, flatMonthly: 350 },
+      starter:      { upfront: 1200, retainer: 60,  flatMonthly: 132 },
+      professional: { upfront: 2200, retainer: 90,  flatMonthly: 219 },
+      premium:      { upfront: 4000, retainer: 140, flatMonthly: 385 },
     },
   },
   US: {
@@ -49,9 +49,9 @@ export const PRICING: Record<Region, RegionPricing> = {
     symbol: '$',
     locale: 'en-US',
     tiers: {
-      starter:      { upfront: 1500, retainer: 75,  flatMonthly: 145 },
-      professional: { upfront: 2800, retainer: 125, flatMonthly: 255 },
-      premium:      { upfront: 5000, retainer: 200, flatMonthly: 435 },
+      starter:      { upfront: 1500, retainer: 75,  flatMonthly: 159 },
+      professional: { upfront: 2800, retainer: 115, flatMonthly: 279 },
+      premium:      { upfront: 5000, retainer: 175, flatMonthly: 479 },
     },
   },
   AU: {
@@ -61,9 +61,9 @@ export const PRICING: Record<Region, RegionPricing> = {
     symbol: 'A$',
     locale: 'en-AU',
     tiers: {
-      starter:      { upfront: 2200, retainer: 110, flatMonthly: 215 },
-      professional: { upfront: 4000, retainer: 180, flatMonthly: 365 },
-      premium:      { upfront: 7000, retainer: 280, flatMonthly: 605 },
+      starter:      { upfront: 2200, retainer: 110, flatMonthly: 235 },
+      professional: { upfront: 4000, retainer: 165, flatMonthly: 399 },
+      premium:      { upfront: 7000, retainer: 250, flatMonthly: 665 },
     },
   },
   EU_WEST: {
@@ -73,9 +73,9 @@ export const PRICING: Record<Region, RegionPricing> = {
     symbol: '€',
     locale: 'de-DE',
     tiers: {
-      starter:      { upfront: 1400, retainer: 70,  flatMonthly: 135 },
-      professional: { upfront: 2500, retainer: 120, flatMonthly: 230 },
-      premium:      { upfront: 4500, retainer: 180, flatMonthly: 395 },
+      starter:      { upfront: 1400, retainer: 70,  flatMonthly: 149 },
+      professional: { upfront: 2500, retainer: 105, flatMonthly: 252 },
+      premium:      { upfront: 4500, retainer: 160, flatMonthly: 435 },
     },
   },
   EU_EAST: {

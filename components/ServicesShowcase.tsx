@@ -9,7 +9,7 @@ const services = [
     category: 'NOCTRA STRATEGY',
     headline: 'NOCTRA',
     sub: 'STRATEGY',
-    description: 'We start where most agencies end — with your numbers, your market, and a clear brief before a single pixel is drawn.',
+    description: 'We start where most agencies end: with your numbers, your market, and a clear brief before a single pixel is drawn.',
   },
   {
     key: 'design',
@@ -44,7 +44,7 @@ export function ServicesShowcase() {
         {/* Section header */}
         <div className="mb-20 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
-            01 — <span className="text-white font-[500]">What We Build</span>
+            01 · <span className="text-white font-[500]">What We Build</span>
           </p>
           <h2
             id="services-showcase-heading"

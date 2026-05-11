@@ -105,7 +105,7 @@ function WorkTile({ work, index }: { work: (typeof works)[0]; index: number }) {
         {/* Content */}
         <div className="relative z-10 p-6 md:p-8">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62] mb-2">
-            {work.id} — {work.category}
+            {work.id} · {work.category}
           </p>
           <h3 className="font-[family-name:var(--font-inter)] font-[700] text-[22px] md:text-[26px] tracking-[-0.03em] text-white">
             {work.title}
@@ -134,7 +134,7 @@ export function SelectedWork() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-14">
         <div className="mb-20 grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
-            05 — <span className="text-white font-[500]">Selected Work</span>
+            05 · <span className="text-white font-[500]">Selected Work</span>
           </p>
           <h2
             id="work-heading"

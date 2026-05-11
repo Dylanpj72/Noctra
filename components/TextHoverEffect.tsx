@@ -76,7 +76,7 @@ export function TextHoverEffect({
           )}
         </linearGradient>
 
-        {/* Radial gradient that follows the cursor — used as the reveal mask */}
+        {/* Radial gradient that follows the cursor - used as the reveal mask */}
         <motion.radialGradient
           id={revealId}
           gradientUnits="userSpaceOnUse"
@@ -94,7 +94,7 @@ export function TextHoverEffect({
         </mask>
       </defs>
 
-      {/* Layer 1 — ghost stroke (fades in on hover) */}
+      {/* Layer 1 - ghost stroke (fades in on hover) */}
       <text
         {...textAttrs}
         className="fill-transparent"
@@ -104,7 +104,7 @@ export function TextHoverEffect({
         {text}
       </text>
 
-      {/* Layer 2 — animated draw-on stroke (plays once on mount) */}
+      {/* Layer 2 - animated draw-on stroke (plays once on mount) */}
       <motion.text
         {...textAttrs}
         className="fill-transparent"
@@ -116,7 +116,7 @@ export function TextHoverEffect({
         {text}
       </motion.text>
 
-      {/* Layer 3 — rainbow stroke revealed near cursor via radial mask */}
+      {/* Layer 3 - rainbow stroke revealed near cursor via radial mask */}
       <text
         {...textAttrs}
         className="fill-transparent"

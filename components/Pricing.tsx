@@ -25,7 +25,7 @@ const tiers: {
   {
     key: 'starter',
     name: 'Starter',
-    blurb: 'Get found, get called.',
+    blurb: 'For new or small businesses needing a professional online presence.',
     features: [
       'Up to 5 custom-designed pages',
       'Mobile responsive build',
@@ -43,7 +43,7 @@ const tiers: {
   {
     key: 'professional',
     name: 'Professional',
-    blurb: 'Turn visitors into customers.',
+    blurb: 'For businesses ready to generate leads and convert more customers.',
     featured: true,
     includes: 'Starter',
     features: [
@@ -63,7 +63,7 @@ const tiers: {
   {
     key: 'premium',
     name: 'Premium',
-    blurb: 'Compete and win at scale.',
+    blurb: 'For businesses that want a high-performance digital sales machine.',
     includes: 'Professional',
     features: [
       'Up to 25 pages with custom design & animations',
@@ -153,7 +153,7 @@ function PriceDisplay({
             upfront
           </p>
           <p className="font-[family-name:var(--font-inter)] text-[13px] text-[#8a8a92]">
-            + {formatPrice(pricing.retainer, region)}/month retainer
+            + {formatPrice(pricing.retainer, region)}/month ongoing
           </p>
         </motion.div>
       )}
@@ -298,7 +298,7 @@ function PricingCard({
               </div>
               <div>
                 <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62] mb-1.5">
-                  Retainer covers
+                  Ongoing covers
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {['Management', 'Hosting', 'Security', 'SEO'].map((item) => (
@@ -382,10 +382,10 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
             <span className="font-[900]">scale.</span>
           </h2>
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.2em] uppercase text-[#5a5a62] max-w-[560px] mx-auto leading-relaxed mb-6">
-            Every project is scoped to your specific needs — these figures give you a general range to plan around. Final pricing depends on scope, complexity, and what you want to achieve.
+            Every project is scoped to your specific needs. These figures give you a general range to plan around. Final pricing depends on scope, complexity, and what you want to achieve.
           </p>
           <p className="font-[family-name:var(--font-instrument-serif)] italic text-[16px] md:text-[18px] text-[#8a8a92] max-w-[580px] mx-auto">
-            Flat monthly covers everything for 24 months, then drops to a low retainer. Prefer to own it outright? Pay upfront and keep the retainer for ongoing support.
+            Flat monthly covers everything for 24 months, then drops to a low ongoing fee. Prefer to own it outright? Pay upfront and keep the ongoing service for continued support.
           </p>
         </div>
 
@@ -418,7 +418,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
                     />
                   )}
                   <span className="relative z-10">
-                    {m === 'flatMonthly' ? 'Flat Monthly' : 'Upfront + Retainer'}
+                    {m === 'flatMonthly' ? 'Flat Monthly' : 'Upfront + Ongoing'}
                   </span>
                   {m === 'flatMonthly' && (
                     <span
@@ -472,7 +472,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
                 className="flex flex-col items-center gap-3"
               >
                 <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62]">
-                  Everything included for 24 months · from month 25 you only pay the retainer
+                  Everything included for 24 months · from month 25 you only pay the ongoing fee
                 </p>
                 <div className="flex flex-wrap justify-center gap-2">
                   {[
@@ -521,7 +521,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
                 />
                 <div className="flex flex-col gap-2">
                   <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.25em] uppercase text-[#5a5a62]">
-                    Monthly retainer covers
+                    Monthly ongoing covers
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {['Website management', 'Hosting', 'Security', 'SEO'].map((item) => (
@@ -539,14 +539,14 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
           </AnimatePresence>
         </div>
 
-        {/* Cards — desktop: Starter / Professional / Premium */}
+        {/* Cards - desktop: Starter / Professional / Premium */}
         <div className="hidden md:grid md:grid-cols-3 gap-4 mb-10 items-start">
           {tiers.map((tier) => (
             <PricingCard key={tier.key} tier={tier} mode={mode} region={region} />
           ))}
         </div>
 
-        {/* Cards — mobile: Professional first */}
+        {/* Cards - mobile: Professional first */}
         <div className="grid grid-cols-1 gap-4 mb-10 md:hidden">
           {tierOrder.map((tier) => (
             <PricingCard key={tier.key} tier={tier} mode={mode} region={region} />

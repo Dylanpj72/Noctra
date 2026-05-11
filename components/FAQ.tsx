@@ -14,7 +14,7 @@ export const faqs = [
   },
   {
     q: 'What happens after 24 months?',
-    a: "Your monthly payment drops significantly, to just the retainer rate shown on each plan. That covers hosting, security, SEO, and ongoing management. You keep the site, we keep it running smoothly. No renegotiation, no surprises.",
+    a: "Your monthly payment drops significantly to just the ongoing rate shown on each plan. That covers hosting, security, SEO, and ongoing management. You keep the site, we keep it running smoothly. No renegotiation, no surprises.",
   },
   {
     q: 'Do you work internationally?',
@@ -27,6 +27,42 @@ export const faqs = [
   {
     q: 'Do you offer ongoing maintenance after launch?',
     a: "It's included in every plan, always. Hosting, security updates, content changes, and SEO are all managed by us on an ongoing basis. You won't need to touch the technical side of your site, ever.",
+  },
+  {
+    q: "What's the difference between the two payment options?",
+    a: "The service is identical: same design, same build quality, same ongoing support. The only difference is how you pay. The monthly subscription has no upfront cost. You pay a flat monthly fee for 24 months, after which it drops to the ongoing rate. Most clients choose this option because it spreads the cost and avoids a large upfront payment. The upfront option has a one-time build cost paid at project start, then a smaller monthly fee for ongoing service. The total cost over time is slightly lower, and there's no minimum term. You can cancel anytime with 30 days notice. This works well for clients who would rather pay the build cost upfront and have maximum flexibility afterwards.",
+  },
+  {
+    q: 'Which option saves me more money?',
+    a: "The upfront option works out slightly cheaper if you stay with us for the full 24 months and beyond. But the monthly subscription has no upfront cost, so you're not paying anything until the build starts. It comes down to whether you would rather optimise for total cost (upfront) or cash flow (subscription).",
+  },
+  {
+    q: 'Can I switch between options later?',
+    a: "The payment model is set at the start of your contract and stays for the term. After your initial term ends, you can renegotiate to a different structure if it makes sense for your business. Most clients are happy with their original choice.",
+  },
+  {
+    q: 'Why does the ongoing fee differ between tiers?',
+    a: "The fee scales with how much ongoing work we do for you each month, not with what it costs us to host your site. Starter customers get hosting, security, and an hour of content updates monthly. Professional adds three hours of work plus monthly performance reports and quarterly strategy calls. Premium adds six hours of work plus active SEO, competitor monitoring, and conversion testing every month. You're paying for our ongoing involvement, not for server space.",
+  },
+  {
+    q: "Isn't hosting cheaper if I do it myself?",
+    a: "If you only need hosting, yes. Basic hosting can cost $10-20 per month elsewhere. But hosting is a small part of what the ongoing fee covers. The bulk of what you're paying for is ongoing work: security monitoring, software updates, content changes, SEO maintenance, performance tracking, and expert availability when something needs attention. Most clients find the convenience and peace of mind worth more than the hosting cost alone.",
+  },
+  {
+    q: 'Can I cancel and just keep the website?',
+    a: "Yes, you own your website outright from launch. If you ever decide to cancel, we'll provide everything needed to migrate the site to a host of your choice. You'd lose the ongoing support, updates, and security monitoring we provide, but the site itself is yours.",
+  },
+  {
+    q: "What happens if I don't use my included hours?",
+    a: "Included hours don't roll over month-to-month, but they're there when you need them. Most clients comfortably stay within their hours, and those who use them tend to use them in bursts: a few quiet months followed by a busy month when they're updating content or services. If you're consistently not using your hours, we'd suggest moving to a lower tier rather than paying for capacity you don't need.",
+  },
+  {
+    q: 'Can I add or remove things from my ongoing plan?',
+    a: "The plans are designed as fixed packages so pricing stays simple. But if you have specific needs that don't fit any tier, we'll discuss a custom arrangement on a call. We'd rather build the right plan for your business than force you into a pre-set tier that doesn't fit.",
+  },
+  {
+    q: 'What if my needs change over time?',
+    a: "You can upgrade or downgrade between tiers as your business changes. Most clients who upgrade do so 6 to 12 months in, when they're ready for more active SEO work or content production. Downgrades are available at the end of your initial 24-month term if you're on the subscription plan, or anytime if you're on the upfront plan.",
   },
 ];
 
