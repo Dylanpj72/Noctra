@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://noctra.studio/sitemap.xml',
+    sitemap: 'https://ardaic.studio/sitemap.xml',
   };
 }

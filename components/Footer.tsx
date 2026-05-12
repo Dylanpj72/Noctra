@@ -15,8 +15,8 @@ const serviceLinks = [
 ];
 
 const contactLinks = [
-  { label: 'hello@noctra.studio', href: 'mailto:hello@noctra.studio' },
-  { label: '@noctra', href: '#' },
+  { label: 'hello@ardaic.studio', href: 'mailto:hello@ardaic.studio' },
+  { label: '@ardaic', href: '#' },
   { label: 'LinkedIn ↗', href: '#' },
   { label: 'Read.cv ↗', href: '#' },
 ];
@@ -30,7 +30,7 @@ export function Footer() {
         aria-hidden="true"
       >
         <div style={{ width: '100%', height: 'clamp(100px,20vw,380px)', marginBottom: 'clamp(-12px,-2.4vw,-45.6px)' }}>
-          <TextHoverEffect text="NOCTRA" duration={0} />
+          <TextHoverEffect text="ARDAIC" duration={0} />
         </div>
       </div>
 
@@ -43,12 +43,12 @@ export function Footer() {
               className="font-[family-name:var(--font-inter)] leading-[1] tracking-[-0.04em] mb-4 text-white"
               style={{ fontSize: '28px' }}
             >
-              <span className="font-[900]">NOC</span>
-              <span className="font-[200]">TRA</span>
+              <span className="font-[900]">ARD</span>
+              <span className="font-[200]">AIC</span>
             </div>
             <p className="font-[family-name:var(--font-instrument-serif)] italic text-[15px] text-[#8a8a92] max-w-[300px] leading-relaxed">
-              Websites that command the room. From the Latin{' '}
-              <em>noctis</em>, the work happens after dark.
+              Websites built to win. Sharp, considered,{' '}
+              and designed to convert.
             </p>
             <p className="mt-4 font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.15em] uppercase text-[#5a5a62]">
               Cape Town, ZA · Working globally
@@ -116,7 +116,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-white/[0.06] flex flex-col md:flex-row justify-between gap-4">
           <span className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62]">
-            © 2026 Noctra Studio
+            © 2026 Ardaic Studio
           </span>
           <span className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62]">
             Built in the dark

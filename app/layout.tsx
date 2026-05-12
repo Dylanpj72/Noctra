@@ -25,7 +25,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Noctra · Premium Web Design Agency for Global Businesses',
+  title: 'Ardaic · Premium Web Design Agency for Global Businesses',
   description:
     'A web design agency building high-converting custom websites for ambitious global businesses. Strategy, design, development, and growth, from kickoff to launch in 12 weeks.',
   keywords: [
@@ -36,22 +36,22 @@ export const metadata: Metadata = {
     'global web agency',
     'conversion-focused web design',
   ],
-  authors: [{ name: 'Noctra' }],
-  creator: 'Noctra',
-  metadataBase: new URL('https://noctra.studio'),
+  authors: [{ name: 'Ardaic' }],
+  creator: 'Ardaic',
+  metadataBase: new URL('https://ardaic.studio'),
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'Noctra · Premium Web Design Agency',
+    title: 'Ardaic · Premium Web Design Agency',
     description:
       'We build websites that win. Custom design, development, and growth for ambitious global businesses.',
-    url: 'https://noctra.studio',
-    siteName: 'Noctra',
+    url: 'https://ardaic.studio',
+    siteName: 'Ardaic',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Noctra · We build websites that win',
+        alt: 'Ardaic · We build websites that win',
       },
     ],
     locale: 'en_US',
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Noctra · Premium Web Design Agency',
+    title: 'Ardaic · Premium Web Design Agency',
     description: 'We build websites that win.',
     images: ['/og-image.png'],
   },
@@ -104,47 +104,47 @@ export default function RootLayout({
               '@graph': [
                 {
                   '@type': 'Organization',
-                  '@id': 'https://noctra.studio/#org',
-                  name: 'Noctra',
-                  url: 'https://noctra.studio',
-                  logo: 'https://noctra.studio/logo.png',
+                  '@id': 'https://ardaic.studio/#org',
+                  name: 'Ardaic',
+                  url: 'https://ardaic.studio',
+                  logo: 'https://ardaic.studio/logo.png',
                   contactPoint: {
                     '@type': 'ContactPoint',
                     contactType: 'Customer Support',
-                    email: 'hello@noctra.studio',
+                    email: 'hello@ardaic.studio',
                   },
-                  sameAs: ['https://twitter.com/noctra', 'https://linkedin.com/company/noctra'],
+                  sameAs: ['https://twitter.com/ardaic', 'https://linkedin.com/company/ardaic'],
                 },
                 {
                   '@type': 'WebSite',
-                  '@id': 'https://noctra.studio/#website',
-                  url: 'https://noctra.studio',
-                  name: 'Noctra',
-                  publisher: { '@id': 'https://noctra.studio/#org' },
+                  '@id': 'https://ardaic.studio/#website',
+                  url: 'https://ardaic.studio',
+                  name: 'Ardaic',
+                  publisher: { '@id': 'https://ardaic.studio/#org' },
                   potentialAction: {
                     '@type': 'SearchAction',
-                    target: 'https://noctra.studio/?s={search_term_string}',
+                    target: 'https://ardaic.studio/?s={search_term_string}',
                     'query-input': 'required name=search_term_string',
                   },
                 },
                 {
                   '@type': 'Service',
                   name: 'Web Design',
-                  provider: { '@id': 'https://noctra.studio/#org' },
+                  provider: { '@id': 'https://ardaic.studio/#org' },
                   description:
                     'Custom website design and development for global businesses, from strategy to launch.',
                 },
                 {
                   '@type': 'Service',
                   name: 'Brand Systems',
-                  provider: { '@id': 'https://noctra.studio/#org' },
+                  provider: { '@id': 'https://ardaic.studio/#org' },
                   description:
                     'Complete brand identity systems including logo, typography, color, and motion.',
                 },
                 {
                   '@type': 'Service',
                   name: 'Growth Audits',
-                  provider: { '@id': 'https://noctra.studio/#org' },
+                  provider: { '@id': 'https://ardaic.studio/#org' },
                   description:
                     'Conversion rate optimization and growth audits for existing websites.',
                 },
@@ -161,7 +161,7 @@ export default function RootLayout({
                     },
                     {
                       '@type': 'Question',
-                      name: 'What does it cost to work with Noctra?',
+                      name: 'What does it cost to work with Ardaic?',
                       acceptedAnswer: {
                         '@type': 'Answer',
                         text: 'Pricing depends on project scope and your region. We offer three tiers starting at flat monthly rates, with no upfront cost required. See our pricing section for details.',

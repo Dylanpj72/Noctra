@@ -6,22 +6,22 @@ import { motion, AnimatePresence } from 'motion/react';
 const services = [
   {
     key: 'strategy',
-    category: 'NOCTRA STRATEGY',
-    headline: 'NOCTRA',
+    category: 'ARDAIC STRATEGY',
+    headline: 'ARDAIC',
     sub: 'STRATEGY',
     description: 'We start where most agencies end: with your numbers, your market, and a clear brief before a single pixel is drawn.',
   },
   {
     key: 'design',
-    category: 'NOCTRA DESIGN',
-    headline: 'NOCTRA',
+    category: 'ARDAIC DESIGN',
+    headline: 'ARDAIC',
     sub: 'DESIGN',
     description: 'Custom websites, designed to convert. Motion, interactions, and craft at every level.',
   },
   {
     key: 'growth',
-    category: 'NOCTRA GROWTH',
-    headline: 'NOCTRA',
+    category: 'ARDAIC GROWTH',
+    headline: 'ARDAIC',
     sub: 'GROWTH',
     description: 'Already launched? We audit, diagnose, and ship fixes. Most clients see meaningful lifts within 30 days.',
   },
@@ -88,7 +88,7 @@ export function ServicesShowcase() {
             {/* Inner nav bar */}
             <div className="relative z-10 flex justify-between items-center px-6 md:px-8 py-5 border-b border-white/[0.06]">
               <span className="font-[family-name:var(--font-inter)] font-[900] text-[15px] tracking-[-0.03em] text-white">
-                NOCTRA
+                ARDAIC
               </span>
               <div className="hidden md:flex gap-8 font-[family-name:var(--font-inter)] text-[13px] text-[#8a8a92]">
                 <span className="hover:text-white transition-colors cursor-pointer">Catalog</span>
@@ -232,7 +232,7 @@ export function ServicesShowcase() {
               WebkitTextStroke: '1px rgba(255,255,255,0.03)',
             }}
           >
-            NOCTRA
+            ARDAIC
           </div>
         </div>
       </div>

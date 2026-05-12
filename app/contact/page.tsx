@@ -4,15 +4,15 @@ import { ContactForm } from '@/components/ContactForm';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact · Noctra',
-  description: 'Start a project with Noctra. Tell us what you\'re building and we\'ll be in touch within 24 hours.',
+  title: 'Contact · Ardaic',
+  description: 'Start a project with Ardaic. Tell us what you\'re building and we\'ll be in touch within 24 hours.',
 };
 
 const details = [
   {
     label: 'Email',
-    value: 'hello@noctra.studio',
-    href: 'mailto:hello@noctra.studio',
+    value: 'hello@ardaic.studio',
+    href: 'mailto:hello@ardaic.studio',
   },
   {
     label: 'Location',

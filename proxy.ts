@@ -7,7 +7,7 @@ export function proxy(request: NextRequest) {
     'US';
 
   const response = NextResponse.next();
-  response.cookies.set('noctra-country', country, {
+  response.cookies.set('ardaic-country', country, {
     maxAge: 60 * 60 * 24 * 30,
     sameSite: 'lax',
     path: '/',

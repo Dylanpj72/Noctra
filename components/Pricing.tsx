@@ -338,7 +338,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
   // Persist payment mode preference
   useEffect(() => {
     try {
-      const savedMode = localStorage.getItem('noctra-mode') as PaymentMode | null;
+      const savedMode = localStorage.getItem('ardaic-mode') as PaymentMode | null;
       if (savedMode === 'flatMonthly' || savedMode === 'upfront') {
         setMode(savedMode);
       }
@@ -348,7 +348,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
   const changeMode = (m: PaymentMode) => {
     setMode(m);
     try {
-      localStorage.setItem('noctra-mode', m);
+      localStorage.setItem('ardaic-mode', m);
     } catch {}
   };
 

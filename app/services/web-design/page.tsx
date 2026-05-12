@@ -5,7 +5,7 @@ import { LiquidMetalButton } from '@/components/LiquidMetalButton';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Web Design · Noctra',
+  title: 'Web Design · Ardaic',
   description: 'Custom websites built to convert. Strategy, design, and development under one roof. From first conversation to live site in 2 to 6 weeks.',
 };
 
@@ -162,7 +162,7 @@ export default function WebDesignPage() {
                 not a set of pages.
               </h2>
               <p className="text-[15px] leading-[1.75] text-[#8a8a92]">
-                Every Noctra website includes the strategy, design, development, and infrastructure to launch fast and perform from day one.
+                Every Ardaic website includes the strategy, design, development, and infrastructure to launch fast and perform from day one.
               </p>
             </div>
           </div>
@@ -255,7 +255,7 @@ export default function WebDesignPage() {
                 </em>
               </h2>
               <p className="text-[15px] leading-[1.75] text-[#8a8a92] mb-8">
-                All Noctra websites are built, hosted, and managed for one monthly fee. After your initial 24-month plan, your fee drops to maintenance-only. Simple, transparent, no surprises.
+                All Ardaic websites are built, hosted, and managed for one monthly fee. After your initial 24-month plan, your fee drops to maintenance-only. Simple, transparent, no surprises.
               </p>
               <LiquidMetalButton label="See full pricing →" href="/pricing" width={168} />
             </div>

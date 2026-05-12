@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Pricing · Noctra',
+  title: 'Pricing · Ardaic',
   description: 'Simple, transparent pricing for custom websites. Flat monthly or upfront, all plans include design, build, hosting, and ongoing management.',
 };
 
@@ -17,7 +17,7 @@ export default async function PricingPage({
   searchParams: Promise<{ region?: string }>;
 }) {
   const [cookieStore, params] = await Promise.all([cookies(), searchParams]);
-  const country = cookieStore.get('noctra-country')?.value ?? 'US';
+  const country = cookieStore.get('ardaic-country')?.value ?? 'US';
   const override = params.region?.toUpperCase() as Region | undefined;
   const initialRegion = override && PRICING[override] ? PRICING[override] : resolveRegion(country);
 

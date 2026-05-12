@@ -5,7 +5,7 @@ import { LiquidMetalButton } from '@/components/LiquidMetalButton';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Growth Audits · Noctra',
+  title: 'Growth Audits · Ardaic',
   description: 'A complete audit of your website, SEO, and Google presence. We diagnose what\'s leaking and show you the path to measurable growth within 30 days.',
 };
 

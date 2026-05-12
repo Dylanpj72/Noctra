@@ -5,7 +5,7 @@ import { LiquidMetalButton } from '@/components/LiquidMetalButton';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Brand Systems · Noctra',
+  title: 'Brand Systems · Ardaic',
   description: 'Logo, type, color, voice, and motion built as a complete working system. Designed to scale from your business card to a billboard.',
 };
 
@@ -159,7 +159,7 @@ export default function BrandSystemsPage() {
                 </em>
               </h2>
               <p className="text-[15px] leading-[1.75] text-[#8a8a92]">
-                A Noctra brand system is a complete, documented framework that scales with you. Built once, used forever.
+                A Ardaic brand system is a complete, documented framework that scales with you. Built once, used forever.
               </p>
             </div>
           </div>

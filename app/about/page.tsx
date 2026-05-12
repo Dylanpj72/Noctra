@@ -4,8 +4,8 @@ import { Footer } from '@/components/Footer';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About · Noctra',
-  description: 'Noctra is a web design agency building high-converting custom websites for ambitious businesses worldwide.',
+  title: 'About · Ardaic',
+  description: 'Ardaic is a web design agency building high-converting custom websites for ambitious businesses worldwide.',
 };
 
 const values = [
@@ -51,7 +51,7 @@ export default function AboutPage() {
           <span className="font-[900]">ambitious.</span>
         </h1>
         <p className="font-[family-name:var(--font-instrument-serif)] italic text-[18px] md:text-[22px] text-[#8a8a92] max-w-[600px] leading-relaxed">
-          Noctra is a web design agency built to give ambitious businesses a serious online presence, without the enterprise price tag.
+          Ardaic is a web design agency built to give ambitious businesses a serious online presence, without the enterprise price tag.
         </p>
       </section>
 

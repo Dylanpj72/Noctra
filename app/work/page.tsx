@@ -5,8 +5,8 @@ import { LiquidMetalButton } from '@/components/LiquidMetalButton';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Our Work · Noctra',
-  description: 'Selected projects from Noctra. Custom websites built for ambitious businesses worldwide.',
+  title: 'Our Work · Ardaic',
+  description: 'Selected projects from Ardaic. Custom websites built for ambitious businesses worldwide.',
 };
 
 export default function WorkPage() {

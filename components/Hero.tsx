@@ -214,7 +214,7 @@ export function Hero() {
         className="absolute bottom-[-20px] left-1/2 -translate-x-1/2 select-none z-[1]"
         style={{ width: 'clamp(700px, 120vw, 2100px)', height: 'clamp(120px, 22vw, 360px)' }}
       >
-        <TextHoverEffect text="NOCTRA" duration={0} />
+        <TextHoverEffect text="ARDAIC" duration={0} />
       </motion.div>
     </section>
   );

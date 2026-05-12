@@ -5,9 +5,9 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 
 export const metadata: Metadata = {
-  title: 'Industries We Serve · Noctra Web Design Agency',
+  title: 'Industries We Serve · Ardaic Web Design Agency',
   description:
-    'Custom websites for tradespeople, home services, legal and financial professionals, healthcare practitioners, beauty businesses, events and wedding suppliers, restaurants, real estate, e-commerce, and technology companies. Noctra builds high-converting websites for ambitious local and online businesses.',
+    'Custom websites for tradespeople, home services, legal and financial professionals, healthcare practitioners, beauty businesses, events and wedding suppliers, restaurants, real estate, e-commerce, and technology companies. Ardaic builds high-converting websites for ambitious local and online businesses.',
 };
 
 /* ── Shared SVG style ─────────────────────────── */
