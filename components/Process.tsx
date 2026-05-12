@@ -76,7 +76,7 @@ const steps: Step[] = [
   {
     num: '04',
     title: 'DEPLOY',
-    desc: 'Site goes live, typically 2–4 weeks from kickoff. We handle everything: domain, hosting, and testing.',
+    desc: 'Site goes live, typically 2–6 weeks from kickoff. We handle everything: domain, hosting, and testing.',
     mark: marks[3],
   },
   {

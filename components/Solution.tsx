@@ -9,7 +9,7 @@ const cards = [
     desc: 'Not a template. Every page is designed for what you actually do, who you serve, and what you want them to do next.',
   },
   {
-    title: 'Live in 2–4 weeks',
+    title: 'Live in 2–6 weeks',
     desc: 'Quick turnaround so you start getting calls fast. No months-long timelines, no waiting around.',
   },
   {
