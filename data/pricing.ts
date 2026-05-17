@@ -1,5 +1,5 @@
 export type Region = 'ZA' | 'UK' | 'US' | 'AU' | 'EU_WEST' | 'EU_EAST';
-export type TierKey = 'starter' | 'professional' | 'premium';
+export type TierKey = 'starter' | 'professional' | 'premium' | 'commerce';
 export type PaymentMode = 'flatMonthly' | 'upfront';
 
 export type TierPricing = {
@@ -28,6 +28,7 @@ export const PRICING: Record<Region, RegionPricing> = {
       starter:      { upfront: 12000, retainer: 600,  flatMonthly: 1300 },
       professional: { upfront: 22000, retainer: 900,  flatMonthly: 2180 },
       premium:      { upfront: 40000, retainer: 1550, flatMonthly: 3890 },
+      commerce:     { upfront: 65000, retainer: 2500, flatMonthly: 6200 },
     },
   },
   UK: {
@@ -40,6 +41,7 @@ export const PRICING: Record<Region, RegionPricing> = {
       starter:      { upfront: 1200, retainer: 60,  flatMonthly: 132 },
       professional: { upfront: 2200, retainer: 90,  flatMonthly: 219 },
       premium:      { upfront: 4000, retainer: 140, flatMonthly: 385 },
+      commerce:     { upfront: 6500, retainer: 220, flatMonthly: 620 },
     },
   },
   US: {
@@ -52,6 +54,7 @@ export const PRICING: Record<Region, RegionPricing> = {
       starter:      { upfront: 1500, retainer: 75,  flatMonthly: 159 },
       professional: { upfront: 2800, retainer: 115, flatMonthly: 279 },
       premium:      { upfront: 5000, retainer: 175, flatMonthly: 479 },
+      commerce:     { upfront: 8000, retainer: 280, flatMonthly: 770 },
     },
   },
   AU: {
@@ -64,6 +67,7 @@ export const PRICING: Record<Region, RegionPricing> = {
       starter:      { upfront: 2200, retainer: 110, flatMonthly: 235 },
       professional: { upfront: 4000, retainer: 165, flatMonthly: 399 },
       premium:      { upfront: 7000, retainer: 250, flatMonthly: 665 },
+      commerce:     { upfront: 11500, retainer: 400, flatMonthly: 1050 },
     },
   },
   EU_WEST: {
@@ -76,6 +80,7 @@ export const PRICING: Record<Region, RegionPricing> = {
       starter:      { upfront: 1400, retainer: 70,  flatMonthly: 149 },
       professional: { upfront: 2500, retainer: 105, flatMonthly: 252 },
       premium:      { upfront: 4500, retainer: 160, flatMonthly: 435 },
+      commerce:     { upfront: 7000, retainer: 250, flatMonthly: 695 },
     },
   },
   EU_EAST: {
@@ -88,6 +93,7 @@ export const PRICING: Record<Region, RegionPricing> = {
       starter:      { upfront: 800,  retainer: 40,  flatMonthly: 120 },
       professional: { upfront: 1800, retainer: 80,  flatMonthly: 200 },
       premium:      { upfront: 4000, retainer: 160, flatMonthly: 400 },
+      commerce:     { upfront: 6500, retainer: 250, flatMonthly: 640 },
     },
   },
 };

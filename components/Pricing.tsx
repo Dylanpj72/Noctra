@@ -67,6 +67,7 @@ const tiers: {
     includes: 'Professional',
     features: [
       'Up to 25 pages with custom design & animations',
+      'Product catalogue',
       'Conversion strategy planning',
       'Advanced UX structure',
       'CRM integration & advanced lead capture',
@@ -76,6 +77,29 @@ const tiers: {
       'Performance optimisation',
       'Custom functionality',
       'A/B testing & conversion optimisation',
+      'Ongoing management & updates included',
+      'Priority support',
+    ],
+  },
+  {
+    key: 'commerce',
+    name: 'Commerce',
+    blurb: 'For businesses selling online — products, bookings, or subscriptions.',
+    includes: 'Premium',
+    features: [
+      'Full e-commerce store setup (Shopify, WooCommerce, or custom)',
+      'Up to 500 products assisted setup',
+      'Payment gateway integration (Stripe, PayFast, PayPal & more)',
+      'Shopping cart & checkout optimisation',
+      'Inventory & order management system',
+      'Customer accounts & login portal',
+      'Abandoned cart recovery',
+      'Discount codes & promotional engine',
+      'Product reviews & ratings',
+      'Shipping rates & tax configuration',
+      'Advanced product filtering & search',
+      'Email marketing integration (Klaviyo / Mailchimp)',
+      'GA4 enhanced e-commerce tracking',
       'Ongoing management & updates included',
       'Priority support',
     ],
@@ -174,7 +198,7 @@ function PricingCard({
     <TiltCard
       tiltLimit={8}
       scale={1.02}
-      className={`group relative rounded-[28px] flex flex-col p-7 md:p-8 ${
+      className={`group relative rounded-[28px] flex flex-col p-6 md:p-7 xl:p-8 ${
         tier.featured
           ? 'border border-white/[0.20] hover:border-[#f5d020]/30'
           : 'border border-white/[0.08] hover:border-white/[0.16]'
@@ -539,8 +563,8 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
           </AnimatePresence>
         </div>
 
-        {/* Cards - desktop: Starter / Professional / Premium */}
-        <div className="hidden md:grid md:grid-cols-3 gap-4 mb-10 items-start">
+        {/* Cards - desktop: Starter / Professional / Premium / Commerce */}
+        <div className="hidden md:grid md:grid-cols-2 xl:grid-cols-4 gap-4 mb-10 items-start">
           {tiers.map((tier) => (
             <PricingCard key={tier.key} tier={tier} mode={mode} region={region} />
           ))}
