@@ -4,7 +4,7 @@ import { Solution } from '@/components/Solution';
 import { Marquee } from '@/components/Marquee';
 import { ServicesCards } from '@/components/ServicesCards';
 import { Process } from '@/components/Process';
-import { HeroParallax } from '@/components/HeroParallax';
+import { SelectedWork } from '@/components/SelectedWork';
 import { FAQTeaser } from '@/components/FAQTeaser';
 import { CTABlock } from '@/components/CTABlock';
 import { Footer } from '@/components/Footer';
@@ -27,7 +27,7 @@ export default function Home() {
       <Process />
 
       {/* 05 · Portfolio preview */}
-      <HeroParallax showCTA />
+      <SelectedWork />
 
       {/* 06 · FAQ teaser */}
       <FAQTeaser />
