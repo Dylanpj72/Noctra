@@ -19,6 +19,7 @@ const tiers: {
   name: string;
   blurb: string;
   featured?: boolean;
+  quoteOnly?: boolean;
   includes?: string;
   features: string[];
 }[] = [
@@ -85,11 +86,11 @@ const tiers: {
     key: 'commerce',
     name: 'Commerce',
     blurb: 'For businesses selling online — products, bookings, or subscriptions.',
+    quoteOnly: true,
     includes: 'Premium',
     features: [
-      'Full e-commerce store setup (Shopify, WooCommerce, or custom)',
-      'Up to 500 products assisted setup',
-      'Payment gateway integration (Stripe, PayFast, PayPal & more)',
+      'Full e-commerce store setup',
+      'Payment gateway integration',
       'Shopping cart & checkout optimisation',
       'Inventory & order management system',
       'Customer accounts & login portal',
@@ -98,7 +99,7 @@ const tiers: {
       'Product reviews & ratings',
       'Shipping rates & tax configuration',
       'Advanced product filtering & search',
-      'Email marketing integration (Klaviyo / Mailchimp)',
+      'Email marketing integration',
       'GA4 enhanced e-commerce tracking',
       'Ongoing management & updates included',
       'Priority support',
@@ -245,7 +246,21 @@ function PricingCard({
 
       {/* Price */}
       <div className="mb-6">
-        <PriceDisplay mode={mode} tier={tier} region={region} />
+        {tier.quoteOnly ? (
+          <div>
+            <p
+              className="font-[family-name:var(--font-inter)] font-[900] leading-none text-white mb-2"
+              style={{ fontSize: 'clamp(28px,3vw,40px)' }}
+            >
+              Custom
+            </p>
+            <p className="font-[family-name:var(--font-jetbrains-mono)] text-[10px] tracking-[0.2em] uppercase text-[#5a5a62]">
+              Scoped to your store
+            </p>
+          </div>
+        ) : (
+          <PriceDisplay mode={mode} tier={tier} region={region} />
+        )}
       </div>
 
       {/* Divider */}
@@ -271,7 +286,7 @@ function PricingCard({
       </ul>
 
       {/* Inclusions */}
-      <div className="mb-6">
+      {!tier.quoteOnly && <div className="mb-6">
         <div className="w-full h-px bg-white/[0.06] mb-4" />
         <AnimatePresence mode="wait">
           {mode === 'flatMonthly' ? (
@@ -338,7 +353,7 @@ function PricingCard({
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </div>}
 
       {/* CTA */}
       <a
@@ -349,7 +364,7 @@ function PricingCard({
             : 'bg-white/[0.04] border border-white/[0.12] text-white hover:bg-white/[0.08] hover:border-white/[0.2]'
         }`}
       >
-        Choose {tier.name}
+        {tier.quoteOnly ? 'Request a quote' : `Choose ${tier.name}`}
       </a>
     </TiltCard>
   );
@@ -450,7 +465,7 @@ export function Pricing({ initialRegion }: { initialRegion: RegionPricing }) {
                         isActive ? 'bg-[#f5d020] text-black' : 'bg-[#f5d020]/20 text-[#f5d020]'
                       }`}
                     >
-                      Recommended
+                      Popular
                     </span>
                   )}
                 </button>
