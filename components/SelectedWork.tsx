@@ -179,7 +179,10 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
         rotRef.current = next;
         rotMV.set(next);
         if (next >= TOTAL_DEG) phaseRef.current = 'done';
-        if (next <= 0 && delta < 0) phaseRef.current = 'idle';
+        if (next <= 0 && delta < 0) {
+          phaseRef.current = 'idle';
+          snapDown(); // pin section top at viewport top so inertia exits cleanly upward
+        }
       }
     };
 
@@ -210,7 +213,10 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
         rotMV.set(next);
         touchY.current = e.touches[0].clientY;
         if (next >= TOTAL_DEG) phaseRef.current = 'done';
-        if (next <= 0 && dy < 0) phaseRef.current = 'idle';
+        if (next <= 0 && dy < 0) {
+          phaseRef.current = 'idle';
+          snapDown(); // pin section top at viewport top so inertia exits cleanly upward
+        }
       }
     };
 
