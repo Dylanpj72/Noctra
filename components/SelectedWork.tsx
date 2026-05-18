@@ -11,7 +11,7 @@ export const galleryWorks = [
   { id: '05', title: 'Forge Studios',    category: 'Brand Systems · Motion',   year: '2026', result: '4.8/5 NPS',        bg: '#0d0a07', accent: '#ffb84a' },
 ];
 
-export const CARD_W  = 520;
+export const CARD_W  = 640;
 export const CARD_H  = 300;
 export const RADIUS  = 900;
 const TOTAL_DEG      = 360;
