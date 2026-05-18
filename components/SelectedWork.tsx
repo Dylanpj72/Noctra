@@ -5,9 +5,9 @@ import { useMotionValue, useTransform, motion, type MotionValue } from 'motion/r
 
 export const galleryWorks = [
   { id: '01', title: 'Meridian Capital', category: 'Web Design · Brand',       year: '2026', result: '+312% conversion', bg: '#0a0a10', accent: '#4a7fff' },
-  { id: '02', title: 'Luma Studio',      category: 'Web Design · Motion',      year: '2026', result: '8wk to launch',    bg: '#0d0a0a', accent: '#ff6b4a' },
-  { id: '03', title: 'Arc Protocol',     category: 'Brand Systems · Growth',   year: '2025', result: '+189% organic',    bg: '#080d0a', accent: '#4affa0' },
-  { id: '04', title: 'Orbit Health',     category: 'Web Design · SEO',         year: '2025', result: '+240% organic',    bg: '#090a0d', accent: '#a87fff' },
+  { id: '02', title: 'Nature\'s Boost',  category: 'Web Design · Brand',       year: '2025', result: '+240% organic',    bg: '#060d06', accent: '#4affa0', image: '/thumbnails/microgreens.png' },
+  { id: '03', title: 'Airtech',          category: 'Web Design · SEO',         year: '2025', result: '+189% organic',    bg: '#07090d', accent: '#4a7fff', image: '/thumbnails/airtech.png' },
+  { id: '04', title: 'CR Plumbers',      category: 'Web Design · Brand',       year: '2025', result: '4.8/5 NPS',        bg: '#0d0b07', accent: '#ffb84a', image: '/thumbnails/cr-plumbers.png' },
   { id: '05', title: 'Forge Studios',    category: 'Brand Systems · Motion',   year: '2026', result: '4.8/5 NPS',        bg: '#0d0a07', accent: '#ffb84a' },
 ];
 
@@ -19,7 +19,7 @@ const DEG_PER_PX     = 0.15;
 const ROT_DELTA_CAP  = 80; // px — prevents a single mouse-wheel notch from over-rotating
 
 type Phase = 'idle' | 'active' | 'done';
-type Work  = (typeof galleryWorks)[0];
+type Work  = (typeof galleryWorks)[number];
 
 // ─── Shared card component ────────────────────────────────────────────────────
 export function GalleryCard({
@@ -61,6 +61,21 @@ export function GalleryCard({
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
+        {/* Screenshot thumbnail */}
+        {work.image && (
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: `url(${work.image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'top center',
+              opacity: hovered ? 0.55 : 0.35,
+              transition: 'opacity 0.6s ease',
+            }}
+            aria-hidden="true"
+          />
+        )}
+
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -70,14 +85,16 @@ export function GalleryCard({
           }}
           aria-hidden="true"
         />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1.5px)',
-            backgroundSize: '24px 24px',
-          }}
-          aria-hidden="true"
-        />
+        {!work.image && (
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1.5px)',
+              backgroundSize: '24px 24px',
+            }}
+            aria-hidden="true"
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" aria-hidden="true" />
         <div
           className="absolute top-5 right-5 flex flex-col items-end gap-2 pointer-events-none"
