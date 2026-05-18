@@ -124,6 +124,11 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
     const section = sectionRef.current;
     if (!section) return;
 
+    // Snap the section top flush with the viewport top using current rect position
+    // (avoids offsetTop discrepancies from layout drift or sub-pixel rounding)
+    const snapSection = () =>
+      window.scrollTo({ top: Math.round(window.scrollY + section.getBoundingClientRect().top), behavior: 'instant' });
+
     const onWheel = (e: WheelEvent) => {
       const rect  = section.getBoundingClientRect();
       const mult  = e.deltaMode === 1 ? 30 : e.deltaMode === 2 ? window.innerHeight : 1;
@@ -131,23 +136,21 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
 
       // ── Activate going DOWN (section top reaches viewport top) ───────────
       if (phaseRef.current === 'idle' && rect.top <= 4 && delta > 0) {
-        window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
+        e.preventDefault();
+        snapSection();
         phaseRef.current = 'active';
         // fall through to 'active' block below to consume this delta immediately
       }
 
       // ── Re-activate going UP ─────────────────────────────────────────────
-      // Only engage when the section is entering (or about to enter) the
-      // viewport from above — not when the user is far below on the page.
+      // Mirror the downward case: engage only when THIS event would carry
+      // rect.top from negative to >= 0 (section top crosses viewport top).
+      // delta is negative when scrolling up, so rect.top - delta = rect.top + |delta|.
+      // The snap distance is at most |delta| pixels — imperceptible.
       if (phaseRef.current === 'done' && delta < 0) {
-        // rect.top - delta = where section top would be after this scroll
-        // (delta is negative, so this is rect.top + |delta|, i.e. section moves down)
-        const sectionEntersView =
-          rect.top > -window.innerHeight ||           // section bottom already visible
-          rect.top - delta > -window.innerHeight;     // this scroll would bring it into view
-        if (sectionEntersView) {
+        if (rect.top < 0 && rect.top - delta >= 0) {
           e.preventDefault();
-          window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
+          snapSection();
           rotRef.current = TOTAL_DEG;
           rotMV.set(TOTAL_DEG);
           phaseRef.current = 'active';
@@ -173,16 +176,13 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
       const dy   = touchY.current - e.touches[0].clientY; // positive = finger moving up = scroll down
 
       if (phaseRef.current === 'idle' && rect.top <= 4 && dy > 0) {
-        window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
+        snapSection();
         phaseRef.current = 'active';
       }
 
       if (phaseRef.current === 'done' && dy < 0) {
-        const sectionEntersView =
-          rect.top > -window.innerHeight ||
-          rect.top + Math.abs(dy) > -window.innerHeight;
-        if (sectionEntersView) {
-          window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
+        if (rect.top < 0 && rect.top + Math.abs(dy) >= 0) {
+          snapSection();
           rotRef.current = TOTAL_DEG;
           rotMV.set(TOTAL_DEG);
           phaseRef.current = 'active';
