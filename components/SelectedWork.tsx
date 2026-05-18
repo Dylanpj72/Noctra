@@ -114,7 +114,10 @@ export function GalleryCard({
 }
 
 // ─── Shared scroll-lock hook ──────────────────────────────────────────────────
-export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>) {
+export function useCarouselLock(
+  sectionRef: React.RefObject<HTMLElement | null>,
+  headingRef?: React.RefObject<HTMLElement | null>,
+) {
   const rotMV    = useMotionValue(0);
   const rotRef   = useRef(0);
   const phaseRef = useRef<Phase>('idle');
@@ -124,10 +127,17 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
     const section = sectionRef.current;
     if (!section) return;
 
-    // Snap the section top flush with the viewport top using current rect position
-    // (avoids offsetTop discrepancies from layout drift or sub-pixel rounding)
-    const snapSection = () =>
-      window.scrollTo({ top: Math.round(window.scrollY + section.getBoundingClientRect().top), behavior: 'instant' });
+    const liveTop = () => Math.round(window.scrollY + section.getBoundingClientRect().top);
+
+    // Scroll DOWN engagement: section top flush with viewport top
+    const snapDown = () => window.scrollTo({ top: liveTop(), behavior: 'instant' });
+
+    // Scroll UP engagement: offset by half the heading height so the carousel
+    // is vertically centred in the viewport (heading is half off-screen above)
+    const snapUp = () => {
+      const headingH = headingRef?.current?.offsetHeight ?? 0;
+      window.scrollTo({ top: liveTop() + Math.round(headingH / 2), behavior: 'instant' });
+    };
 
     const onWheel = (e: WheelEvent) => {
       const rect  = section.getBoundingClientRect();
@@ -137,7 +147,7 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
       // ── Activate going DOWN (section top reaches viewport top) ───────────
       if (phaseRef.current === 'idle' && rect.top <= 4 && delta > 0) {
         e.preventDefault();
-        snapSection();
+        snapDown();
         phaseRef.current = 'active';
         // fall through to 'active' block below to consume this delta immediately
       }
@@ -150,7 +160,7 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
       if (phaseRef.current === 'done' && delta < 0) {
         if (rect.top < 0 && rect.top - delta >= 0) {
           e.preventDefault();
-          snapSection();
+          snapUp();
           rotRef.current = TOTAL_DEG;
           rotMV.set(TOTAL_DEG);
           phaseRef.current = 'active';
@@ -176,13 +186,13 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
       const dy   = touchY.current - e.touches[0].clientY; // positive = finger moving up = scroll down
 
       if (phaseRef.current === 'idle' && rect.top <= 4 && dy > 0) {
-        snapSection();
+        snapDown();
         phaseRef.current = 'active';
       }
 
       if (phaseRef.current === 'done' && dy < 0) {
         if (rect.top < 0 && rect.top + Math.abs(dy) >= 0) {
-          snapSection();
+          snapUp();
           rotRef.current = TOTAL_DEG;
           rotMV.set(TOTAL_DEG);
           phaseRef.current = 'active';
@@ -208,7 +218,7 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchmove',  onTouchMove);
     };
-  }, [rotMV, sectionRef]);
+  }, [rotMV, sectionRef, headingRef]);
 
   return rotMV;
 }
@@ -216,7 +226,8 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
 // ─── Home-page section (heading inside the locked viewport) ──────────────────
 export function SelectedWork() {
   const sectionRef  = useRef<HTMLElement>(null);
-  const rotMV       = useCarouselLock(sectionRef);
+  const headingRef  = useRef<HTMLDivElement>(null);
+  const rotMV       = useCarouselLock(sectionRef, headingRef);
   const hintOpacity = useTransform(rotMV, [0, 20], [1, 0]);
   const anglePerItem = 360 / galleryWorks.length;
 
@@ -228,7 +239,7 @@ export function SelectedWork() {
       className="relative h-screen bg-black border-b border-white/[0.06] isolate flex flex-col overflow-hidden"
     >
       {/* Section header */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-14 pt-[80px] pb-10 w-full flex-shrink-0">
+      <div ref={headingRef} className="max-w-[1400px] mx-auto px-6 md:px-14 pt-[80px] pb-10 w-full flex-shrink-0">
         <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
             05 · <span className="text-white font-[500]">Selected Work</span>
