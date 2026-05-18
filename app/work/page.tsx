@@ -1,5 +1,5 @@
 import { Nav } from '@/components/Nav';
-import { HeroParallax } from '@/components/HeroParallax';
+import { WorkCarousel } from '@/components/WorkCarousel';
 import { Footer } from '@/components/Footer';
 import { LiquidMetalButton } from '@/components/LiquidMetalButton';
 import type { Metadata } from 'next';
@@ -32,7 +32,7 @@ export default function WorkPage() {
         </h1>
       </section>
 
-      <HeroParallax />
+      <WorkCarousel />
 
       {/* Bottom CTA */}
       <section className="py-20 border-b border-white/[0.06] bg-black text-center">
