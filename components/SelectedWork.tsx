@@ -156,12 +156,10 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
       }
 
       // ── Re-activate going UP ─────────────────────────────────────────────
-      // Mirror the downward case: engage only when THIS event would carry
-      // rect.top from negative to >= 0 (section top crosses viewport top).
-      // delta is negative when scrolling up, so rect.top - delta = rect.top + |delta|.
-      // The snap distance is at most |delta| pixels — imperceptible.
+      // Broad window: fire whenever the section is visible and user scrolls up.
+      // Prevents inertia from carrying rect.top past 0 between events and missing the lock.
       if (phaseRef.current === 'done' && delta < 0) {
-        if (rect.top < 0 && rect.top - delta >= 0) {
+        if (rect.top < 4 && rect.top > -window.innerHeight) {
           e.preventDefault();
           snapUp();
           rotRef.current = TOTAL_DEG;
@@ -198,7 +196,7 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
       }
 
       if (phaseRef.current === 'done' && dy < 0) {
-        if (rect.top < 0 && rect.top + Math.abs(dy) >= 0) {
+        if (rect.top < 4 && rect.top > -window.innerHeight) {
           snapUp();
           rotRef.current = TOTAL_DEG;
           rotMV.set(TOTAL_DEG);
