@@ -69,7 +69,7 @@ export function GalleryCard({
               backgroundImage: `url(${work.image})`,
               backgroundSize: 'cover',
               backgroundPosition: 'top center',
-              opacity: hovered ? 0.55 : 0.35,
+              opacity: hovered ? 0.92 : 0.75,
               transition: 'opacity 0.6s ease',
             }}
             aria-hidden="true"
@@ -95,7 +95,7 @@ export function GalleryCard({
             aria-hidden="true"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" aria-hidden="true" />
         <div
           className="absolute top-5 right-5 flex flex-col items-end gap-2 pointer-events-none"
           style={{
