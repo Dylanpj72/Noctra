@@ -136,14 +136,23 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
         // fall through to 'active' block below to consume this delta immediately
       }
 
-      // ── Re-activate going UP — no position check needed.
-      //    Any upward scroll while in 'done' snaps back and reverse-rotates.
+      // ── Re-activate going UP ─────────────────────────────────────────────
+      // Only engage when the section is entering (or about to enter) the
+      // viewport from above — not when the user is far below on the page.
       if (phaseRef.current === 'done' && delta < 0) {
-        window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
-        rotRef.current = TOTAL_DEG;
-        rotMV.set(TOTAL_DEG);
-        phaseRef.current = 'active';
-        // fall through to 'active' block below
+        // rect.top - delta = where section top would be after this scroll
+        // (delta is negative, so this is rect.top + |delta|, i.e. section moves down)
+        const sectionEntersView =
+          rect.top > -window.innerHeight ||           // section bottom already visible
+          rect.top - delta > -window.innerHeight;     // this scroll would bring it into view
+        if (sectionEntersView) {
+          e.preventDefault();
+          window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
+          rotRef.current = TOTAL_DEG;
+          rotMV.set(TOTAL_DEG);
+          phaseRef.current = 'active';
+          // fall through to 'active' block below
+        }
       }
 
       // ── Locked: consume scroll delta as rotation ─────────────────────────
@@ -169,10 +178,15 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
       }
 
       if (phaseRef.current === 'done' && dy < 0) {
-        window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
-        rotRef.current = TOTAL_DEG;
-        rotMV.set(TOTAL_DEG);
-        phaseRef.current = 'active';
+        const sectionEntersView =
+          rect.top > -window.innerHeight ||
+          rect.top + Math.abs(dy) > -window.innerHeight;
+        if (sectionEntersView) {
+          window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
+          rotRef.current = TOTAL_DEG;
+          rotMV.set(TOTAL_DEG);
+          phaseRef.current = 'active';
+        }
       }
 
       if (phaseRef.current === 'active') {
