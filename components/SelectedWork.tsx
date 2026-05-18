@@ -15,7 +15,7 @@ export const CARD_W  = 520;
 export const CARD_H  = 300;
 export const RADIUS  = 900;
 const TOTAL_DEG      = 360;
-const DEG_PER_PX     = 0.35;
+const DEG_PER_PX     = 0.15;
 const ROT_DELTA_CAP  = 80; // px — prevents a single mouse-wheel notch from over-rotating
 
 type Phase = 'idle' | 'active' | 'done';
