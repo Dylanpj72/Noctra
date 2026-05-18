@@ -16,6 +16,7 @@ export const CARD_H  = 300;
 export const RADIUS  = 900;
 const TOTAL_DEG      = 360;
 const DEG_PER_PX     = 0.35;
+const ROT_DELTA_CAP  = 80; // px — prevents a single mouse-wheel notch from over-rotating
 
 type Phase = 'idle' | 'active' | 'done';
 type Work  = (typeof galleryWorks)[0];
@@ -114,10 +115,7 @@ export function GalleryCard({
 }
 
 // ─── Shared scroll-lock hook ──────────────────────────────────────────────────
-export function useCarouselLock(
-  sectionRef: React.RefObject<HTMLElement | null>,
-  headingRef?: React.RefObject<HTMLElement | null>,
-) {
+export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>) {
   const rotMV    = useMotionValue(0);
   const rotRef   = useRef(0);
   const phaseRef = useRef<Phase>('idle');
@@ -129,14 +127,19 @@ export function useCarouselLock(
 
     const liveTop = () => Math.round(window.scrollY + section.getBoundingClientRect().top);
 
-    // Scroll DOWN engagement: section top flush with viewport top
+    // Scroll DOWN: section top flush with viewport top
     const snapDown = () => window.scrollTo({ top: liveTop(), behavior: 'instant' });
 
-    // Scroll UP engagement: offset by half the heading height so the carousel
-    // is vertically centred in the viewport (heading is half off-screen above)
+    // Scroll UP: offset by headingH/2 so the carousel is vertically centred.
+    // Measures the first child — if it's shorter than 40% of the section it's
+    // a heading, otherwise (WorkCarousel has no heading) use 0.
+    // Never scrolls forward (that would fight the user's scroll direction).
     const snapUp = () => {
-      const headingH = headingRef?.current?.offsetHeight ?? 0;
-      window.scrollTo({ top: liveTop() + Math.round(headingH / 2), behavior: 'instant' });
+      const firstEl  = section.firstElementChild as HTMLElement | null;
+      const headingH = firstEl && firstEl.offsetHeight < section.offsetHeight * 0.4
+        ? firstEl.offsetHeight : 0;
+      const ideal = liveTop() + Math.round(headingH / 2);
+      window.scrollTo({ top: Math.min(ideal, window.scrollY), behavior: 'instant' });
     };
 
     const onWheel = (e: WheelEvent) => {
@@ -171,7 +174,8 @@ export function useCarouselLock(
       // ── Locked: consume scroll delta as rotation ─────────────────────────
       if (phaseRef.current === 'active') {
         e.preventDefault();
-        const next = Math.max(0, Math.min(TOTAL_DEG, rotRef.current + delta * DEG_PER_PX));
+        const capped = Math.sign(delta) * Math.min(Math.abs(delta), ROT_DELTA_CAP);
+        const next   = Math.max(0, Math.min(TOTAL_DEG, rotRef.current + capped * DEG_PER_PX));
         rotRef.current = next;
         rotMV.set(next);
         if (next >= TOTAL_DEG) phaseRef.current = 'done';
@@ -218,7 +222,7 @@ export function useCarouselLock(
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchmove',  onTouchMove);
     };
-  }, [rotMV, sectionRef, headingRef]);
+  }, [rotMV, sectionRef]);
 
   return rotMV;
 }
@@ -226,8 +230,7 @@ export function useCarouselLock(
 // ─── Home-page section (heading inside the locked viewport) ──────────────────
 export function SelectedWork() {
   const sectionRef  = useRef<HTMLElement>(null);
-  const headingRef  = useRef<HTMLDivElement>(null);
-  const rotMV       = useCarouselLock(sectionRef, headingRef);
+  const rotMV       = useCarouselLock(sectionRef);
   const hintOpacity = useTransform(rotMV, [0, 20], [1, 0]);
   const anglePerItem = 360 / galleryWorks.length;
 
@@ -239,7 +242,7 @@ export function SelectedWork() {
       className="relative h-screen bg-black border-b border-white/[0.06] isolate flex flex-col overflow-hidden"
     >
       {/* Section header */}
-      <div ref={headingRef} className="max-w-[1400px] mx-auto px-6 md:px-14 pt-[80px] pb-10 w-full flex-shrink-0">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-14 pt-[80px] pb-10 w-full flex-shrink-0">
         <div className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 items-end">
           <p className="font-[family-name:var(--font-jetbrains-mono)] text-[11px] tracking-[0.25em] uppercase text-[#5a5a62]">
             05 · <span className="text-white font-[500]">Selected Work</span>
