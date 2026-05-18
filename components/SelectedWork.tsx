@@ -115,36 +115,38 @@ export function GalleryCard({
 
 // ─── Shared scroll-lock hook ──────────────────────────────────────────────────
 export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>) {
-  const rotMV     = useMotionValue(0);
-  const rotRef    = useRef(0);
-  const phaseRef  = useRef<Phase>('idle');
-  const touchY    = useRef(0);
+  const rotMV    = useMotionValue(0);
+  const rotRef   = useRef(0);
+  const phaseRef = useRef<Phase>('idle');
+  const touchY   = useRef(0);
 
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
 
     const onWheel = (e: WheelEvent) => {
-      const rect = section.getBoundingClientRect();
-      // Normalise delta across pixel / line / page modes
+      const rect  = section.getBoundingClientRect();
       const mult  = e.deltaMode === 1 ? 30 : e.deltaMode === 2 ? window.innerHeight : 1;
       const delta = e.deltaY * mult;
 
-      // ── Activate going DOWN ──────────────────────────────────────────────
+      // ── Activate going DOWN (section top reaches viewport top) ───────────
       if (phaseRef.current === 'idle' && rect.top <= 4 && delta > 0) {
         window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
         phaseRef.current = 'active';
+        // fall through to 'active' block below to consume this delta immediately
       }
 
-      // ── Re-activate coming back UP ───────────────────────────────────────
-      if (phaseRef.current === 'done' && Math.abs(rect.top) <= 4 && delta < 0) {
+      // ── Re-activate going UP — no position check needed.
+      //    Any upward scroll while in 'done' snaps back and reverse-rotates.
+      if (phaseRef.current === 'done' && delta < 0) {
         window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
         rotRef.current = TOTAL_DEG;
         rotMV.set(TOTAL_DEG);
         phaseRef.current = 'active';
+        // fall through to 'active' block below
       }
 
-      // ── Locked: consume scroll as rotation ───────────────────────────────
+      // ── Locked: consume scroll delta as rotation ─────────────────────────
       if (phaseRef.current === 'active') {
         e.preventDefault();
         const next = Math.max(0, Math.min(TOTAL_DEG, rotRef.current + delta * DEG_PER_PX));
@@ -158,15 +160,15 @@ export function useCarouselLock(sectionRef: React.RefObject<HTMLElement | null>)
     const onTouchStart = (e: TouchEvent) => { touchY.current = e.touches[0].clientY; };
 
     const onTouchMove = (e: TouchEvent) => {
-      const rect  = section.getBoundingClientRect();
-      const dy    = touchY.current - e.touches[0].clientY; // positive = swipe up = scroll down
+      const rect = section.getBoundingClientRect();
+      const dy   = touchY.current - e.touches[0].clientY; // positive = finger moving up = scroll down
 
       if (phaseRef.current === 'idle' && rect.top <= 4 && dy > 0) {
         window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
         phaseRef.current = 'active';
       }
 
-      if (phaseRef.current === 'done' && Math.abs(rect.top) <= 4 && dy < 0) {
+      if (phaseRef.current === 'done' && dy < 0) {
         window.scrollTo({ top: section.offsetTop, behavior: 'instant' });
         rotRef.current = TOTAL_DEG;
         rotMV.set(TOTAL_DEG);
