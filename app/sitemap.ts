@@ -1,12 +1,18 @@
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const base = 'https://ardaic.com';
+  const now  = new Date();
+
   return [
-    {
-      url: 'https://ardaic.studio',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 1,
-    },
+    { url: base,                             lastModified: now, changeFrequency: 'weekly',  priority: 1.0 },
+    { url: `${base}/work`,                   lastModified: now, changeFrequency: 'weekly',  priority: 0.9 },
+    { url: `${base}/services/web-design`,    lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/services/brand-systems`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/services/growth-audits`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/pricing`,                lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${base}/industries`,             lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/about`,                  lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${base}/contact`,                lastModified: now, changeFrequency: 'yearly',  priority: 0.6 },
   ];
 }
