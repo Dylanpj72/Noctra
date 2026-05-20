@@ -38,13 +38,13 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Ardaic' }],
   creator: 'Ardaic',
-  metadataBase: new URL('https://ardaic.studio'),
+  metadataBase: new URL('https://ardaic.com'),
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Ardaic · Premium Web Design Agency',
     description:
       'We build websites that win. Custom design, development, and growth for ambitious global businesses.',
-    url: 'https://ardaic.studio',
+    url: 'https://ardaic.com',
     siteName: 'Ardaic',
     images: [
       {
@@ -104,10 +104,10 @@ export default function RootLayout({
               '@graph': [
                 {
                   '@type': 'Organization',
-                  '@id': 'https://ardaic.studio/#org',
+                  '@id': 'https://ardaic.com/#org',
                   name: 'Ardaic',
-                  url: 'https://ardaic.studio',
-                  logo: 'https://ardaic.studio/logo.png',
+                  url: 'https://ardaic.com',
+                  logo: 'https://ardaic.com/logo.png',
                   contactPoint: {
                     '@type': 'ContactPoint',
                     contactType: 'Customer Support',
@@ -117,34 +117,34 @@ export default function RootLayout({
                 },
                 {
                   '@type': 'WebSite',
-                  '@id': 'https://ardaic.studio/#website',
-                  url: 'https://ardaic.studio',
+                  '@id': 'https://ardaic.com/#website',
+                  url: 'https://ardaic.com',
                   name: 'Ardaic',
-                  publisher: { '@id': 'https://ardaic.studio/#org' },
+                  publisher: { '@id': 'https://ardaic.com/#org' },
                   potentialAction: {
                     '@type': 'SearchAction',
-                    target: 'https://ardaic.studio/?s={search_term_string}',
+                    target: 'https://ardaic.com/?s={search_term_string}',
                     'query-input': 'required name=search_term_string',
                   },
                 },
                 {
                   '@type': 'Service',
                   name: 'Web Design',
-                  provider: { '@id': 'https://ardaic.studio/#org' },
+                  provider: { '@id': 'https://ardaic.com/#org' },
                   description:
                     'Custom website design and development for global businesses, from strategy to launch.',
                 },
                 {
                   '@type': 'Service',
                   name: 'Brand Systems',
-                  provider: { '@id': 'https://ardaic.studio/#org' },
+                  provider: { '@id': 'https://ardaic.com/#org' },
                   description:
                     'Complete brand identity systems including logo, typography, color, and motion.',
                 },
                 {
                   '@type': 'Service',
                   name: 'Growth Audits',
-                  provider: { '@id': 'https://ardaic.studio/#org' },
+                  provider: { '@id': 'https://ardaic.com/#org' },
                   description:
                     'Conversion rate optimization and growth audits for existing websites.',
                 },
